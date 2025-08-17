@@ -1,0 +1,19 @@
+{
+  "name": "proclame",
+  "version": "1.0.0",
+  "description": "Voici le projet Proclame, un projet de démonstration pour l'examen.",
+  "scripts": {
+    "dev:client": "pnpm --filter client dev",
+    "dev:server": "pnpm --filter server dev",
+    "dev": "concurrently \"pnpm dev:client\" \"pnpm dev:server\""
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "dependencies": {
+    "concurrently": "^8.2.2",
+    "express": "^5.1.0"
+  },
+  "author": "Evan Azemard",
+  "packageManager": "pnpm@10.14.0"
+}

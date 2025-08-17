@@ -1,0 +1,9 @@
+# Ce fichier est un fichier de configuration pour un "workspace" dans un projet logiciel.
+# Un workspace permet de gérer plusieurs packages ou modules dans un même dépôt, facilitant leur développement et leur maintenance.
+# Un package est un ensemble de fichiers et de ressources qui sont regroupés.
+# Le mot-clé "packages:" introduit la liste des chemins vers les différents packages inclus dans le workspace.
+# Chaque package est listé sur une nouvelle ligne, précédé d'un tiret "-", ce qui indique une entrée dans la liste YAML.
+# On écrit une chaîne de caractères (string) après le tiret pour spécifier le chemin relatif ou le nom du package à inclure.
+# Le commentaire "/*" peut être utilisé pour indiquer que tous les sous-dossiers doivent être pris en compte comme packages.
+packages: 
+  - packages/*
