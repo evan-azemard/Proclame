@@ -1,9 +1,34 @@
-node_modules
-
-*.log
-
+# Node modules 
+node_modules/
 **/node_modules/
 
-# env
+# Logs
+*.log
+**/*.log
+
+
+# Environnements (exclut tous les .env sauf les templates)
+.env
+.env.*
+!.env.example
+!.env*.example
 **/.env
-!**/.env.exmample
+**/.env.*
+!**/.env.example
+!**/.env*.example
+
+
+# Build
+dist/
+build/
+**/dist/
+**/build/
+
+
+# Autres fichiers temporaires
+*.tmp
+*.temp
+
+# Vite (cache)
+.vite/
+**/.vite/
