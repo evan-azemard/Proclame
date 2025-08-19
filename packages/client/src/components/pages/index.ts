@@ -1,1 +1,24 @@
-export * from './ExemplePage'
+export { default as Home } from "./Home/Home.page";
+export { default as About } from "./About/About.page";
+export { default as AdminCategories } from "./AdminCategories/AdminCategories.page";
+export { default as AdminDashboard } from "./AdminDashboard/AdminDashboard.page";
+export { default as AdminKpi } from "./AdminKpi/AdminKpi.page";
+export { default as AdminLogin } from "./AdminLogin/AdminLogin.page";
+export { default as AdminProclamations } from "./AdminProclamations/AdminProclamations.page";
+export { default as AdminSounds } from "./AdminSounds/AdminSounds.page";
+export { default as AdminUsers } from "./AdminUsers/AdminUsers.page";
+export { default as CategoryProclamations } from "./CategoryProclamations/CategoryProclamations.page";
+export { default as Contact } from "./Contact/Contact.page";
+export { default as CookiesPolicy } from "./CookiesPolicy/CookiesPolicy.page";
+export { default as Favorites } from "./Favorites/Favorites.page";
+export { default as Forbidden403 } from "./Forbidden403/Forbidden403.page";
+export { default as LegalNotice } from "./LegalNotice/LegalNotice.page";
+export { default as Login } from "./Login/Login.page";
+export { default as NotFound404 } from "./NotFound404/NotFound404.page";
+export { default as PrivacyPolicy } from "./PrivacyPolicy/PrivacyPolicy.page";
+export { default as Profile } from "./Profile/Profile.page";
+export { default as Reading } from "./Reading/Reading.page";
+export { default as Register } from "./Register/Register.page";
+export { default as Sitemap } from "./Sitemap/Sitemap.page";
+export { default as TermsOfUse } from "./TermsOfUse/TermsOfUse.page";
+
