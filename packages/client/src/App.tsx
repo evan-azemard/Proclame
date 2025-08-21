@@ -1,5 +1,4 @@
-import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
-import * as Pages from "@pages/index";
+import { BrowserRouter, Link } from "react-router-dom";
 
 export default function App() {
   return (
@@ -29,31 +28,7 @@ export default function App() {
         <Link to="/sitemap">Sitemap</Link>
         <Link to="/terms-of-use">TermsOfUse</Link>
       </nav>
-      <Routes>
-        <Route path="/" element={<Pages.Home />} />
-        <Route path="/about" element={<Pages.About />} />
-        <Route path="/admin/categories" element={<Pages.AdminCategories />} />
-        <Route path="/admin/dashboard" element={<Pages.AdminDashboard />} />
-        <Route path="/admin/kpi" element={<Pages.AdminKpi />} />
-        <Route path="/admin/login" element={<Pages.AdminLogin />} />
-        <Route path="/admin/proclamations" element={<Pages.AdminProclamations />} />
-        <Route path="/admin/sounds" element={<Pages.AdminSounds />} />
-        <Route path="/admin/users" element={<Pages.AdminUsers />} />
-        <Route path="/category/:categoryId/proclamations" element={<Pages.CategoryProclamations />} />
-        <Route path="/contact" element={<Pages.Contact />} />
-        <Route path="/cookies-policy" element={<Pages.CookiesPolicy />} />
-        <Route path="/favorites" element={<Pages.Favorites />} />
-        <Route path="/403" element={<Pages.Forbidden403 />} />
-        <Route path="/legal-notice" element={<Pages.LegalNotice />} />
-        <Route path="/login" element={<Pages.Login />} />
-        <Route path="/privacy-policy" element={<Pages.PrivacyPolicy />} />
-        <Route path="/profile" element={<Pages.Profile />} />
-        <Route path="/reading/:proclamationId" element={<Pages.Reading />} />
-        <Route path="/register" element={<Pages.Register />} />
-        <Route path="/sitemap" element={<Pages.Sitemap />} />
-        <Route path="/terms-of-use" element={<Pages.TermsOfUse />} />
-        <Route path="*" element={<Pages.NotFound404 />} />
-      </Routes>
+     
     </BrowserRouter>
   );
 }
