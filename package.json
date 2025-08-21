@@ -11,8 +11,10 @@
     "packages/*"
   ],
   "dependencies": {
+    "axios": "^1.11.0",
     "concurrently": "^8.2.2",
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "zustand": "^5.0.8"
   },
   "author": "Evan Azemard",
   "packageManager": "pnpm@10.14.0"
