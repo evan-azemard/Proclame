@@ -1,3 +1,24 @@
-// Variables globales Sass
-$color-primary: #25ebb6; // Bleu principal
-$color-secondary: #fbbf24; // Jaune secondaire
+// Variable css car besoins de les modifier dynamiquement après le build
+:root {
+	/* Fonts */
+	--font-main: 'Open Sans', Arial, sans-serif;
+	--font-titles-weight: 800;
+
+	/* Colors */
+	--color-yellow: #FFB44C;
+	--color-text: rgba(251, 190, 36, 0.729);
+	--color-blue: #111827;
+	--color-black: #000000;
+	--color-bg: #030303;
+	--color-icon: #fcd59fb9;
+
+	/* Radii / shapes */
+	--radius-card: 8px;
+	--radius-button: 40px;
+	--radius-modal: 30px;
+	--radius-input: 25px;
+
+    /* Size */
+    --font-size-base: 2;
+}
+

@@ -1,9 +1,9 @@
 // Import utilitaire Vite pour typer et exporter la configuration proprement
-import { defineConfig } from 'vite'
+import { defineConfig } from "vite";
 // Utilitaires Node pour convertir une URL en chemin (sert à créer un alias vers src)
-import { fileURLToPath, URL } from 'node:url'
+import { fileURLToPath, URL } from "node:url";
 // Plugin officiel React pour Vite (JSX/TSX, Fast Refresh, etc.)
-import react from '@vitejs/plugin-react'
+import react from "@vitejs/plugin-react";
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -17,27 +17,35 @@ export default defineConfig({
     alias: {
       // Déclare un alias '@' qui pointe vers le dossier 'src'.
       // Permet d'écrire: import X from '@/components/X' au lieu de chemins relatifs longs.
-  '@': fileURLToPath(new URL('./src', import.meta.url)),
-  // Alias Atomic Design + couches app
-  '@atoms': fileURLToPath(new URL('./src/components/atoms', import.meta.url)),
-  '@molecules': fileURLToPath(new URL('./src/components/molecules', import.meta.url)),
-  '@organisms': fileURLToPath(new URL('./src/components/organisms', import.meta.url)),
-  '@templates': fileURLToPath(new URL('./src/components/templates', import.meta.url)),
-  '@pages': fileURLToPath(new URL('./src/components/pages', import.meta.url)),
-  '@store': fileURLToPath(new URL('./src/store', import.meta.url)),
-  '@api': fileURLToPath(new URL('./src/api', import.meta.url)),
-  '@hooks': fileURLToPath(new URL('./src/hooks', import.meta.url))
-    }
+      "@": fileURLToPath(new URL("./src", import.meta.url)),
+      // Alias Atomic Design + couches app
+      "@atoms": fileURLToPath(
+        new URL("./src/components/atoms", import.meta.url)
+      ),
+      "@molecules": fileURLToPath(
+        new URL("./src/components/molecules", import.meta.url)
+      ),
+      "@organisms": fileURLToPath(
+        new URL("./src/components/organisms", import.meta.url)
+      ),
+      "@templates": fileURLToPath(
+        new URL("./src/components/templates", import.meta.url)
+      ),
+      "@pages": fileURLToPath(
+        new URL("./src/components/pages", import.meta.url)
+      ),
+      "@store": fileURLToPath(new URL("./src/store", import.meta.url)),
+      "@api": fileURLToPath(new URL("./src/api", import.meta.url)),
+      "@hooks": fileURLToPath(new URL("./src/hooks", import.meta.url)),
+    },
   },
   // Options CSS/Sass
   css: {
     preprocessorOptions: {
       scss: {
-        // Injecte automatiquement les variables Sass dans tous les fichiers .scss/.module.scss.
-        // Ainsi, pas besoin de répéter `@use "@/styles/variables" as *;` dans chaque fichier.
-        // Note: on garde un '\n' final pour éviter que Vite ne concatène cette ligne avec la première du fichier.
-        additionalData: '@use "@/styles/variables" as *;\n'
-      }
-    }
-  }
-})
+        additionalData:
+          '@use "@/styles/variables" as *;\n@use "@/styles/mixins" as *;\n@use "@/styles/responsive" as *;\n',
+      },
+    },
+  },
+});

@@ -1,7 +1,33 @@
-/* Variables globales injectées via Vite (voir vite.config.ts) */
+* {
+	box-sizing: border-box;
+}
+
+html {
+	font-size: var(--font-size);
+  @include fluid-font(16px, 2vw, 32px);
+  @include respond-to(tablet) {
+    @include fluid-font(17px, 2.5vw, 32px);
+  }
+  @include respond-to(desktop) {
+    @include fluid-font(18px, 3vw, 32px);
+  }
+}
+
+h1 { @include fluid-font(2.5rem, 5vw, 3.5rem); }
+h2 { @include fluid-font(2rem, 4vw, 3rem); }
+h3 { @include fluid-font(1.5rem, 3vw, 2.5rem); }
+h4 { @include fluid-font(1.2rem, 2vw, 2rem); }
+p, label, input, textarea, button, li, span {
+  @include fluid-font(1rem, 2vw, 1.2rem);
+}
+
 
 body {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
+	font-family: var(--font-main);
+	background: var(--color-bg);
+	color: var(--color-text);
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: var(--font-titles-weight);
 }

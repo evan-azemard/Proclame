@@ -1,1 +1,1 @@
-export * from './Exemple'
+export * from './FontSwitcher/FontSwitcher';
