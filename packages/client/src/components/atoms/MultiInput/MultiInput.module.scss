@@ -7,6 +7,7 @@ label{
     font-weight: bold;
 }
 
+.search,
 .input,
 .password,
 .email,
@@ -28,7 +29,8 @@ label{
 .password:focus,
 .email:focus,
 .textarea:focus,
-.select:focus {
+.select:focus,
+.search:focus {
   filter: brightness(1.4);
 }
 

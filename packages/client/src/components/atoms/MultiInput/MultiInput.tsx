@@ -46,6 +46,11 @@ export default function MultiInput({...props}: MultiInputProps) {
             break;
         }
 
+        case 'search': {
+            control = <input type="search" id={name} placeholder={placeholder} name={name} className={styles.password} autoComplete="new-password" aria-label={label || placeholder} />;
+            break;
+        }
+
         case 'email': {
             control = <input type="email" id={name} placeholder={placeholder} name={name} className={styles.email} autoComplete="new-password" aria-label={label || placeholder} />;
             break;
