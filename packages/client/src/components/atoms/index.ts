@@ -1,1 +1,12 @@
-export * from './Icon/Icon';
+export { default as Icon } from './Icon/Icon';
+export { default as Title } from './Title/Title';
+export { default as Label } from './Label/Label';
+export { default as Breadcrumb } from './Breadcrumb/Breadcrumb';
+export { default as LongueText } from './LongueText/LongueText';
+export { default as Input } from './Input/Input';
+export { default as Search } from './Search/Search';
+export { default as SoundBar } from './SoundBar/SoundBar';
+export { default as Wave } from './Wave/Wave';
+export { default as Button } from './Button/Button';
+export { default as Table } from './Table/Table';
+export { default as Filter } from './Filter/Filter';

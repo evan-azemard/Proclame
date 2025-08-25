@@ -13,7 +13,9 @@ export default function App() {
         <Link to="/admin/proclamations">AdminProclamations</Link>
         <Link to="/admin/sounds">AdminSounds</Link>
         <Link to="/admin/users">AdminUsers</Link>
-        <Link to="/category/:categoryId/proclamations">CategoryProclamations</Link>
+        <Link to="/category/:categoryId/proclamations">
+          CategoryProclamations
+        </Link>
         <Link to="/contact">Contact</Link>
         <Link to="/cookies-policy">CookiesPolicy</Link>
         <Link to="/favorites">Favorites</Link>
