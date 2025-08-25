@@ -1,3 +1,4 @@
+import { Button } from "@atoms/index";
 import { BrowserRouter, Link } from "react-router-dom";
 
 export default function App() {
@@ -30,6 +31,9 @@ export default function App() {
         <Link to="/sitemap">Sitemap</Link>
         <Link to="/terms-of-use">TermsOfUse</Link>
       </nav>
+      <Button isBack={true} />
+      <Button text="Contact" />
+      <Button text="Clique sur moi" to="contact" />
     </BrowserRouter>
   );
 }

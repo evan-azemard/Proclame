@@ -1,25 +1,32 @@
 // Variable css car besoins de les modifier dynamiquement après le build
 :root {
-	/* Fonts */
-	--font-main: 'Open Sans', Arial, sans-serif;
-	--font-titles-weight: 800;
+  /* Fonts */
+  --font-main: "Open Sans", Arial, sans-serif;
+  --font-titles-weight: 800;
 
-	/* Colors */
-	--color-yellow: #FFB44C;
-	--color-text: #A69E94;
-	--color-blue: #111827;
-	--color-black: #000000;
-	--color-bg: #030303;
-	--color-icon: #fcd59fb9;
-	--color-text-label: #555;
+  /* Colors */
+  --color-yellow: #ffb44c;
+  --color-text: #a69e94;
+  --color-blue: #111827;
+  --color-black: #000000;
+  --color-bg: #030303;
+  --color-icon: #fcd59fb9;
+  --color-text-label: #555;
 
-	/* Radii / shapes */
-	--radius-card: 8px;
-	--radius-button: 40px;
-	--radius-modal: 30px;
-	--radius-input: 25px;
+  --gradient-yellow-blue-black: linear-gradient(
+    32deg,
+    var(--color-yellow)1%,
+    var(--color-blue) 50%,
+    var(--color-black) 70%
+  );
 
-    /* Size */
-    --font-font-size-base: 2;
+
+  /* Radii / shapes */
+  --radius-card: 8px;
+  --radius-button: 40px;
+  --radius-modal: 30px;
+  --radius-input: 25px;
+
+  /* Size */
+  --font-font-size-base: 2;
 }
-
