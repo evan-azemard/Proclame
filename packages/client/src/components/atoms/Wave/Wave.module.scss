@@ -1,0 +1,17 @@
+.wave {
+  display: inline-block;
+  color: var(--color-icon);
+  width: 100%;
+  padding: 25px;
+
+  & svg {
+    width: 100%;
+    height: auto;
+    display: block;
+
+    @include respond-to(desktop) {
+      width: 50%;
+      margin: 0 auto;
+    }
+  }
+}

@@ -1,3 +1,4 @@
+import { Wave } from "@atoms/index";
 import { BrowserRouter, Link } from "react-router-dom";
 
 export default function App() {
@@ -30,6 +31,7 @@ export default function App() {
         <Link to="/sitemap">Sitemap</Link>
         <Link to="/terms-of-use">TermsOfUse</Link>
       </nav>
+      <Wave  />
     </BrowserRouter>
   );
 }

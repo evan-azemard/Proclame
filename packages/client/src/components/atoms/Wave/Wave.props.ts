@@ -1,1 +1,3 @@
-export interface WaveProps { children?: React.ReactNode }
+export type WaveProps = {
+    color?: string
+}
