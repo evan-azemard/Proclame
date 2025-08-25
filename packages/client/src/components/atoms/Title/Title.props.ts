@@ -1,3 +1,4 @@
-export interface TitleProps {
-  children: React.ReactNode;
+export type TitleProps = {
+  children: string
+  type?: number
 }
