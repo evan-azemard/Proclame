@@ -28,7 +28,6 @@ export default function App() {
         <Link to="/sitemap">Sitemap</Link>
         <Link to="/terms-of-use">TermsOfUse</Link>
       </nav>
-     
     </BrowserRouter>
   );
 }

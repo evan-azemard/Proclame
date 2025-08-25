@@ -1,5 +1,6 @@
 // Import utilitaire Vite pour typer et exporter la configuration proprement
 import { defineConfig } from "vite";
+import svgr from "vite-plugin-svgr";
 // Utilitaires Node pour convertir une URL en chemin (sert à créer un alias vers src)
 import { fileURLToPath, URL } from "node:url";
 // Plugin officiel React pour Vite (JSX/TSX, Fast Refresh, etc.)
@@ -11,7 +12,7 @@ export default defineConfig({
   // On l'active car il facilite le développement d'applications React en offrant des fonctionnalités telles que le rechargement à chaud.
   // C'est à dire qu'il permet de voir les modifications en temps réel sans recharger la page. Il sert aussi à gérer les erreurs et les avertissements.
   // Comme par exemple la gestion des erreurs de compilation. ex: affichage d'un message d'erreur dans la console si le code contient des erreurs de syntaxe.
-  plugins: [react()],
+  plugins: [react(), svgr()],
   // Configuration de la résolution des imports
   resolve: {
     alias: {

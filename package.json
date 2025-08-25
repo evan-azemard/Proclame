@@ -17,5 +17,8 @@
     "zustand": "^5.0.8"
   },
   "author": "Evan Azemard",
-  "packageManager": "pnpm@10.14.0"
+  "packageManager": "pnpm@10.14.0",
+  "devDependencies": {
+    "vite-plugin-svgr": "^4.5.0"
+  }
 }
