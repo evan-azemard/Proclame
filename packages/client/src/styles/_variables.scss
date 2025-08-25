@@ -12,12 +12,20 @@
   --color-bg: #030303;
   --color-icon: #fcd59fb9;
   --color-text-label: #555;
+  --color-blue-input: #0f192e;
+  --color-yellow-input: #a59955a1;
 
   --gradient-yellow-blue-black: linear-gradient(
     32deg,
     var(--color-yellow)1%,
     var(--color-blue) 50%,
     var(--color-black) 70%
+  );
+
+    --gradient-yellow-blue-black-input: linear-gradient(
+    to bottom,
+    var(--color-blue-input) 90%,
+    var(--color-yellow-input) 20%
   );
 
 
