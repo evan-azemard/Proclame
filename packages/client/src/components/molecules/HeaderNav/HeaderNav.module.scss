@@ -24,7 +24,7 @@
     flex-grow: 1;
 
     div {
-      margin-left: 15px;
+      margin-left: 1rem;
       display: flex;
       justify-content: left;
     }
@@ -41,5 +41,11 @@
         min-width: 5rem;
       }
     }
+ 
   }
+}
+.header img.menu {
+  width: 3rem;
+  height: auto;
+  filter: grayscale(1);
 }

@@ -1,7 +1,8 @@
 import styles from "./HeaderNav.module.scss";
 import logo from "@atoms/Icon/icons/logo.png";
-import { Icon, Title } from "@atoms/index";
-import { useLocation } from "react-router-dom";
+import burger from "@atoms/Icon/icons/burger.png";
+import { Title } from "@atoms/index";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const translations: Record<string, string> = {
   // Admin routes
@@ -39,6 +40,7 @@ const translations: Record<string, string> = {
 
 export default function HeaderNav() {
   const location = useLocation();
+  const navigate = useNavigate();
   const pageTitle = translations[location.pathname] || "Page inconnue";
 
   return (
@@ -47,7 +49,11 @@ export default function HeaderNav() {
         <nav>
           <ul>
             <li>
-              <img src={logo} alt="Logo du site, un shofar" />
+              <img
+                src={logo}
+                alt="Logo du site, un shofar"
+                onClick={() => navigate("/")}
+              />
             </li>
           </ul>
         </nav>
@@ -55,7 +61,12 @@ export default function HeaderNav() {
           <Title type={1}>{pageTitle}</Title>
         </div>
       </div>
-      <Icon name="burger" title="burger" uri="/menu" />
+      <img
+        src={burger}
+        alt="Logo du menu"
+        onClick={() => navigate("/menu")}
+        className={styles.menu}
+      />
     </header>
   );
 }
