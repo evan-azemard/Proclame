@@ -35,7 +35,23 @@
     var(--color-black) 40%
   );
 
-  /* Radii / shapes */
+
+
+
+
+    --gradient-blue-black: linear-gradient(
+    90deg,
+    var(--color-blue) 40%,
+    black
+  );
+
+    --gradient-blue-black-bold: linear-gradient(
+    -15deg,
+     var(--color-blue) 1%,
+    black 65%,
+    var(--color-yellow) 95%
+  );
+  /* Radi / shapes */
   --radius-card: 8px;
   --radius-button: 40px;
   --radius-modal: 30px;
