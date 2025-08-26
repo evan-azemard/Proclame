@@ -1,1 +1,5 @@
-export interface CardProclamationProps { children?: React.ReactNode }
+export type CardProclamationProps = { 
+    title: string
+    description: string
+    uri: string
+}
