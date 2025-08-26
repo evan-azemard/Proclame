@@ -1,9 +1,11 @@
-import { CardProclamation, FooterNav } from "@molecules/index";
+import { FooterNav, HeaderNav } from "@molecules/index";
 import { BrowserRouter, Link } from "react-router-dom";
 
 export default function App() {
   return (
     <BrowserRouter>
+      <HeaderNav />
+
       <nav style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
         <Link to="/">Accueil</Link>
         <Link to="/about">About</Link>
@@ -30,6 +32,7 @@ export default function App() {
         <Link to="/register">Register</Link>
         <Link to="/sitemap">Sitemap</Link>
         <Link to="/terms-of-use">TermsOfUse</Link>
+        <Link to="/menu">Menu</Link>
       </nav>
       <FooterNav />
     </BrowserRouter>
