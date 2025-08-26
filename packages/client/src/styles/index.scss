@@ -1,3 +1,3 @@
-@import './_reset.scss';      // Reset navigateur
-@import './_fonts.scss';      // Polices
-@import './_base.scss';       // Styles globaux du site
+@use './reset';
+@use './fonts';
+@use './base';

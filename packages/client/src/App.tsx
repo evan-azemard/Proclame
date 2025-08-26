@@ -1,3 +1,4 @@
+import CardCategory from "@molecules/CardCategory/CardCategory";
 import { BrowserRouter, Link } from "react-router-dom";
 
 export default function App() {
@@ -30,6 +31,7 @@ export default function App() {
         <Link to="/sitemap">Sitemap</Link>
         <Link to="/terms-of-use">TermsOfUse</Link>
       </nav>
+      <CardCategory title="PAIX" description="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorum, atque aut dolor consequuntur incidunt corrupti!Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorum, atque aut dolor consequuntur incidunt corrupti!" />
     </BrowserRouter>
   );
 }

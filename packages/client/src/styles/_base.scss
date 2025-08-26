@@ -1,3 +1,5 @@
+@use './mixins' as *; 
+@use './responsive' as *;
 * {
   box-sizing: border-box;
 }

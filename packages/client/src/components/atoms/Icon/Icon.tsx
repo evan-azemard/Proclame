@@ -23,6 +23,7 @@ export default function Icon({
   title,
   width = "25px",
   color,
+  onClick
 }: IconProps) {
   const iconsMap: Record<string, React.FC<React.SVGProps<SVGSVGElement>>> = {
     "arrow-back": ArrowBack,
@@ -46,10 +47,9 @@ export default function Icon({
   const IconComponent = iconsMap[name];
   if (!IconComponent) return null;
   return (
-    <span className={styles.icon} aria-label={name} title={title}>
+    <span className={styles.icon} aria-label={name} title={title} onClick={onClick}>
       <IconComponent
         width={width}
-        height="auto"
         style={{ color: color || "currentColor" }}
       />
     </span>
