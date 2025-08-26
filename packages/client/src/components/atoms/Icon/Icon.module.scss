@@ -1,4 +1,9 @@
 .icon {
+  cursor: pointer;
   display: inline-flex;
   color: var(--color-icon);
+
+  svg{
+  width: 2rem;  
+  }
 }

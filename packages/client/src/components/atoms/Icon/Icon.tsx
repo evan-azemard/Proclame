@@ -17,13 +17,16 @@ import Validate from "./icons/Icon-validate.svg?react";
 import Warning from "./icons/Icon-warning.svg?react";
 import Wind from "./icons/Icon-wind.svg?react";
 import styles from "./Icon.module.scss";
+import { useNavigate } from "react-router-dom";
 
 export default function Icon({
   name,
   title,
-  width = "25px",
+  width = "3rem",
+  size,
   color,
-  onClick
+  uri,
+  onClick,
 }: IconProps) {
   const iconsMap: Record<string, React.FC<React.SVGProps<SVGSVGElement>>> = {
     "arrow-back": ArrowBack,
@@ -45,11 +48,30 @@ export default function Icon({
     wind: Wind,
   };
   const IconComponent = iconsMap[name];
+  const navigate = useNavigate();
   if (!IconComponent) return null;
+
+  const handleClick = (event: React.MouseEvent<HTMLSpanElement>) => {
+    // Forward event to parent first so it can stopPropagation / preventDefault
+    if (onClick) {
+      onClick(event);
+      if (event.isPropagationStopped()) return; // parent chose to stop
+    }
+    if (uri) navigate(uri);
+  };
+
+  // Resolve final sizing
+  const finalWidth = size || width;
+
   return (
-    <span className={styles.icon} aria-label={name} title={title} onClick={onClick}>
+    <span
+      className={styles.icon}
+      aria-label={name}
+      title={title}
+      onClick={handleClick}
+    >
       <IconComponent
-        width={width}
+        width={finalWidth}
         style={{ color: color || "currentColor" }}
       />
     </span>

@@ -41,6 +41,8 @@ body {
   background: var(--color-bg);
   color: var(--color-text);
   padding: 0 15px;
+  min-height: 100vh;
+  min-width: 100vw;
 }
 
 h1,

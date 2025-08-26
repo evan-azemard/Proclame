@@ -1,4 +1,4 @@
-import { CardCategory, CardProclamation } from "@molecules/index";
+import { CardProclamation, FooterNav } from "@molecules/index";
 import { BrowserRouter, Link } from "react-router-dom";
 
 export default function App() {
@@ -31,7 +31,7 @@ export default function App() {
         <Link to="/sitemap">Sitemap</Link>
         <Link to="/terms-of-use">TermsOfUse</Link>
       </nav>
-      <CardCategory uri="/about" description="description" title="Secour de dieu " />
+      <FooterNav />
     </BrowserRouter>
   );
 }
