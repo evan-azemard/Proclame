@@ -8,7 +8,7 @@
   --color-yellow: #ffb44c;
   --color-text: #a69e94;
   --color-blue: #111827;
-  --color-black: #000000;
+  --color-black: #11192b;
   --color-bg: #030303;
   --color-icon: #fcd59fb9;
   --color-text-label: #555;
@@ -17,17 +17,23 @@
 
   --gradient-yellow-blue-black: linear-gradient(
     32deg,
-    var(--color-yellow)1%,
+    var(--color-yellow) 1%,
     var(--color-blue) 50%,
     var(--color-black) 70%
   );
 
-    --gradient-yellow-blue-black-input: linear-gradient(
+  --gradient-yellow-blue-black-input: linear-gradient(
     to bottom,
     var(--color-blue-input) 90%,
     var(--color-yellow-input) 20%
   );
 
+  --gradient-color-card: linear-gradient(
+    124deg,
+    var(--color-yellow) 1%,
+    var(--color-blue) 20%,
+    var(--color-black) 40%
+  );
 
   /* Radii / shapes */
   --radius-card: 8px;
@@ -36,5 +42,5 @@
   --radius-input: 25px;
 
   /* Size */
-  --font-font-size-base: 2;
+  --font-font-size-px: 16px;
 }
