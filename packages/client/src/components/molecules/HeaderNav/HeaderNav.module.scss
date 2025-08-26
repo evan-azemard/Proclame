@@ -35,16 +35,16 @@
     nav {
       width: fit-content;
       img {
-        filter: grayscale(0.8) brightness(.8);
+        filter: grayscale(0.8) brightness(0.8);
         cursor: pointer;
         width: 5rem;
         min-width: 5rem;
       }
     }
- 
   }
 }
 .header img.menu {
+  cursor: pointer;
   width: 3rem;
   height: auto;
   filter: grayscale(1);

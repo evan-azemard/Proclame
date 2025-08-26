@@ -1,4 +1,5 @@
 import { FooterNav, HeaderNav, TitleWithParagraph } from "@molecules/index";
+import { SectionForm } from "@organisms/index";
 import { BrowserRouter, Link } from "react-router-dom";
 
 export default function App() {
@@ -36,7 +37,7 @@ export default function App() {
       </nav>
 
       <br/>
-      <TitleWithParagraph title="Hey !">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat voluptatem quos reprehenderit sint eaque vero assumenda ea officia earum qui. Rerum, totam. Ullam quos neque perferendis suscipit illo laboriosam voluptatum dignissimos aut sunt error accusamus qui eius officiis eligendi consequatur deleniti commodi minus sit distinctio possimus, sapiente eum id. Eius.</TitleWithParagraph>
+      <SectionForm  type="login" />
       <FooterNav />
     </BrowserRouter>
   );
