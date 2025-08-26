@@ -1,1 +1,4 @@
-export interface CardCategoryProps { children?: React.ReactNode }
+export type CardCategoryProps = { 
+    title: string
+    description: string
+}
