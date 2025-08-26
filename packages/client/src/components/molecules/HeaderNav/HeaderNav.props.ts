@@ -1,1 +1,3 @@
-export interface HeaderNavProps { children?: React.ReactNode }
+export type HeaderNavProps = { 
+    title: string
+}

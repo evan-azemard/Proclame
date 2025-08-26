@@ -1,1 +1,4 @@
-export interface CardNavProps { children?: React.ReactNode }
+export type CardNavProps = { 
+    title: string    
+    uri: string
+}

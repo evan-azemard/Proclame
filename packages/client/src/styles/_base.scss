@@ -1,5 +1,5 @@
-@use './mixins' as *; 
-@use './responsive' as *;
+@use "./mixins" as *;
+@use "./responsive" as *;
 * {
   box-sizing: border-box;
 }
@@ -7,7 +7,11 @@
 html {
   @include fluid-font(calc(var(--font-font-size-px, 16px)), 2vw, 32px);
   @include respond-to(tablet) {
-    @include fluid-font(calc(var(--font-font-size-px, 19px) + 3px), 2.5vw, 32px);
+    @include fluid-font(
+      calc(var(--font-font-size-px, 19px) + 3px),
+      2.5vw,
+      32px
+    );
   }
   @include respond-to(desktop) {
     @include fluid-font(calc(var(--font-font-size-px, 21px) + 5px), 3vw, 32px);
@@ -35,12 +39,23 @@ li,
 span {
   @include fluid-font(1rem, 2vw, 1.2rem);
 }
+*{
+  transition: all .3s ease;
+}
 
 body {
   font-family: var(--font-main);
-  background: var(--color-bg);
-  color: var(--color-text);
+  background: var(--color-bg-dark);
+  color: var(--color-taupe);
   padding: 0 15px;
+  min-height: 100vh;
+  min-width: 100vw;
+}
+
+hr {
+  border: none;
+  height: 1px;
+  background-color: var(--color-taupe);
 }
 
 h1,

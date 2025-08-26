@@ -1,9 +1,11 @@
-import CardCategory from "@molecules/CardCategory/CardCategory";
+import { FooterNav, HeaderNav, TitleWithParagraph } from "@molecules/index";
 import { BrowserRouter, Link } from "react-router-dom";
 
 export default function App() {
   return (
     <BrowserRouter>
+      <HeaderNav />
+
       <nav style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
         <Link to="/">Accueil</Link>
         <Link to="/about">About</Link>
@@ -30,8 +32,12 @@ export default function App() {
         <Link to="/register">Register</Link>
         <Link to="/sitemap">Sitemap</Link>
         <Link to="/terms-of-use">TermsOfUse</Link>
+        <Link to="/menu">Menu</Link>
       </nav>
-      <CardCategory title="PAIX" description="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorum, atque aut dolor consequuntur incidunt corrupti!Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorum, atque aut dolor consequuntur incidunt corrupti!" />
+
+      <br/>
+      <TitleWithParagraph title="Hey !">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat voluptatem quos reprehenderit sint eaque vero assumenda ea officia earum qui. Rerum, totam. Ullam quos neque perferendis suscipit illo laboriosam voluptatum dignissimos aut sunt error accusamus qui eius officiis eligendi consequatur deleniti commodi minus sit distinctio possimus, sapiente eum id. Eius.</TitleWithParagraph>
+      <FooterNav />
     </BrowserRouter>
   );
 }

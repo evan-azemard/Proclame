@@ -1,7 +1,9 @@
 export type IconProps = React.HTMLAttributes<HTMLSpanElement> & {
 	name: string;
-    title: string;
+	title: string;
 	width?: string;
+	size?: string;
 	color?: string;
-	onClick?: () => void;
+	uri?: string;
+	onClick?: (event: React.MouseEvent<HTMLSpanElement>) => void;
 };

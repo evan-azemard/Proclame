@@ -73,6 +73,7 @@ export default function RouterProvider() {
     <Route path="/cookies-policy" element={<Pages.CookiesPolicy />} />
     <Route path="/legal-notice" element={<Pages.LegalNotice />} />
     <Route path="/privacy-policy" element={<Pages.PrivacyPolicy />} />
+    <Route path="/menu" element={<Pages.Menu />} />
     <Route path="/403" element={<Pages.Forbidden403 />} />
     <Route path="*" element={<Pages.NotFound404 />} />
 

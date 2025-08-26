@@ -1,0 +1,42 @@
+.article {
+  background: var(--gradient-card);
+  width: 15rem;
+  height: 10rem;
+  border-radius: var(--radius-card);
+  padding: 15px;
+  position: relative;
+  cursor: pointer;
+  box-shadow: 0 4px 32px 0 rgba(116, 18, 101, 0.31),
+    0 1.5px 6px 0 rgba(255, 255, 255, 0.641) inset, 0 0 0 2px var(--color-rose-fad) inset;
+  backdrop-filter: blur(12px);
+  span {
+    width: 50px;
+    display: flex;
+    justify-content: end;
+    height: 35px;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+
+    svg {
+      width: 1.5rem;
+    }
+  }
+
+  header {
+    display: flex;
+
+    h2 {
+      font-size: 1.3rem;
+    }
+  }
+  main {
+    height: 90%;
+    padding: 1rem 0;
+    p {
+      height: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}
