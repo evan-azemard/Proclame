@@ -1,8 +1,8 @@
 .dialog {
-  box-shadow: 0 4px 32px 0 var(--color-rose-fad),
-    0 1.5px 6px 0 var(--color-rose) inset, 0 0 0 2px var(--color-rose-fad) inset;
+  box-shadow: 0 4px 32px 0 rgba(116, 18, 101, 0.31),
+    0 1.5px 6px 0 rgba(255, 255, 255, 0.641) inset, 0 0 0 2px var(--color-rose-fad) inset;
   backdrop-filter: blur(12px);
-  background: rgba(var(--color-ink-rgb), 0.35);
+  background: var( --gradient-modal);
   position: fixed;
   top: 50%;
   left: 50%;
@@ -15,6 +15,7 @@
   padding: 15px;
   border-radius: var(--radius-modal);
   z-index: 101;
+  transition: transform 1s ease, top .5s ease;
 
   div:first-child {
     overflow: auto;

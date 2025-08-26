@@ -34,6 +34,8 @@ export default function App() {
         <Link to="/terms-of-use">TermsOfUse</Link>
         <Link to="/menu">Menu</Link>
       </nav>
+
+      <br/>
       <FooterNav />
     </BrowserRouter>
   );

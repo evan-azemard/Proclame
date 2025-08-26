@@ -1,0 +1,11 @@
+header img, footer img, span > svg{
+    transition: .8s ease;
+    transform: scale(1);
+}
+
+header img:active, footer img:active, span:active > svg{
+    transition: .4s ease-out;
+    transform: scale(1.7);
+    filter: grayscale(1) brightness(2)!important;
+    user-select: none;
+}

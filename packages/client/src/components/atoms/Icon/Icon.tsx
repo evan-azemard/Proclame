@@ -52,15 +52,13 @@ export default function Icon({
   if (!IconComponent) return null;
 
   const handleClick = (event: React.MouseEvent<HTMLSpanElement>) => {
-    // Forward event to parent first so it can stopPropagation / preventDefault
     if (onClick) {
       onClick(event);
-      if (event.isPropagationStopped()) return; // parent chose to stop
+      if (event.isPropagationStopped()) return; 
     }
     if (uri) navigate(uri);
   };
 
-  // Resolve final sizing
   const finalWidth = size || width;
 
   return (

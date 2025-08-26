@@ -33,7 +33,7 @@ export default function CardProclamation({
       <Icon
         name="favorite"
         title="favori"
-        color={isFavorite ? "#ffb44c" : "currentColor"}
+        color={isFavorite ? "#ebe2d5ff" : "currentColor"}
         onClick={handleIconClick} // Appelle la fonction avec l'événement
         aria-label={isFavorite ? "Retirer des favoris" : "Ajouter aux favoris"}
       />

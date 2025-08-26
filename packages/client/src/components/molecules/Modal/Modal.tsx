@@ -25,13 +25,12 @@ export default function Modal({ show, children, btn1, btn2 }: ModalProps) {
             {btn1.name}
           </button>
         )}
+        {btn2 && <span className={styles.span}></span>}
+
         {btn2 && (
-          <div>
-            <span></span>
-            <button type="button" onClick={handleBtn2}>
-              {btn2.name}
-            </button>
-          </div>
+          <button type="button" onClick={handleBtn2}>
+            {btn2.name}
+          </button>
         )}
       </div>
     </dialog>

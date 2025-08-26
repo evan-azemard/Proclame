@@ -1,54 +1,87 @@
-// Variable css car besoins de les modifier dynamiquement après le build
+// Variables CSS — gardées modifiables dynamiquement après le build
 :root {
-  /* Fonts */
+  /* Polices */
   --font-main: "Open Sans", Arial, sans-serif;
   --font-titles-weight: 800;
 
-  /* Colors */
-  --color-yellow: #ffb44c;
-  --color-title:rgba(255, 180, 76, 0.6);
-  --color-text: #a69e94;
-  --color-blue: #111827;
-  --color-black: #11192b;
-  --color-bg: #030303;
-  --color-icon: #ffb44c;
-  --color-text-label: #555;
-  --color-blue-input: #0f192e;
-  --color-yellow-input: #a59955a1;
+  /* Couleurs (noms alignés sur l'apparence réelle) */
+  --color-rose-fad: #ff4c6734; /* corail / rose */
+  --color-rose: #ff4c67; /* corail / rose */
+  --color-taupe: #a69e94; /* texte principal et lignes/separators */
+  --color-ink: #000000; /* couleur d'encre — utilisé comme 'noir' pour fonds/contrastes */
+  --color-bordeaux: #632d2d; /* accents sombres / ombres */
+  --color-bg-dark: #000000; /* background global de l'app */
+  --color-white: #ffffff71; // Text ...
+  --color-title: #dbd2bb86; // Text ...
+  --color-label-muted: rgba(255, 255, 255, 0.196);
 
-  --gradient-yellow-blue-black: linear-gradient(
+  /* Dégradés (section claire) */
+  --gradient-default: linear-gradient(
     32deg,
-    var(--color-yellow) 1%,
-    var(--color-blue) 50%,
-    var(--color-black) 70%
+    var(--color-rose) 1%,
+    var(--color-ink) 50%,
+    ² var(--color-bordeaux) 70%
   );
 
-  --gradient-yellow-blue-black-input: linear-gradient(
-    to bottom,
-    var(--color-blue-input) 90%,
-    var(--color-yellow-input) 20%
-  );
-
-  --gradient-color-card: linear-gradient(
+  --gradient-card: linear-gradient(
     124deg,
-    var(--color-yellow) 1%,
-    var(--color-blue) 20%,
-    var(--color-black) 40%
+    var(--color-rose) 1%,
+    var(--color-ink) 20%,
+    var(--color-bordeaux) 40%
   );
 
-
-    --gradient-blue-black-bold: linear-gradient(
+  --gradient-strong: linear-gradient(
     -15deg,
-     var(--color-blue) 1%,
+    var(--color-ink) 1%,
     black 65%,
-    var(--color-yellow) 95%
+    var(--color-rose) 95%
   );
-  /* Radi / shapes */
+
+  /* Dégradés spécifiques (modifiable individuellement) */
+  --gradient-input: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 1) 9%,
+    rgba(209, 62, 85, 0.47) 54%,
+    rgba(0, 0, 0, 1) 90%
+  );
+
+  --gradient-modal: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 1) 9%,
+    rgba(209, 62, 85, 0.47) 54%,
+    rgba(0, 0, 0, 1) 90%
+  );
+  --gradient-header: linear-gradient(
+    18deg,
+    rgb(33, 8, 10) 0%,
+    rgba(0, 0, 0, 1) 18%,
+    rgba(168, 45, 64, 0.71) 58%,
+    rgba(0, 0, 0, 1) 86%,
+    rgb(25, 4, 7) 100%
+  );
+  --gradient-footer: linear-gradient(
+    18deg,
+    rgb(32, 5, 8) 0%,
+    rgba(0, 0, 0, 1) 18%,
+    rgba(168, 45, 64, 0.71) 58%,
+    rgba(0, 0, 0, 1) 86%,
+    rgb(20, 4, 7) 100%
+  );
+  --gradient-button: linear-gradient(
+    15deg,
+    var(--color-rose-fad) 0%,
+    var(--color-ink) 10%,
+    var(--color-rose) 100%
+  ); /* primary buttons */
+
+  /* (ancien alias gradient-color-card supprimé) */
+
+  /* Rayons / formes */
   --radius-card: 8px;
   --radius-button: 40px;
   --radius-modal: 30px;
   --radius-input: 25px;
 
-  /* Size */
+  /* Taille */
   --font-font-size-px: 16px;
 }

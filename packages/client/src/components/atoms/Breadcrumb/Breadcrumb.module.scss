@@ -1,7 +1,7 @@
 
 .breadcrumb li {
   display: inline-block;
-  color: var(--color-text-label);
+  color: var(--color-label-muted);
   font-style: italic;
   font-size: 0.9rem; 
 }
@@ -11,5 +11,5 @@
 }
 
 .inlineBreadcrumb li:last-child {
-    color: var(--color-text);
+  color: var(--color-taupe);
 }

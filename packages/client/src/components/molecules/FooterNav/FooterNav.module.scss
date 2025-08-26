@@ -5,9 +5,13 @@
   transform: translateX(-50%);
   width: clamp(260px, 70vw, 800px);
   margin: 0;
-  background: var(--gradient-yellow-blue-black);
+  background: var(--gradient-footer);
   border-radius: 100px;
   padding: 15px;
+  box-shadow: 0 4px 32px 0 rgba(116, 18, 101, 0.31),
+    0 1.5px 6px 0 rgba(255, 255, 255, 0.641) inset,
+    0 0 0 2px var(--color-rose-fad) inset;
+  backdrop-filter: blur(12px);
   z-index: 100;
   nav {
     width: 100%;
@@ -26,6 +30,7 @@
       li {
         height: fit-content;
         img {
+          filter: grayscale(0.8) brightness(0.8);
           cursor: pointer;
           width: 2rem;
         }
