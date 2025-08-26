@@ -51,7 +51,9 @@ export default function HeaderNav() {
             </li>
           </ul>
         </nav>
-        <Title type={1}>{pageTitle}</Title>
+        <div>
+          <Title type={1}>{pageTitle}</Title>
+        </div>
       </div>
       <Icon name="burger" title="burger" uri="/menu" />
     </header>
