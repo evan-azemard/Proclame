@@ -1,1 +1,9 @@
-export * from './Exemple'
+export { default as Icon } from './Icon/Icon';
+export { default as Title } from './Title/Title';
+export { default as Breadcrumb } from './Breadcrumb/Breadcrumb';
+export { default as LongueText } from './LongueText/LongueText';
+export { default as MultiInput } from './MultiInput/MultiInput';
+export { default as SoundBar } from './SoundBar/SoundBar';
+export { default as Wave } from './Wave/Wave';
+export { default as Button } from './Button/Button';
+export { default as Table } from './Table/Table';

@@ -1,3 +1,46 @@
-// Variables globales Sass
-$color-primary: #25ebb6; // Bleu principal
-$color-secondary: #fbbf24; // Jaune secondaire
+// Variable css car besoins de les modifier dynamiquement après le build
+:root {
+  /* Fonts */
+  --font-main: "Open Sans", Arial, sans-serif;
+  --font-titles-weight: 800;
+
+  /* Colors */
+  --color-yellow: #ffb44c;
+  --color-text: #a69e94;
+  --color-blue: #111827;
+  --color-black: #11192b;
+  --color-bg: #030303;
+  --color-icon: #fcd59fb9;
+  --color-text-label: #555;
+  --color-blue-input: #0f192e;
+  --color-yellow-input: #a59955a1;
+
+  --gradient-yellow-blue-black: linear-gradient(
+    32deg,
+    var(--color-yellow) 1%,
+    var(--color-blue) 50%,
+    var(--color-black) 70%
+  );
+
+  --gradient-yellow-blue-black-input: linear-gradient(
+    to bottom,
+    var(--color-blue-input) 90%,
+    var(--color-yellow-input) 20%
+  );
+
+  --gradient-color-card: linear-gradient(
+    124deg,
+    var(--color-yellow) 1%,
+    var(--color-blue) 20%,
+    var(--color-black) 40%
+  );
+
+  /* Radii / shapes */
+  --radius-card: 8px;
+  --radius-button: 40px;
+  --radius-modal: 30px;
+  --radius-input: 25px;
+
+  /* Size */
+  --font-font-size-px: 16px;
+}
