@@ -1,29 +1,23 @@
-import type { CardCategoryProps } from './CardCategory.props';
-import styles from './CardCategory.module.scss';
-import { Icon, Title } from '@atoms/index';
-import { useState } from 'react';
+import type { CardCategoryProps } from "./CardCategory.props";
+import styles from "./CardCategory.module.scss";
+import { useNavigate } from "react-router-dom";
 
-export default function CardCategory({ title, description }: CardCategoryProps) {
-  const [isFavorite, setIsFavorite] = useState(false);
+export default function CardCategory({
+  title,
+  uri,
+}: CardCategoryProps) {
 
-  const handleIconClick = () => {
-    console.log("first");
-    setIsFavorite((prev) => !prev);
+  const navigate = useNavigate();
+
+
+  const handleNavigate = () => {
+    navigate(uri);
   };
 
   return (
-    <article className={styles.article}>
-      <header>
-        <Title type={2}>{title}</Title>
-        <Icon
-          name="favorite"
-          title="favori"
-          color={isFavorite ? '#ffb44c' : 'currentColor'}
-          onClick={handleIconClick}
-        />
-      </header>
+    <article className={styles.article} onClick={handleNavigate}>
       <main>
-        <p>{description}</p>
+        <h3>{title}</h3>
       </main>
     </article>
   );

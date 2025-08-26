@@ -1,35 +1,18 @@
 .article {
   background: var(--gradient-color-card);
-  width: 15rem;
-  height: 10rem;
+  min-width: 15rem;
+  height: 5rem;
   border-radius: var(--radius-card);
   padding: 15px;
   position: absolute;
   cursor: pointer;
 
-  header {
-    display: flex;
-
-    span {
-      position: absolute;
-      right: 0;
-
-      svg {
-        width: 1.5rem;
-      }
-    }
-
-    h2{
-        font-size: 1.3rem;
-    }
-  }
   main {
-    height: 90%;
+    height: 100%;
     padding: 1rem 0;
-    p {
-      height: 100%;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 }
