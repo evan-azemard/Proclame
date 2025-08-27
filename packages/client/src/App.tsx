@@ -6,7 +6,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <HeaderNav />
-      <main>
+      <main className="with-footer">
         <RouterProvider />
       </main>
       <FooterNav />

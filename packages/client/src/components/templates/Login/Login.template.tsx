@@ -10,11 +10,20 @@ export default function Login() {
       <SectionForm type="login" />
       <Wave />
       <TitleWithParagraph title="Politique des cookis">
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Commodi,
-        praesentium! Sint recusandae ut beatae voluptate itaque minima fugiat
-        reprehenderit dolore exercitationem! Molestiae perspiciatis dolorum
-        mollitia molestias ipsum. Necessitatibus, velit dolorum.
+        Cette application utilise des cookies essentiels au bon fonctionnement
+        de ses services. 1. Cookies d’authentification Des cookies sont utilisés
+        pour enregistrer votre session et vous permettre de rester connecté(e)
+        pendant votre utilisation de l’application. 2. Cookies de session
+        utilisateur Pendant votre session, le nom d’utilisateur et l’adresse
+        email sont temporairement stockés afin d’améliorer votre expérience. Ces
+        données sont automatiquement supprimées à la déconnexion. 3. Suppression
+        des cookies La suppression des cookies via l’application entraînera une
+        déconnexion immédiate, car ces cookies sont indispensables au
+        fonctionnement des services.
       </TitleWithParagraph>
+      <div className="flex-end">
+        <Button text="Accepter" />
+      </div>
     </>
   );
 }

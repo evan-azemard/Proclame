@@ -4,10 +4,12 @@ import styles from "./Wave.module.scss";
 export default function Wave({ color }: WaveProps) {
   return (
     <span className={styles.wave}>
+      <br />
+      <br />
+
       <svg
         width="100%"
         height="16"
-        
         viewBox="0 0 281 16"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -18,6 +20,8 @@ export default function Wave({ color }: WaveProps) {
           fill-opacity="0.67"
         />
       </svg>
+      <br />
+      <br />
     </span>
   );
 }

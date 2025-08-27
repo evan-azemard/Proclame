@@ -24,9 +24,28 @@ export default function Button({ isBack, text, to }: ButtonProps) {
     }
   };
 
+  const className = isBack ? `${styles.button} ${styles.back}` : styles.button;
+
   return (
-    <button className={styles.button} onClick={handleClick}>
-      <p>{isBack ? <Icon name="arrow-back" title="Retour" /> : text}</p>
-    </button>
+    <>
+      {isBack ? (
+        <>
+          <button
+            className={className}
+            onClick={handleClick}
+            aria-label={isBack ? "Retour" : undefined}
+          >
+            <Icon name="arrow-back" title="Retour" />
+          </button>
+
+          <br />
+          <br />
+        </>
+      ) : (
+        <button className={className} onClick={handleClick} aria-label={text}>
+          {text}
+        </button>
+      )}
+    </>
   );
 }

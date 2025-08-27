@@ -3,11 +3,18 @@
   color: var(--color-bordeaux);
   width: 100%;
   padding: 25px;
-
+  transform: scale(1) !important;
+  filter: brightness(1.5);
   & svg {
     width: 100%;
     height: auto;
     display: block;
+    transform: scale(1) !important;
+
+    &:active,
+    &:hover {
+      transform: scale(1) !important;
+    }
 
     @include respond-to(desktop) {
       width: 50%;

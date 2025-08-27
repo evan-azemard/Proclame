@@ -3,3 +3,9 @@
     flex-direction: column;
     gap: 20px;
 }
+
+@include respond-to(desktop){
+    .titleWithParagraph{
+        padding: 0 100px;
+    }
+}
