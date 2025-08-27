@@ -5,7 +5,18 @@ header img, footer img, span > svg{
 
 header img:active, footer img:active, span:active > svg{
     transition: .4s ease-out;
-    transform: scale(1.7);
+    transform: scale(1.4);
     filter: grayscale(1) brightness(2)!important;
     user-select: none;
+}
+
+
+@include respond-to(desktop){
+    header img:hover, footer img:hover, span:hover > svg{
+    transition: .4s ease-out;
+    transform: scale(1.4);
+    filter: grayscale(1) brightness(3)!important;
+    user-select: none;
+}
+
 }

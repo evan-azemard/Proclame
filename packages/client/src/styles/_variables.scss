@@ -25,12 +25,12 @@
 
   --gradient-card: linear-gradient(
     124deg,
-    var(--color-rose) 1%,
-    var(--color-ink) 20%,
-    var(--color-bordeaux) 40%
+    var(--color-rose) 10%,
+    var(--color-ink) 70%,
+    var(--color-bordeaux) 100%
   );
 
-  --gradient-strong: linear-gradient(
+  --gradient-card-nav: linear-gradient(
     -15deg,
     var(--color-ink) 1%,
     black 65%,
@@ -72,9 +72,8 @@
     var(--color-rose-fad) 0%,
     var(--color-ink) 10%,
     var(--color-rose) 100%
-  ); /* primary buttons */
-
-  /* (ancien alias gradient-color-card supprimé) */
+  ); 
+  
 
   /* Rayons / formes */
   --radius-card: 8px;

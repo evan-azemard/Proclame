@@ -6,7 +6,7 @@ import { CardCategory, CardNav, CardProclamation } from "@molecules/index";
 export default function SectionGrid({ type }: SectionGridProps) {
 
   const lorem =
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod, nibh in consequat sodales, urna justo cursus augue, vitae efficitur lectus sapien at lorem.";
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod, nibh in csectetur adipiscing elit. Pellentesque euismod, nibh in csectetur adipiscing elit. Pellentesque euismod, nibh in csectetur adipiscing elit. Pellentesque euismod, nibh in csectetur adipiscing elit. Pellentesque euismod, nibh in csectetur adipiscing elit. Pellentesque euismod, nibh in csectetur adipiscing elit. Pellentesque euismod, nibh in csectetur adipiscing elit. Pellentesque euismod, nibh in csectetur adipiscing elit. Pellentesque euismod, nibh in csectetur adipiscing elit. Pellentesque euismod, nibh in csectetur adipiscing elit. Pellentesque euismod, nibh in csectetur adipiscing elit. Pellentesque euismod, nibh in csectetur adipiscing elit. Pellentesque euismod, nibh in csectetur adipiscing elit. Pellentesque euismod, nibh in csectetur adipiscing elit. Pellentesque euismod, nibh in csectetur adipiscing elit. Pellentesque euismod, nibh in csectetur adipiscing elit. Pellentesque euismod, nibh in csectetur adipiscing elit. Pellentesque euismod, nibh in csectetur adipiscing elit. Pellentesque euismod, nibh in csectetur adipiscing elit. Pellentesque euismod, nibh in csectetur adipiscing elit. Pellentesque euismod, nibh in csectetur adipiscing elit. Pellentesque euismod, nibh in consequat sodales, urna justo cursus augue, vitae efficitur lectus sapien at lorem.";
 
   return (
     <section className={styles.sectionGrid}>
@@ -63,18 +63,18 @@ export default function SectionGrid({ type }: SectionGridProps) {
                 <CardCategory title="Catégories" uri="/admin/categories" />
                 <CardCategory title="Catégories" uri="/admin/categories" />
                 <CardCategory title="Catégories" uri="/admin/categories" />
-                <CardCategory title="Catégories" uri="/admin/categories" />
+                <CardCategory title="CatégoriesCatégoriesCatégoriesCa" uri="/admin/categories" />
               </nav>
             );
           case "proclamation":
             return (
               <nav className={styles.navProclamation}>
+                <CardProclamation description={lorem} title="CatégoriesCatégories" uri="/admin/categories" />
+                <CardProclamation description={lorem} title="CatégoriesCatégoriesCatégories" uri="/admin/categories" />
                 <CardProclamation description={lorem} title="Catégories" uri="/admin/categories" />
                 <CardProclamation description={lorem} title="Catégories" uri="/admin/categories" />
                 <CardProclamation description={lorem} title="Catégories" uri="/admin/categories" />
-                <CardProclamation description={lorem} title="Catégories" uri="/admin/categories" />
-                <CardProclamation description={lorem} title="Catégories" uri="/admin/categories" />
-                <CardProclamation description={lorem} title="Catégories" uri="/admin/categories" />
+                <CardProclamation description={lorem} title="CatégoriesCatégoriesCatégories" uri="/admin/categories" />
                 <CardProclamation description={lorem} title="Catégories" uri="/admin/categories" />
                 <CardProclamation description={lorem} title="Catégories" uri="/admin/categories" />
                 <CardProclamation description={lorem} title="Catégories" uri="/admin/categories" />

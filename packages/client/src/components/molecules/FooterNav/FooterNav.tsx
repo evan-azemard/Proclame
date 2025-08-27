@@ -14,21 +14,24 @@ export default function FooterNav() {
   ];
 
   return (
-    <footer className={styles.footer}>
-      <nav aria-label="Navigation pied de page">
-        <ul>
-          {items.map((item) => (
-            <li
-              key={item.uri}
-              onClick={() => navigate(item.uri)}
-              aria-label={item.title}
-              title={item.title}
-            >
-              <img src={item.src} alt={item.alt} className={styles.logo} />
-            </li>
-          ))}
-        </ul>
-      </nav>
-    </footer>
+    <>
+      <footer className={styles.footer}>
+        <nav aria-label="Navigation pied de page">
+          <ul>
+            {items.map((item) => (
+              <li
+                key={item.uri}
+                onClick={() => navigate(item.uri)}
+                aria-label={item.title}
+                title={item.title}
+              >
+                <img src={item.src} alt={item.alt} className={styles.logo} />
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </footer>
+      <div className={styles.mask}></div>
+    </>
   );
 }
