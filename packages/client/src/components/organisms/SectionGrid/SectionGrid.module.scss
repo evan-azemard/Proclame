@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 5px;
+  gap: 1rem;
 }
 
 .navCategory {
@@ -78,6 +78,8 @@
       width: 200px;
       li {
         font-size: 0.8rem;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
       }
     }
   }

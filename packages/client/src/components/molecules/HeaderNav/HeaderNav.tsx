@@ -44,6 +44,7 @@ export default function HeaderNav() {
   const navigate = useNavigate();
   const pageTitle = translations[location.pathname] || "Page inconnue";
 
+
   return (
     <>
       <header className={styles.header}>
@@ -67,7 +68,7 @@ export default function HeaderNav() {
         <img
           src={burger}
           alt="Logo du menu"
-          onClick={() => navigate("/menu")}
+          onClick={() => (location.pathname === "/menu" ? navigate(-1) : navigate("/menu"))}
           className={styles.menu}
         />
       </header>
