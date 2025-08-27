@@ -2,20 +2,8 @@ import type { SectionGridProps } from "./SectionGrid.props";
 import styles from "./SectionGrid.module.scss";
 import { CardCategory, CardNav, CardProclamation } from "@molecules/index";
 
-function chunk<T>(arr: T[], size: number): T[][] {
-  const chunks: T[][] = [];
-  for (let i = 0; i < arr.length; i += size) {
-    chunks.push(arr.slice(i, i + size));
-  }
-  return chunks;
-}
 
 export default function SectionGrid({ type }: SectionGridProps) {
-  const categories = Array.from({ length: 18 }, (_, i) => `Catégorie ${i + 1}`);
-  const proclamations = Array.from(
-    { length: 18 },
-    (_, i) => `Proclamation ${i + 1}`
-  );
 
   const lorem =
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod, nibh in consequat sodales, urna justo cursus augue, vitae efficitur lectus sapien at lorem.";
@@ -58,7 +46,7 @@ export default function SectionGrid({ type }: SectionGridProps) {
             );
           case "category":
             return (
-              <nav className={styles.navMenu}>
+              <nav className={styles.navCategory}>
                 <CardCategory title="Catégories" uri="/admin/categories" />
                 <CardCategory title="Catégories" uri="/admin/categories" />
                 <CardCategory title="Catégories" uri="/admin/categories" />
@@ -80,14 +68,24 @@ export default function SectionGrid({ type }: SectionGridProps) {
             );
           case "proclamation":
             return (
-              <nav className={styles.navMenu}>
-                <CardNav title="Catégories" uri="/admin/categories" />
-                <CardNav title="Tableau de bord" uri="/admin/dashboard" />
-                <CardNav title="Indicateurs clés" uri="/admin/kpi" />
-                <CardNav title="Connexion admin" uri="/admin/login" />
-                <CardNav title="Proclamations" uri="/admin/proclamations" />
-                <CardNav title="Sons" uri="/admin/sounds" />
-                <CardNav title="Utilisateurs" uri="/admin/users" />
+              <nav className={styles.navProclamation}>
+                <CardProclamation description={lorem} title="Catégories" uri="/admin/categories" />
+                <CardProclamation description={lorem} title="Catégories" uri="/admin/categories" />
+                <CardProclamation description={lorem} title="Catégories" uri="/admin/categories" />
+                <CardProclamation description={lorem} title="Catégories" uri="/admin/categories" />
+                <CardProclamation description={lorem} title="Catégories" uri="/admin/categories" />
+                <CardProclamation description={lorem} title="Catégories" uri="/admin/categories" />
+                <CardProclamation description={lorem} title="Catégories" uri="/admin/categories" />
+                <CardProclamation description={lorem} title="Catégories" uri="/admin/categories" />
+                <CardProclamation description={lorem} title="Catégories" uri="/admin/categories" />
+                <CardProclamation description={lorem} title="Catégories" uri="/admin/categories" />
+                <CardProclamation description={lorem} title="Catégories" uri="/admin/categories" />
+                <CardProclamation description={lorem} title="Catégories" uri="/admin/categories" />
+                <CardProclamation description={lorem} title="Catégories" uri="/admin/categories" />
+                <CardProclamation description={lorem} title="Catégories" uri="/admin/categories" />
+                <CardProclamation description={lorem} title="Catégories" uri="/admin/categories" />
+                <CardProclamation description={lorem} title="Catégories" uri="/admin/categories" />
+            
               </nav>
             );
           default:
