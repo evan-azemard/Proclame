@@ -24,7 +24,7 @@ export default function FooterNav() {
               aria-label={item.title}
               title={item.title}
             >
-              <img src={item.src} alt={item.alt} />
+              <img src={item.src} alt={item.alt} className={styles.logo} />
             </li>
           ))}
         </ul>

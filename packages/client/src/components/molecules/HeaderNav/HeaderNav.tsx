@@ -18,6 +18,7 @@ const translations: Record<string, string> = {
   "/": "Accueil",
   "/register": "Inscription",
   "/login": "Connexion",
+  "/accessibility": "Accessibilité",
   "/sitemap": "Plan du site",
   "/about": "À propos",
   "/terms-of-use": "Conditions d'utilisation",
@@ -50,6 +51,7 @@ export default function HeaderNav() {
           <ul>
             <li>
               <img
+              className={styles.logo}
                 src={logo}
                 alt="Logo du site, un shofar"
                 onClick={() => navigate("/")}

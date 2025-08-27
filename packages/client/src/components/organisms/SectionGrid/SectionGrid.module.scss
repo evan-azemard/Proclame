@@ -1,0 +1,60 @@
+.navMenu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+
+  @include respond-to(desktop) {
+    padding: 25px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 16px;
+
+    ul {
+      li {
+        font-size: 0.8em;
+      }
+    }
+  }
+}
+
+.contentNavCategory {
+  padding: 25px;
+  overflow: scroll;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.navCategory {
+  padding: 25px;
+  overflow: scroll;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  ul {
+    li {
+      font-size: 0.8em;
+    }
+  }
+}
+
+.navProclamation {
+  padding: 25px;
+  overflow: scroll;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  scrollbar-width: none;
+  /* Hide scrollbar (IE/Edge legacy) */
+  -ms-overflow-style: none;
+  ul {
+    li {
+      font-size: 0.8em;
+    }
+  }
+}

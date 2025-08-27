@@ -5,6 +5,7 @@ button {
   font-size: .8em;
   min-width: 100px;
   min-height: 40px;
+  width: fit-content;
   height: auto;  cursor: pointer;
   transform: scale(1);
   transition: ease-in-out .3s;

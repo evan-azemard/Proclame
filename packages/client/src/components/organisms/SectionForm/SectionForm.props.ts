@@ -1,1 +1,3 @@
-export interface SectionFormProps { children?: React.ReactNode }
+export type SectionFormProps = {
+    type: string
+}

@@ -1,6 +1,6 @@
 .footer {
   position: fixed;
-  bottom: 35px;
+  bottom: 15px;
   left: 50%;
   transform: translateX(-50%);
   width: clamp(260px, 70vw, 800px);
@@ -35,6 +35,18 @@
           width: 2rem;
         }
       }
+    }
+  }
+}
+
+@include respond-to(desktop) {
+  .footer {
+    height: 60px;
+    width: 500px;
+    padding: 25px;
+
+    .logo {
+      width: 45px;
     }
   }
 }

@@ -22,4 +22,5 @@ export { default as Register } from "./Register/Register.page";
 export { default as Sitemap } from "./Sitemap/Sitemap.page";
 export { default as TermsOfUse } from "./TermsOfUse/TermsOfUse.page";
 export { default as Menu } from "./Menu/Menu.page";
+export { default as Accessibility } from "./Accessibility/Accessibility.page";
 

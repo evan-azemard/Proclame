@@ -1,1 +1,3 @@
-export interface SectionGridProps { children?: React.ReactNode }
+export type SectionGridProps = {
+    type: "menu" | "admin" | "category" | "proclamation"
+ }

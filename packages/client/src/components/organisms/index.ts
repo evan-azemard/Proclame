@@ -1,3 +1,3 @@
-export * from './SectionForm/SectionForm';
-export * from './SectionGrid/SectionGrid';
-export * from './SectionTable/SectionTable';
+export { default as SectionForm } from './SectionForm/SectionForm';
+export { default as SectionGrid } from './SectionGrid/SectionGrid';
+export { default as SectionTable } from './SectionTable/SectionTable';
