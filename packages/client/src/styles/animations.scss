@@ -1,22 +1,30 @@
-header img, footer img, span > svg{
-    transition: .8s ease;
-    transform: scale(1);
+header img,
+footer img,
+span > svg {
+  transition: 0.8s ease;
+  transform: scale(1);
 }
 
-header img:active, footer img:active, span:active > svg{
-    transition: .4s ease-out;
-    transform: scale(1.4);
-    filter: grayscale(1) brightness(2)!important;
-    user-select: none;
+header img:active,
+footer img:active,
+span:active > svg {
+  transition: 0.4s ease-out;
+  transform: scale(1.4);
+  filter: grayscale(1) brightness(2) !important;
+  user-select: none;
 }
 
+h1:hover,h2:hover,h3:hover,h4:hover,h5:hover,h6:hover{
+    filter: brightness(2)!important;
 
-@include respond-to(desktop){
-    header img:hover, footer img:hover, span:hover > svg{
-    transition: .4s ease-out;
+}
+@include respond-to(desktop) {
+  header img:hover,
+  footer img:hover,
+  span:hover > svg {
+    transition: 0.4s ease-out;
     transform: scale(1.2);
-    filter: grayscale(1) brightness(3)!important;
+    filter: grayscale(1) brightness(3) !important;
     user-select: none;
-}
-
+  }
 }
