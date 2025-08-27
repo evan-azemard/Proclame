@@ -1,16 +1,14 @@
 .ul {
   cursor: pointer;
   height: 5rem;
-  background: var(--gradient-blue-black-bold);
+  min-width: 100%;
   text-align: center;
   border-radius: var(--radius-card);
   box-shadow: 0 4px 32px 0 rgba(116, 18, 101, 0.31),
     0 1.5px 6px 0 rgba(255, 255, 255, 0.641) inset,
     0 0 0 2px var(--color-rose-fad) inset;
   backdrop-filter: blur(12px);
-  width: fit-content;
   padding: 15px;
-  min-width: 15rem;
 
   li {
     border-radius: var(--radius-card);
@@ -20,5 +18,10 @@
     justify-content: center;
     align-items: center;
     font-size: 1.5rem;
+  }
+  @include respond-to(desktop) {
+    min-width: 250px;
+    width: 500px;
+    max-width: 800px;
   }
 }

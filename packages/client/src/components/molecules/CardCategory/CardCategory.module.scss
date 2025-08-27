@@ -1,15 +1,20 @@
 .article {
   background: var(--gradient-card);
-  min-width: 15rem;
+  min-width: 10rem;
+  width: 10rem;
+  max-width: 5rem;
   height: 5rem;
   border-radius: var(--radius-card);
   padding: 15px;
-  position: absolute;
+  position: relative; // Changed from absolute to relative
   cursor: pointer;
-    box-shadow: 0 4px 32px 0 rgba(116, 18, 101, 0.31),
+  box-shadow: 0 4px 32px 0 rgba(116, 18, 101, 0.31),
     0 1.5px 6px 0 rgba(255, 255, 255, 0.641) inset, 0 0 0 2px var(--color-rose-fad) inset;
   backdrop-filter: blur(12px);
 
+  h3{
+    font-size: 1rem;
+  }
   main {
     height: 100%;
     padding: 1rem 0;
@@ -17,5 +22,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+  }
+
+  @include respond-to(desktop){
+    width: 10rem;
+    max-width: 10rem;
   }
 }

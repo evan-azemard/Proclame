@@ -1,5 +1,5 @@
 import { FooterNav, HeaderNav, TitleWithParagraph } from "@molecules/index";
-import { SectionForm } from "@organisms/index";
+import { SectionForm, SectionGrid } from "@organisms/index";
 import { BrowserRouter, Link } from "react-router-dom";
 
 export default function App() {
@@ -38,6 +38,10 @@ export default function App() {
 
       <br/>
       <SectionForm  type="login" />
+      <SectionGrid type="menu" />
+      <SectionGrid type="admin" />
+      <SectionGrid type="category" />
+      <SectionGrid type="proclamation" />
       <FooterNav />
     </BrowserRouter>
   );
