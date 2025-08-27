@@ -1,18 +1,22 @@
 .article {
   background: var(--gradient-card);
-  min-width: 10rem;
-  width: 10rem;
-  max-width: 5rem;
+  min-width: 200px;
+    width: fit-content;
   height: 5rem;
   border-radius: var(--radius-card);
   padding: 15px;
-  position: relative; // Changed from absolute to relative
+  position: relative;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   box-shadow: 0 4px 32px 0 rgba(116, 18, 101, 0.31),
-    0 1.5px 6px 0 rgba(255, 255, 255, 0.641) inset, 0 0 0 2px var(--color-rose-fad) inset;
+    0 1.5px 6px 0 rgba(255, 255, 255, 0.641) inset,
+    0 0 0 2px var(--color-rose-fad) inset;
   backdrop-filter: blur(12px);
 
-  h3{
+  h3 {
     font-size: 1rem;
   }
   main {
@@ -23,9 +27,28 @@
     justify-content: center;
     align-items: center;
   }
+  &:active {
+    transform: scale(1.05);
+    filter: brightness(2);
+  }
+}
 
-  @include respond-to(desktop){
-    width: 10rem;
-    max-width: 10rem;
+@include respond-to(desktop) {
+  .article {
+    min-width: 200px;
+    width: fit-content;
+    height: 100px;
+  
+    main{
+      width: fit-content;
+    }
+    h3 {
+      font-size: .7rem;
+      
+    }
+    &:hover {
+      transform: scale(1.05);
+      filter: brightness(2);
+    }
   }
 }

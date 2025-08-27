@@ -45,30 +45,34 @@ export default function HeaderNav() {
   const pageTitle = translations[location.pathname] || "Page inconnue";
 
   return (
-    <header className={styles.header}>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <img
-              className={styles.logo}
-                src={logo}
-                alt="Logo du site, un shofar"
-                onClick={() => navigate("/")}
-              />
-            </li>
-          </ul>
-        </nav>
+    <>
+      <header className={styles.header}>
         <div>
-          <Title type={1}>{pageTitle}</Title>
+          <nav>
+            <ul>
+              <li>
+                <img
+                  className={styles.logo}
+                  src={logo}
+                  alt="Logo du site, un shofar"
+                  onClick={() => navigate("/")}
+                />
+              </li>
+            </ul>
+          </nav>
+          <div>
+            <Title type={1}>{pageTitle}</Title>
+          </div>
         </div>
-      </div>
-      <img
-        src={burger}
-        alt="Logo du menu"
-        onClick={() => navigate("/menu")}
-        className={styles.menu}
-      />
-    </header>
+        <img
+          src={burger}
+          alt="Logo du menu"
+          onClick={() => navigate("/menu")}
+          className={styles.menu}
+        />
+      </header>
+      <div className={styles.mask}></div>
+      <div className={styles.mask2}></div>
+    </>
   );
 }

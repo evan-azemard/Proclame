@@ -13,12 +13,12 @@ export default function Button({ isBack, text, to }: ButtonProps) {
 
   const handleClick = () => {
     if ("vibrate" in navigator) {
-	// vibration API supported
-  navigator.vibrate(1000);
-}
+      // vibration API supported
+      navigator.vibrate(1000);
+    }
 
     if (isBack) {
-      navigate(-1); 
+      navigate(-1);
     } else if (to) {
       navigate(to);
     }
@@ -26,7 +26,7 @@ export default function Button({ isBack, text, to }: ButtonProps) {
 
   return (
     <button className={styles.button} onClick={handleClick}>
-      {isBack ? <Icon name="arrow-back" title="Retour" /> : text}
+      <p>{isBack ? <Icon name="arrow-back" title="Retour" /> : text}</p>
     </button>
   );
 }

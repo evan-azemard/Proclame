@@ -1,18 +1,25 @@
-.section{
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  .buttonGroup {
     display: flex;
-    flex-direction: column;
+    justify-content: end;
+    flex-wrap: wrap;
+    width: 100%;
     gap: 1rem;
+  }
 
-    .buttonGroup{
-        display: flex;
-        justify-content: end;
-        width: 100%;
-        gap: 1rem;
-    }
-
-    @include respond-to(desktop){
-        width: 500px;
-        margin: 0 auto;
-    }
+  @include respond-to(desktop) {
+    width: 500px;
+    margin: 0 auto;
+  }
 }
 
+@include respond-to(tablet) {
+  .section {
+    width: 50%;
+    margin: 0 auto;
+  }
+}

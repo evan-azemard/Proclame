@@ -16,6 +16,24 @@ html {
   @include respond-to(desktop) {
     @include fluid-font(calc(var(--font-font-size-px, 21px) + 5px), 3vw, 32px);
   }
+
+  overflow-x: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  @include respond-to(tablet) {
+    overflow-x: hidden; 
+    overflow-y: auto;
+    scrollbar-width: auto;
+    -ms-overflow-style: auto;
+  }
+
+  @include respond-to(desktop) {
+    overflow-x: hidden; 
+    overflow-y: auto;
+    scrollbar-width: auto;
+    -ms-overflow-style: auto;
+  }
 }
 
 h1 {
@@ -47,21 +65,17 @@ body {
   font-family: var(--font-main);
   background: var(--color-bg-dark);
   color: var(--color-taupe);
-  padding: 0 15px;
+  padding: 100px 15px;
   min-height: 100vh;
   min-width: 100vw;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 main {
-  overflow-x: scroll;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  height: 70vh;
+  width: 100%;
 }
-
 
 hr {
   border: none;
