@@ -18,6 +18,7 @@ const translations: Record<string, string> = {
   "/": "Accueil",
   "/register": "Inscription",
   "/login": "Connexion",
+  "/accessibility": "Accessibilité",
   "/sitemap": "Plan du site",
   "/about": "À propos",
   "/terms-of-use": "Conditions d'utilisation",

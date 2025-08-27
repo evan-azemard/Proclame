@@ -58,7 +58,7 @@ export default function SectionGrid({ type }: SectionGridProps) {
         switch (type) {
           case "menu":
             return (
-              <>
+              <nav>
                 <CardNav title="Déconnexion" uri="/logout" />
                 <CardNav title="Accueil" uri="/" />
                 <CardNav title="Inscription" uri="/register" />
@@ -71,11 +71,11 @@ export default function SectionGrid({ type }: SectionGridProps) {
                 <CardNav title="Mentions légales" uri="/legal-notice" />
                 <CardNav title="Contact" uri="/contact" />
                 <CardNav title="Accessibilité" uri="/accessibility" />
-              </>
+              </nav>
             );
           case "admin":
             return (
-              <>
+              <nav>
                 <CardNav title="Catégories" uri="/admin/categories" />
                 <CardNav title="Tableau de bord" uri="/admin/dashboard" />
                 <CardNav title="Indicateurs clés" uri="/admin/kpi" />
@@ -83,7 +83,7 @@ export default function SectionGrid({ type }: SectionGridProps) {
                 <CardNav title="Proclamations" uri="/admin/proclamations" />
                 <CardNav title="Sons" uri="/admin/sounds" />
                 <CardNav title="Utilisateurs" uri="/admin/users" />
-              </>
+              </nav>
             );
           case "category":
             return renderSlidesNative(categories, "category");
