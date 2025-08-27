@@ -6,7 +6,7 @@ export default function CookiesPolicy() {
     <>
       <Button isBack />
       <Wave space />
-      <TitleWithParagraph title="Politique des cookis">
+      <TitleWithParagraph title="Politique des cookies">
         <p>
           Cette application utilise des cookies essentiels au bon fonctionnement
           de ses services.

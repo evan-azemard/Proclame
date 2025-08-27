@@ -14,13 +14,17 @@ export default function Button({ isBack, text, to }: ButtonProps) {
   const handleClick = () => {
     if ("vibrate" in navigator) {
       // vibration API supported
-      navigator.vibrate(1000);
+      navigator.vibrate(100);
     }
 
     if (isBack) {
-      navigate(-1);
+      // go back if possible, otherwise go to home
+      if (window.history.length > 1) navigate(-1);
+      else navigate("/");
     } else if (to) {
-      navigate(to);
+      // normalize to absolute path to avoid relative navigation issues
+      const route = to.startsWith("/") ? to : `/${to}`;
+      navigate(route);
     }
   };
 
