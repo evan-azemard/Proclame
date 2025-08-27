@@ -1,16 +1,17 @@
 import { Route, Routes } from "react-router-dom";
-import * as Pages from "@pages/index";
+import * as Templates from "@templates/index";
 import { ProtectedRoute } from "./ProtectedRoute";
 import { AdminRoute } from "./AdminRoute";
 
 export default function RouterProvider() {
-  <Routes>
+  return (
+    <Routes>
     {/* Routes admin */}
     <Route
       path="/admin/categories"
       element={
         <AdminRoute>
-          <Pages.AdminCategories />
+          <Templates.AdminCategories />
         </AdminRoute>
       }
     />
@@ -18,7 +19,7 @@ export default function RouterProvider() {
       path="/admin/dashboard"
       element={
         <AdminRoute>
-          <Pages.AdminDashboard />
+          <Templates.AdminDashboard />
         </AdminRoute>
       }
     />
@@ -26,7 +27,7 @@ export default function RouterProvider() {
       path="/admin/kpi"
       element={
         <AdminRoute>
-          <Pages.AdminKpi />
+          <Templates.AdminKpi />
         </AdminRoute>
       }
     />
@@ -34,7 +35,7 @@ export default function RouterProvider() {
       path="/admin/login"
       element={
         <AdminRoute>
-          <Pages.AdminLogin />
+          <Templates.AdminLogin />
         </AdminRoute>
       }
     />
@@ -42,7 +43,7 @@ export default function RouterProvider() {
       path="/admin/proclamations"
       element={
         <AdminRoute>
-          <Pages.AdminProclamations />
+          <Templates.AdminProclamations />
         </AdminRoute>
       }
     />
@@ -50,7 +51,7 @@ export default function RouterProvider() {
       path="/admin/sounds"
       element={
         <AdminRoute>
-          <Pages.AdminSounds />
+          <Templates.AdminSounds />
         </AdminRoute>
       }
     />
@@ -58,36 +59,36 @@ export default function RouterProvider() {
       path="/admin/users"
       element={
         <AdminRoute>
-          <Pages.AdminUsers />
+          <Templates.AdminUsers />
         </AdminRoute>
       }
     />
     {/* Routes public */}
-    <Route path="/" element={<Pages.Home />} />
-    <Route path="/register" element={<Pages.Register />} />
-    <Route path="/login" element={<Pages.Login />} />
-    <Route path="/sitemap" element={<Pages.Sitemap />} />
-    <Route path="/about" element={<Pages.About />} />
-    <Route path="/terms-of-use" element={<Pages.TermsOfUse />} />
-    <Route path="/contact" element={<Pages.Contact />} />
-    <Route path="/cookies-policy" element={<Pages.CookiesPolicy />} />
-    <Route path="/legal-notice" element={<Pages.LegalNotice />} />
-    <Route path="/privacy-policy" element={<Pages.PrivacyPolicy />} />
-    <Route path="/accessibility" element={<Pages.Accessibility />} />
-    <Route path="/menu" element={<Pages.Menu />} />
-    <Route path="/403" element={<Pages.Forbidden403 />} />
-    <Route path="*" element={<Pages.NotFound404 />} />
+  <Route path="/" element={<Templates.Home />} />
+  <Route path="/register" element={<Templates.Register />} />
+  <Route path="/login" element={<Templates.Login />} />
+  <Route path="/sitemap" element={<Templates.Sitemap />} />
+  <Route path="/about" element={<Templates.About />} />
+  <Route path="/terms-of-use" element={<Templates.TermsOfUse />} />
+  <Route path="/contact" element={<Templates.Contact />} />
+  <Route path="/cookies-policy" element={<Templates.CookiesPolicy />} />
+  <Route path="/legal-notice" element={<Templates.LegalNotice />} />
+  <Route path="/privacy-policy" element={<Templates.PrivacyPolicy />} />
+  <Route path="/accessibility" element={<Templates.Accessibility />} />
+  <Route path="/menu" element={<Templates.Menu />} />
+  <Route path="/403" element={<Templates.Forbidden403 />} />
+  <Route path="*" element={<Templates.NotFound404 />} />
 
     {/* Route protégé */}
     <Route
       path="/category/:categoryId/proclamations"
-      element={<Pages.CategoryProclamations />}
+  element={<Templates.CategoryProclamations />}
     />
     <Route
       path="/favorites"
       element={
         <ProtectedRoute>
-          <Pages.Favorites />
+          <Templates.Favorites />
         </ProtectedRoute>
       }
     />
@@ -95,7 +96,7 @@ export default function RouterProvider() {
       path="/reading/:proclamationId"
       element={
         <ProtectedRoute>
-          <Pages.Reading />
+          <Templates.Reading />
         </ProtectedRoute>
       }
     />
@@ -103,9 +104,10 @@ export default function RouterProvider() {
       path="/profile"
       element={
         <ProtectedRoute>
-          <Pages.Profile />
+          <Templates.Profile />
         </ProtectedRoute>
       }
     />
-  </Routes>;
+    </Routes>
+  );
 }
