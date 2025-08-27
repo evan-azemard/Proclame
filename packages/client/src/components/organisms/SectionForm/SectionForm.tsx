@@ -14,13 +14,13 @@ export default function SectionForm({ type }: SectionFormProps) {
                   name="email"
                   type="email"
                   label="Adresse email"
-                  placeholder="Entrez votre adresse email"
+                  placeholder="Entrer votre adresse email"
                 />
                 <MultiInput
                   name="password"
                   type="password"
                   label="Mot de passe"
-                  placeholder="Entrez votre mot de passe"
+                  placeholder="Entrer votre mot de passe"
                 />
                 <MultiInput
                   name="checkbox"
@@ -33,6 +33,32 @@ export default function SectionForm({ type }: SectionFormProps) {
                 </div>
               </section>
             );
+          case "contact":
+            return (
+              <section className={styles.section}>
+                <MultiInput
+                  name="email"
+                  type="email"
+                  label="Adresse email"
+                  placeholder="Entrer votre adresse email"
+                />
+                <MultiInput
+                  name="username"
+                  type="text"
+                  label="Nom d'utilisateur"
+                  placeholder="Entrer votre nom d'utilisateur"
+                />
+                <MultiInput
+                  name="text"
+                  type="textarea"
+                  label="Message"
+                  placeholder="Entrer votre message"
+                />
+                <div className={styles.buttonGroup}>
+                  <Button text="Envoyer" />
+                </div>
+              </section>
+            );
           case "register":
             return (
               <section className={styles.section}>
@@ -40,19 +66,19 @@ export default function SectionForm({ type }: SectionFormProps) {
                   name="username"
                   type="text"
                   label="Nom d'utilisateur"
-                  placeholder="Entrez votre nom d'utilisateur"
+                  placeholder="Entrer votre nom d'utilisateur"
                 />
                 <MultiInput
                   name="email"
                   type="email"
                   label="Adresse email"
-                  placeholder="Entrez votre adresse email"
+                  placeholder="Entrer votre adresse email"
                 />
                 <MultiInput
                   name="password"
                   type="password"
                   label="Mot de passe"
-                  placeholder="Entrez votre mot de passe"
+                  placeholder="Entrer votre mot de passe"
                 />
                 <MultiInput
                   name="confirm-password"
@@ -78,13 +104,13 @@ export default function SectionForm({ type }: SectionFormProps) {
                   name="current-password"
                   type="password"
                   label="Mot de passe actuel"
-                  placeholder="Entrez votre mot de passe actuel"
+                  placeholder="Entrer votre mot de passe actuel"
                 />
                 <MultiInput
                   name="new-password"
                   type="password"
                   label="Nouveau mot de passe"
-                  placeholder="Entrez votre nouveau mot de passe"
+                  placeholder="Entrer votre nouveau mot de passe"
                 />
                 <MultiInput
                   name="confirm-new-password"
@@ -124,7 +150,7 @@ export default function SectionForm({ type }: SectionFormProps) {
                   name="category-name"
                   type="text"
                   label="Nom de la catégorie"
-                  placeholder="Entrez le nom de la catégorie"
+                  placeholder="Entrer le nom de la catégorie"
                 />
                 <div className={styles.buttonGroup}>
                   <Button text="enregistrer" />
@@ -138,7 +164,7 @@ export default function SectionForm({ type }: SectionFormProps) {
                   name="sound-name"
                   type="file"
                   label="Ajouter un son"
-                  placeholder="Sélectionnez un fichier audio"
+                  placeholder="Sélectionner un fichier audio"
                 />
                 <div className={styles.buttonGroup}>
                   <Button text="enregistrer" />
@@ -152,13 +178,13 @@ export default function SectionForm({ type }: SectionFormProps) {
                   name="proclamation-name"
                   type="text"
                   label="Nom de la proclamation"
-                  placeholder="Entrez le nom de la proclamation"
+                  placeholder="Entrer le nom de la proclamation"
                 />
                 <MultiInput
                   name="proclamation-text"
                   type="textarea"
                   label="Texte de la proclamation"
-                  placeholder="Entrez le texte de la proclamation"
+                  placeholder="Entrer le texte de la proclamation"
                 />
                 <div className={styles.buttonGroup}>
                   <Button text="enregistrer" />

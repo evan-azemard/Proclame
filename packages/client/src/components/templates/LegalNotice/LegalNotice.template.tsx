@@ -1,4 +1,4 @@
-import { Button, Title, Wave } from "@atoms/index";
+import { Button, Wave } from "@atoms/index";
 import { TitleWithParagraph } from "@molecules/index";
 
 export default function LegalNotice() {
