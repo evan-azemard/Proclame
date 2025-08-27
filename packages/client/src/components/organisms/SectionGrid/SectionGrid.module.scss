@@ -1,0 +1,22 @@
+.navMenu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+
+  @include respond-to(desktop) {
+    
+    padding: 25px;
+    display: grid; 
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 16px;
+
+    ul {
+      li {
+        font-size: 0.8em;
+      }
+    }
+
+
+  }
+}

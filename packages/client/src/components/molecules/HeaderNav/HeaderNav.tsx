@@ -51,6 +51,7 @@ export default function HeaderNav() {
           <ul>
             <li>
               <img
+              className={styles.logo}
                 src={logo}
                 alt="Logo du site, un shofar"
                 onClick={() => navigate("/")}

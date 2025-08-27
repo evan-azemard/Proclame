@@ -15,6 +15,7 @@
   z-index: 100;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 
   div {
     width: auto;
@@ -28,24 +29,62 @@
       display: flex;
       justify-content: left;
     }
-    h1 {
-      font-size: 1.5rem;
-    }
 
     nav {
       width: fit-content;
-      img {
-        filter: grayscale(0.8) brightness(0.8);
-        cursor: pointer;
-        width: 5rem;
-        min-width: 5rem;
+    }
+  }
+  .logo {
+    filter: grayscale(0.8) brightness(0.8);
+    cursor: pointer;
+    width: 100px;
+    min-width: 100px;
+  }
+  h1 {
+    font-size: 1.5rem;
+  }
+  img.menu {
+    cursor: pointer;
+    width: 65px;
+    height: 50px;
+    filter: grayscale(1);
+  }
+
+    @include respond-to(tablet) {
+    & {
+      height: 80px;
+
+      img.menu {
+        width: 50px;
+        height: 40px;
+        font-size: 5px;
+      }
+      h1 {
+        font-size: 1rem;
+      }
+      .logo{
+        width: 100px;
       }
     }
   }
-}
-.header img.menu {
-  cursor: pointer;
-  width: 3rem;
-  height: auto;
-  filter: grayscale(1);
+
+
+  @include respond-to(desktop) {
+    & {
+      height: 95px;
+      padding: 50px 50px 50px 50px;
+
+      img.menu {
+        width: 50px;
+        height: 40px;
+        font-size: 5px;
+      }
+      h1 {
+        font-size: 1rem;
+      }
+      .logo{
+        width: 100px;
+      }
+    }
+  }
 }
