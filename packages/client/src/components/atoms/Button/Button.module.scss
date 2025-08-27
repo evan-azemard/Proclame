@@ -13,6 +13,7 @@ button {
   font-weight: bold;
   padding: 0.5rem 0.8rem;
   min-height: 40px;
+  backdrop-filter: blur(15px);
 
   p {
     font-size: 0.8em;

@@ -10,7 +10,7 @@ export default function FooterNav() {
   const items = [
     { src: favoritePng, alt: "Favoris", title: "Favoris", uri: "/favorite" },
     { src: homePng, alt: "Accueil", title: "Accueil", uri: "/" },
-    { src: profilePng, alt: "Profil", title: "Profil", uri: "/profil" },
+    { src: profilePng, alt: "Profil", title: "Profil", uri: "/profile" },
   ];
 
   return (

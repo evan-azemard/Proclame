@@ -22,14 +22,14 @@ html {
   -ms-overflow-style: none;
 
   @include respond-to(tablet) {
-    overflow-x: hidden; 
+    overflow-x: hidden;
     overflow-y: auto;
     scrollbar-width: auto;
     -ms-overflow-style: auto;
   }
 
   @include respond-to(desktop) {
-    overflow-x: hidden; 
+    overflow-x: hidden;
     overflow-y: auto;
     scrollbar-width: auto;
     -ms-overflow-style: auto;
@@ -41,9 +41,8 @@ h1 {
 }
 h2 {
   @include fluid-font(2rem, 4vw, 3rem);
-  @include respond-to(desktop){
-  @include fluid-font(1.5rem, 4vw, 1rem);
-
+  @include respond-to(desktop) {
+    @include fluid-font(1.5rem, 4vw, 1rem);
   }
 }
 h3 {
@@ -80,6 +79,24 @@ body {
 main {
   width: 100%;
   padding-bottom: 1rem;
+
+  @include respond-to(tablet) {
+    h2,
+    p {
+      width: 50%;
+      margin: 0 auto;
+    }
+    h2 {
+      font-size: 1.6rem;
+    }
+  }
+  @include respond-to(desktop) {
+    h2,
+    p {
+      width: 50%;
+      margin: 0 auto;
+    }
+  }
 }
 
 hr {
@@ -97,12 +114,22 @@ h6 {
   font-weight: var(--font-titles-weight);
 }
 
-
-.flex-end{
+.flex-end {
   margin-top: 1rem;
   display: flex;
   justify-content: end;
-  @include respond-to(desktop){
+  gap: 1rem;
+
+  button {
+    font-size: 0.8rem;
+  }
+  @include respond-to(desktop) {
+    width: 50%;
+    margin: 1rem auto;
     padding: 0 100px;
+
+    button {
+      font-size: 0.5rem!important;
+    }
   }
 }
