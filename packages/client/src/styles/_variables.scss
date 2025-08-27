@@ -7,9 +7,11 @@
   /* Couleurs (noms alignés sur l'apparence réelle) */
   --color-rose-fad: #ff4c6734; /* corail / rose */
   --color-rose: #ff4c67; /* corail / rose */
+  --color-primary: #6E1D48;
   --color-taupe: #a69e94; /* texte principal et lignes/separators */
   --color-ink: #000000; /* couleur d'encre — utilisé comme 'noir' pour fonds/contrastes */
-  --color-bordeaux: #632d2d; /* accents sombres / ombres */
+  /* --color-primary (#6E1D48) => rgb(110, 29, 72) */
+  --color-bordeaux: rgba(110, 29, 72, 0.4); /* accents sombres / ombres */
   --color-bg-dark: #000000; /* background global de l'app */
   --color-white: #ffffff71; // Text ...
   --color-title: #dbd2bb86; // Text ...
@@ -17,15 +19,15 @@
 
   /* Dégradés (section claire) */
   --gradient-default: linear-gradient(
-    32deg,
-    var(--color-rose) 1%,
-    var(--color-ink) 50%,
-    ² var(--color-bordeaux) 70%
+  32deg,
+  var(--color-primary)  1%,
+  var(--color-ink) 50%,
+  var(--color-bordeaux) 70%
   );
 
   --gradient-card: linear-gradient(
     124deg,
-    var(--color-rose) 10%,
+    var(--color-primary)  10%,
     var(--color-ink) 70%,
     var(--color-bordeaux) 100%
   );
@@ -34,28 +36,28 @@
     -15deg,
     var(--color-ink) 1%,
     black 65%,
-    var(--color-rose) 95%
+    var(--color-primary)  95%
   );
 
   /* Dégradés spécifiques (modifiable individuellement) */
   --gradient-input: linear-gradient(
     90deg,
     rgba(0, 0, 0, 1) 9%,
-    rgba(209, 62, 85, 0.47) 54%,
+    var(--color-primary)  54%,
     rgba(0, 0, 0, 1) 90%
   );
 
   --gradient-modal: linear-gradient(
     90deg,
     rgba(0, 0, 0, 1) 9%,
-    rgba(209, 62, 85, 0.47) 54%,
+    var(--color-primary)  54%,
     rgba(0, 0, 0, 1) 90%
   );
   --gradient-header: linear-gradient(
     18deg,
     rgb(33, 8, 10) 0%,
     rgba(0, 0, 0, 1) 18%,
-    rgba(168, 45, 64, 0.71) 58%,
+    var(--color-primary) 58%,
     rgba(0, 0, 0, 1) 86%,
     rgb(25, 4, 7) 100%
   );
@@ -63,7 +65,7 @@
     18deg,
     rgb(32, 5, 8) 0%,
     rgba(0, 0, 0, 1) 18%,
-    rgba(168, 45, 64, 0.71) 58%,
+    var(--color-primary) 58%,
     rgba(0, 0, 0, 1) 86%,
     rgb(20, 4, 7) 100%
   );
@@ -71,9 +73,8 @@
     15deg,
     var(--color-rose-fad) 0%,
     var(--color-ink) 10%,
-    var(--color-rose) 100%
-  ); 
-  
+    var(--color-primary)  100%
+  );
 
   /* Rayons / formes */
   --radius-card: 8px;

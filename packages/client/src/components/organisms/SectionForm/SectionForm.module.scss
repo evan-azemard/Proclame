@@ -11,6 +11,9 @@
     gap: 1rem;
   }
 
+  button{
+    margin-top: 1rem;
+  }
   @include respond-to(desktop) {
     width: 500px;
     margin: 0 auto;

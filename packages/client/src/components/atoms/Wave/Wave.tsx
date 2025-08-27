@@ -1,12 +1,12 @@
 import type { WaveProps } from "./Wave.props";
 import styles from "./Wave.module.scss";
 
-export default function Wave({ color }: WaveProps) {
+export default function Wave({ color, space }: WaveProps) {
   return (
-    <span className={styles.wave}>
+    <span
+      className={space ? `${styles.wave} ${styles["wave-space"]}` : styles.wave}
+    >
       <br />
-      <br />
-
       <svg
         width="100%"
         height="16"
@@ -20,7 +20,6 @@ export default function Wave({ color }: WaveProps) {
           fill-opacity="0.67"
         />
       </svg>
-      <br />
       <br />
     </span>
   );

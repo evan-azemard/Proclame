@@ -4,7 +4,7 @@
   width: 100%;
   padding: 25px;
   transform: scale(1) !important;
-  filter: brightness(1.5);
+  filter: brightness(2);
   & svg {
     width: 100%;
     height: auto;
@@ -20,5 +20,15 @@
       width: 50%;
       margin: 0 auto;
     }
+
+    @include respond-to(tablet) {
+      width: 65%;
+      margin: 0 auto;
+    }
+  }
+}
+@include respond-to(desktop) {
+  .wave-space {
+    margin-top: -125px;
   }
 }

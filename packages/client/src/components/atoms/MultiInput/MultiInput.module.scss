@@ -26,6 +26,8 @@ label {
   outline: none;
   width: 100%;
   transition: filter 0.3s ease;
+    margin: .8rem 0;
+
 }
 
 .input:focus,
@@ -99,8 +101,10 @@ textarea {
   .select,
   .label-file,
   label {
-    font-size: 0.5rem;
+    font-size: 0.8rem;
     width: 100%;
+    margin: .3rem 0;
+
   }
 
   .checkbox {
