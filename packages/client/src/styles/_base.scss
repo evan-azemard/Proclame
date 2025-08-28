@@ -5,6 +5,10 @@
 }
 
 html {
+  overflow-x: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
   @include fluid-font(calc(var(--font-font-size-px, 16px)), 2vw, 32px);
   @include respond-to(tablet) {
     @include fluid-font(
@@ -13,14 +17,6 @@ html {
       32px
     );
   }
-  @include respond-to(desktop) {
-    @include fluid-font(calc(var(--font-font-size-px, 21px) + 5px), 3vw, 32px);
-  }
-
-  overflow-x: scroll;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-
   @include respond-to(tablet) {
     overflow-x: hidden;
     overflow-y: auto;
@@ -33,6 +29,7 @@ html {
     overflow-y: auto;
     scrollbar-width: auto;
     -ms-overflow-style: auto;
+    @include fluid-font(calc(var(--font-font-size-px, 21px) + 5px), 3vw, 32px);
   }
 }
 
@@ -129,7 +126,7 @@ h6 {
     padding: 0 100px;
 
     button {
-      font-size: 0.5rem!important;
+      font-size: 0.5rem !important;
     }
   }
 }

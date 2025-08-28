@@ -53,8 +53,11 @@ export default function Icon({
 
   const handleClick = (event: React.MouseEvent<HTMLSpanElement>) => {
     if (onClick) {
+      if ("vibrate" in navigator) {
+        navigator.vibrate(50);
+      }
       onClick(event);
-      if (event.isPropagationStopped()) return; 
+      if (event.isPropagationStopped()) return;
     }
     if (uri) navigate(uri);
   };

@@ -2,8 +2,11 @@
   cursor: pointer;
   display: inline-flex;
   color: var(--color-amber-icon);
-
-  svg{
-  width: 2rem;  
+  /* Allow consumer components to override size via --icon-size */
+  svg {
+    width: var(--icon-size, 2rem);
+    height: var(--icon-size, 2rem);
+    flex-shrink: 0;
+    display: block;
   }
 }

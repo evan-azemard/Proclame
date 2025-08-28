@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import styles from './Breadcrumb.module.scss';
-import type { BreadcrumbProps } from './Breadcrumb.props';
+import type { BreadcrumbProps } from './BreadCrumb.props';
 
 export default function Breadcrumb({ pages }: BreadcrumbProps) {
   return (

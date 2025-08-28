@@ -27,18 +27,25 @@ export default function CardProclamation({
       role="article"
       aria-label={`Proclamation: ${title}`}
     >
-      <header onClick={handleNavigate}>
-        <Title type={2}>{title}</Title>
+      <header className={styles.header} onClick={handleNavigate}>
+        <div className={styles.titleWrap}>
+          <Title type={2}>{title}</Title>
+        </div>
+          <Icon
+            name="favorite"
+            title="favori"
+            color={isFavorite ? "#ebe2d5ff" : "currentColor"}
+            onClick={(e) => {
+              e.stopPropagation();
+              handleIconClick();
+            }}
+            aria-label={
+              isFavorite ? "Retirer des favoris" : "Ajouter aux favoris"
+            }
+          />
       </header>
-      <Icon
-        name="favorite"
-        title="favori"
-        color={isFavorite ? "#ebe2d5ff" : "currentColor"}
-        onClick={handleIconClick} // Appelle la fonction avec l'événement
-        aria-label={isFavorite ? "Retirer des favoris" : "Ajouter aux favoris"}
-      />
-      <main onClick={handleNavigate}>
-        <p>{description}</p>
+      <main className={styles.main} onClick={handleNavigate}>
+        <p className={styles.desc}>{description}</p>
       </main>
     </article>
   );

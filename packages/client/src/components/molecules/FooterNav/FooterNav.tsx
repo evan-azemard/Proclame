@@ -8,7 +8,7 @@ export default function FooterNav() {
   const navigate = useNavigate();
 
   const items = [
-    { src: favoritePng, alt: "Favoris", title: "Favoris", uri: "/favorite" },
+    { src: favoritePng, alt: "Favoris", title: "Favoris", uri: "/favorites" },
     { src: homePng, alt: "Accueil", title: "Accueil", uri: "/" },
     { src: profilePng, alt: "Profil", title: "Profil", uri: "/profile" },
   ];
@@ -17,6 +17,14 @@ export default function FooterNav() {
 
   if (location.pathname === "/403") return null;
   if (location.pathname === "/404") return null;
+
+  const handleCLick = (uri: string) => {
+    if ("vibrate" in navigator) {
+      navigator.vibrate(50);
+    }
+
+    navigate(uri);
+  };
   return (
     <>
       <footer className={styles.footer}>
@@ -25,7 +33,7 @@ export default function FooterNav() {
             {items.map((item) => (
               <li
                 key={item.uri}
-                onClick={() => navigate(item.uri)}
+                onClick={() => handleCLick(item.uri)}
                 aria-label={item.title}
                 title={item.title}
               >
