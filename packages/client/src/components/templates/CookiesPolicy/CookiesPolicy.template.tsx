@@ -4,8 +4,7 @@ import { TitleWithParagraph } from "@molecules/index";
 export default function CookiesPolicy() {
   return (
     <>
-      <Button isBack />
-      <Wave space />
+      <Wave />
       <TitleWithParagraph title="Politique des cookies">
         <p>
           Cette application utilise des cookies essentiels au bon fonctionnement

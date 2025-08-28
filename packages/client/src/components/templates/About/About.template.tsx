@@ -1,11 +1,10 @@
-import { Button, Title } from "@atoms/index";
+import { Title } from "@atoms/index";
 import { TitleWithParagraph } from "@molecules/index";
 import styles from "./About.module.scss";
 import logo from "@atoms/Icon/icons/logo.png";
 export default function About() {
   return (
     <>
-      <Button isBack />
       <div className={styles.logo}>
         <img src={logo} alt="Proclame logo" className={styles.logoImg} />
         <div className={styles.logoTitle}>

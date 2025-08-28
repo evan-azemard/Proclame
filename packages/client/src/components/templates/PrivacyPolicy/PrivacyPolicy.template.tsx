@@ -4,8 +4,7 @@ import { TitleWithParagraph } from "@molecules/index";
 export default function PrivacyPolicy() {
   return (
     <>
-      <Button isBack />
-      <Wave space />
+      <Wave />
       <TitleWithParagraph title="Politique de confidentialité">
         <p>
           L’application collecte uniquement les données nécessaires à son bon

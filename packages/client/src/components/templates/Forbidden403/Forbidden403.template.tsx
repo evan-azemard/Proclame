@@ -4,8 +4,7 @@ import { TitleWithParagraph } from "@molecules/index";
 export default function Forbidden403() {
   return (
     <>
-      <Button isBack />
-      <Wave space />
+      <Wave/>
       <TitleWithParagraph title="Tu n’es pas censé être ici">
         <p>
           Mais pas de panique, tout va bien. Parfois, les portes se ferment…

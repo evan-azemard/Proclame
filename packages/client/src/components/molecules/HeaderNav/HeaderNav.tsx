@@ -3,6 +3,7 @@ import logo from "@atoms/Icon/icons/logo.png";
 import burger from "@atoms/Icon/icons/burger.png";
 import { Title } from "@atoms/index";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useHeaderGradientAnimation } from "@hooks/useGradientAnimator";
 
 const translations: Record<string, string> = {
   // Admin routes
@@ -45,7 +46,12 @@ export default function HeaderNav() {
   const navigate = useNavigate();
   const pageTitle = translations[location.pathname] || "Page inconnue";
 
+  // Lance l'animation continue des variables de couleur utilisées par --gradient-header
+  useHeaderGradientAnimation();
+
   const handleClick = (home: string) => {
+
+
     if ("vibrate" in navigator) {
       navigator.vibrate(50);
       if (home == "home") {

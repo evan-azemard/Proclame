@@ -4,8 +4,7 @@ import { TitleWithParagraph } from "@molecules/index";
 export default function NotFound404() {
   return (
     <>
-      <Button isBack />
-      <Wave space />
+      <Wave />
       <TitleWithParagraph
         title="Cette page semble 
 introuvable"

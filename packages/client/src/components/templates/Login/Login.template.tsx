@@ -5,7 +5,6 @@ import { SectionForm } from "@organisms/index";
 export default function Login() {
   return (
     <>
-      <Button isBack={true} />
       <Wave />
       <SectionForm type="login" />
       <Wave />

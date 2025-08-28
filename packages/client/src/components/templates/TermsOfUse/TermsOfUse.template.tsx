@@ -4,8 +4,7 @@ import { TitleWithParagraph } from "@molecules/index";
 export default function TermsOfUse() {
   return (
     <>
-      <Button isBack />
-      <Wave space />
+      <Wave />
       <TitleWithParagraph title="Conditions générales d’utilisation">
         <p>
           En utilisant cette application, vous acceptez les présentes

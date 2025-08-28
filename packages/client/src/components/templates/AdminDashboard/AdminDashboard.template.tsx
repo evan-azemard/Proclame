@@ -1,3 +1,10 @@
+import { GradientDesigner } from '@molecules/index';
+
 export default function AdminDashboard() {
-  return <h1>AdminDashboard</h1>;
+  return (
+    <div>
+      <h1>Admin Dashboard</h1>
+      <GradientDesigner />
+    </div>
+  );
 }

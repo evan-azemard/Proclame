@@ -1,10 +1,10 @@
 .wave {
   display: inline-block;
-  color: var(--color-bordeaux);
+  color: var(--color-wave);
   width: 100%;
   padding: 25px;
   transform: scale(1) !important;
-  filter: brightness(2);
+  filter: brightness(3) grayscale(.7);
   & svg {
     width: 100%;
     height: auto;

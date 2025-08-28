@@ -5,8 +5,7 @@ import { SectionForm } from "@organisms/index";
 export default function Profile() {
   return (
     <>
-      <Button isBack />
-      <Wave space />
+      <Wave />
       <p>Dernière connexion le {}</p>
       <p>Dernière modification du mot de passe le {}</p>
       <Wave />

@@ -4,8 +4,7 @@ import { TitleWithParagraph } from "@molecules/index";
 export default function LegalNotice() {
   return (
     <>
-      <Button isBack />
-      <Wave space />
+      <Wave />
       <TitleWithParagraph title="Mention légales">
         <p>
           <strong>Éditeur de l’application</strong>

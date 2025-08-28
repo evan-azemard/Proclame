@@ -25,22 +25,27 @@ export default function Button({ isBack, text, to }: ButtonProps) {
     }
   };
 
-  const className = isBack ? `${styles.button} ${styles.back}` : styles.button;
+  const className = styles.button;
 
   return (
     <>
       {isBack ? (
         <>
-          <button
-            className={className}
+          <span
+            className={styles.back}
             onClick={handleClick}
-            aria-label={isBack ? "Retour" : undefined}
+            role="link"
+            tabIndex={0}
+            aria-label="Retour"
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                handleClick();
+              }
+            }}
           >
             <Icon name="arrow-back" title="Retour" />
-          </button>
-
-          <br />
-          <br />
+          </span>
         </>
       ) : (
         <button className={className} onClick={handleClick} aria-label={text}>

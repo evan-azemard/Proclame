@@ -1,11 +1,10 @@
-import { Button, Wave } from "@atoms/index";
+import { Wave } from "@atoms/index";
 import { TitleWithParagraph } from "@molecules/index";
 import { SectionForm } from "@organisms/index";
 
 export default function Login() {
   return (
     <>
-      <Button isBack={true} />
       <Wave />
       <SectionForm type="login" />
       <Wave />

@@ -18,9 +18,9 @@ export default function RouterProvider() {
       <Route
         path="/admin/dashboard"
         element={
-          <AdminRoute>
+          // <AdminRoute>
             <Templates.AdminDashboard />
-          </AdminRoute>
+          // </AdminRoute>
         }
       />
       <Route
@@ -82,7 +82,7 @@ export default function RouterProvider() {
 
       {/* Route protégé */}
       <Route
-        path="/category/:categoryId/proclamations"
+        path="/categories/:categoryId/proclamations"
         element={<Templates.CategoryProclamations />}
       />
 
@@ -99,7 +99,7 @@ export default function RouterProvider() {
         }
       />
       <Route
-        path="/reading/:proclamationId"
+        path="/categories/:categoryId/proclamations/:proclamationId"
         element={
           <ProtectedRoute>
             <Templates.Reading />

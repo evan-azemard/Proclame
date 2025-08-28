@@ -1,11 +1,10 @@
-import { Button, Title, Wave } from "@atoms/index";
+import { Title, Wave } from "@atoms/index";
 import { SectionForm } from "@organisms/index";
 
 export default function Contact() {
   return (
     <>
-      <Button isBack />
-      <Wave space />
+      <Wave />
       <Title>Une question, un retour, un mot d’encouragement ?</Title>
       <br/>
       <br/>
