@@ -1,0 +1,119 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+label {
+  font-weight: bold;
+}
+
+.search,
+.input,
+.password,
+.email,
+.textarea,
+.select,
+.label-file {
+  background: var(--gradient-input);
+  border-radius: var(--radius-input);
+  box-shadow: 0 4px 32px 0 rgba(116, 18, 101, 0.31),
+    0 1.5px 6px 0 rgba(255, 255, 255, 0.641) inset,
+    0 0 0 2px var(--color-rose-fad) inset;
+  backdrop-filter: blur(12px);
+  color: var(--color-white);
+  padding: 0.625rem 1.25rem;
+  font-size: 1rem;
+  outline: none;
+  width: 100%;
+  transition: filter 0.3s ease;
+}
+
+.input:focus,
+.password:focus,
+.email:focus,
+.textarea:focus,
+.select:focus,
+.search:focus {
+  filter: brightness(1.4);
+}
+
+.checkboxWrapper {
+  display: flex;
+  align-items: center;
+  & label {
+    margin-left: 15px;
+  }
+}
+.checkbox {
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 0.125rem solid var(--color-rose);
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+.checkbox:checked {
+  background: var(--color-rose);
+}
+
+select option {
+  background: var(--color-ink);
+  color: var(--color-text);
+}
+
+input[type="file"] {
+  display: none;
+}
+
+textarea {
+  height: 200px;
+}
+
+@include respond-to(tablet) {
+  .search,
+  .input,
+  .checkboxWrapper,
+  .password,
+  .email,
+  .textarea,
+  .select,
+  .label-file,
+  label {
+    font-size: 0.8rem;
+  }
+
+  .checkbox {
+    width: 0.8rem;
+    height: 0.8rem;
+  }
+}
+
+@include respond-to(desktop) {
+  .search,
+  .input,
+  .checkbox,
+  .checkboxWrapper,
+  .password,
+  .email,
+  .textarea,
+  .select,
+  .label-file,
+  label {
+    font-size: 0.5rem;
+    width: 100%;
+  }
+
+  .checkbox {
+    width: 0.8rem;
+    height: 0.8rem;
+  }
+
+  .input:hover,
+  .password:hover,
+  .email:hover,
+  .textarea:hover,
+  .select:hover,
+  .search:hover {
+    filter: brightness(1.4);
+  }
+}

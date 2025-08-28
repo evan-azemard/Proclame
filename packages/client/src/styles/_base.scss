@@ -1,7 +1,93 @@
-/* Variables globales injectées via Vite (voir vite.config.ts) */
+@use "./mixins" as *;
+@use "./responsive" as *;
+* {
+  box-sizing: border-box;
+}
+
+html {
+  @include fluid-font(calc(var(--font-font-size-px, 16px)), 2vw, 32px);
+  @include respond-to(tablet) {
+    @include fluid-font(
+      calc(var(--font-font-size-px, 19px) + 3px),
+      2.5vw,
+      32px
+    );
+  }
+  @include respond-to(desktop) {
+    @include fluid-font(calc(var(--font-font-size-px, 21px) + 5px), 3vw, 32px);
+  }
+
+  overflow-x: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  @include respond-to(tablet) {
+    overflow-x: hidden; 
+    overflow-y: auto;
+    scrollbar-width: auto;
+    -ms-overflow-style: auto;
+  }
+
+  @include respond-to(desktop) {
+    overflow-x: hidden; 
+    overflow-y: auto;
+    scrollbar-width: auto;
+    -ms-overflow-style: auto;
+  }
+}
+
+h1 {
+  @include fluid-font(2.5rem, 5vw, 3.5rem);
+}
+h2 {
+  @include fluid-font(2rem, 4vw, 3rem);
+}
+h3 {
+  @include fluid-font(1.5rem, 3vw, 2.5rem);
+}
+h4 {
+  @include fluid-font(1.2rem, 2vw, 2rem);
+}
+p,
+label,
+input,
+textarea,
+button,
+li,
+span {
+  @include fluid-font(1rem, 2vw, 1.2rem);
+}
+* {
+  transition: all 0.3s ease;
+}
 
 body {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
+  font-family: var(--font-main);
+  background: var(--color-bg-dark);
+  color: var(--color-taupe);
+  padding: 100px 15px;
+  min-height: 100vh;
+  min-width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+main {
+  width: 100%;
+}
+
+hr {
+  border: none;
+  height: 1px;
+  background-color: var(--color-taupe);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: var(--font-titles-weight);
 }

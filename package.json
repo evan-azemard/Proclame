@@ -5,15 +5,24 @@
   "scripts": {
     "dev:client": "pnpm --filter client dev",
     "dev:server": "pnpm --filter server dev",
-    "dev": "concurrently \"pnpm dev:client\" \"pnpm dev:server\""
+  "dev": "concurrently \"pnpm dev:client\" \"pnpm dev:server\"",
+  "dev:https:client": "pnpm --filter client dev:https",
+  "dev:https:server": "pnpm --filter server dev:https",
+  "dev:https": "concurrently \"pnpm dev:https:client\" \"pnpm dev:https:server\""
   },
   "workspaces": [
     "packages/*"
   ],
   "dependencies": {
+    "axios": "^1.11.0",
     "concurrently": "^8.2.2",
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "zustand": "^5.0.8"
   },
   "author": "Evan Azemard",
-  "packageManager": "pnpm@10.14.0"
+  "packageManager": "pnpm@10.14.0",
+  "devDependencies": {
+    "vite-plugin-svgr": "^4.5.0",
+    "cross-env": "^7.0.3"
+  }
 }

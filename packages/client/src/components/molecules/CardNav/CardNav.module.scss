@@ -1,0 +1,32 @@
+.ul {
+  cursor: pointer;
+  height: 5rem;
+  background: var(--gradient-card-nav);
+  border-radius: var(--radius-card);
+  box-shadow: 0 4px 32px 0 rgba(116, 18, 101, 0.31),
+    0 1.5px 6px 0 rgba(255, 255, 255, 0.641) inset,
+    0 0 0 2px var(--color-rose-fad) inset;
+  backdrop-filter: blur(12px);
+  transform: scale(1);
+
+  li {
+    border-radius: var(--radius-card);
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    padding: 15px;
+    overflow: auto;
+  }
+}
+@include respond-to(desktop) {
+  .ul:hover {
+    transform: scale(1.05);
+    filter: brightness(2);
+  }
+}
+
+.ul:active {
+  filter: brightness(2);
+}

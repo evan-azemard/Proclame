@@ -1,0 +1,15 @@
+
+.breadcrumb li {
+  display: inline-block;
+  color: var(--color-label-muted);
+  font-style: italic;
+  font-size: 0.9rem; 
+}
+
+.inlineBreadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.inlineBreadcrumb li:last-child {
+  color: var(--color-taupe);
+}

@@ -1,0 +1,78 @@
+.article {
+  background: var(--gradient-card);
+  width: 15rem;
+  height: 200px;
+  border-radius: var(--radius-card);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 15px;
+  cursor: pointer;
+  box-shadow: 0 4px 32px 0 rgba(116, 18, 101, 0.31),
+    0 1.5px 6px 0 rgba(255, 255, 255, 0.641) inset,
+    0 0 0 2px var(--color-rose-fad) inset;
+  backdrop-filter: blur(12px);
+  span {
+    width: 50px;
+    display: flex;
+    justify-content: end;
+    height: 35px;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+
+    svg {
+      width: 1.5rem;
+    }
+  }
+
+  header {
+    display: flex;
+    width: 80%;
+
+    h2 {
+      font-size: 1.3rem;
+      max-width: 100%;
+      overflow-x: auto;
+      overflow-y: hidden;
+    }
+  }
+  main {
+    padding: 5px;
+    overflow: hidden;
+
+    p {
+      display: block;
+      height: 100%;
+      overflow: hidden;
+    }
+  }
+  &:active {
+    transform: scale(1.05);
+    filter: brightness(2);
+  }
+}
+
+@include respond-to(tablet) {
+  .article header h2 {
+    font-size: 0.8rem;
+  }
+  p {
+    font-size: 0.64rem;
+  }
+}
+
+@include respond-to(desktop) {
+  .article:hover {
+    transform: scale(1.05);
+    filter: brightness(2);
+  }
+
+  .article header h2 {
+    font-size: .8rem;
+  }
+  p {
+    font-size: .7rem;
+  }
+}
