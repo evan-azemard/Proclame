@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import * as Templates from "@templates/index";
 import { ProtectedRoute } from "./ProtectedRoute";
 import { AdminRoute } from "./AdminRoute";
@@ -77,7 +77,8 @@ export default function RouterProvider() {
   <Route path="/accessibility" element={<Templates.Accessibility />} />
   <Route path="/menu" element={<Templates.Menu />} />
   <Route path="/403" element={<Templates.Forbidden403 />} />
-  <Route path="*" element={<Templates.NotFound404 />} />
+  <Route path="/404" element={<Templates.NotFound404 />} />
+  <Route path="*" element={<Navigate to="/404" replace />} />
 
     {/* Route protégé */}
     <Route

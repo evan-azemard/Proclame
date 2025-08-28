@@ -2,7 +2,7 @@ import styles from "./FooterNav.module.scss";
 import homePng from "@atoms/Icon/icons/home.png";
 import favoritePng from "@atoms/Icon/icons/favorite.png";
 import profilePng from "@atoms/Icon/icons/profile.png";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default function FooterNav() {
   const navigate = useNavigate();
@@ -13,6 +13,10 @@ export default function FooterNav() {
     { src: profilePng, alt: "Profil", title: "Profil", uri: "/profile" },
   ];
 
+  const location = useLocation();
+
+  if (location.pathname === "/403") return null;
+  if (location.pathname === "/404") return null;
   return (
     <>
       <footer className={styles.footer}>
