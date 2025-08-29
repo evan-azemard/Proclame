@@ -36,6 +36,17 @@
 }
 
 @include respond-to(tablet) {
+  .navCategory {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+
+  .navCategory,
+  .navProclamation {
+    width: 70vw;
+    margin: 0 auto;
+  }
+
   .navMenu {
     padding: 25px;
     display: grid;
@@ -53,19 +64,13 @@
       }
     }
   }
-
+}
+@include respond-to(desktop) {
+  .navProclamation,
   .navCategory {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
-  }
-
-  .navCategory,
-  .navProclamation {
     width: 70vw;
     margin: 0 auto;
   }
-}
-@include respond-to(desktop) {
   .navMenu {
     padding: 25px;
     width: 100vw;
@@ -77,16 +82,14 @@
     ul {
       width: 200px;
       li {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        text-align: center;
         font-size: 0.8rem;
         scrollbar-width: none;
         -ms-overflow-style: none;
       }
     }
-  }
-
-  .navProclamation,
-  .navCategory {
-    width: 70vw;
-    margin: 0 auto;
   }
 }

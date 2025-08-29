@@ -1,4 +1,4 @@
- .footer {
+.footer {
   position: fixed;
   bottom: 15px;
   left: 50%;
@@ -13,10 +13,22 @@
   overflow: hidden;
   position: fixed;
   backdrop-filter: blur(5px);
+  &.footerReading {
+    @include respond-to(desktop) {
+      nav ul li {
+        img,
+        svg {
+          width: 1.4rem; // reduced size
+          height: 1.4rem;
+        }
+      }
+    }
+  }
 
-  // (Ancien BackdropBubbles retiré)
-
-
+  .line{
+    border: 1px solid rgba(245, 222, 179, 0.484);
+    height: 25px;
+  }
   nav {
     width: 100%;
     height: 100%;
@@ -36,18 +48,24 @@
       li {
         height: fit-content;
         img {
-          filter: grayscale(0.4) brightness(0.85) contrast(.95);
+          filter: grayscale(0.4) brightness(0.85) contrast(0.95);
           cursor: pointer;
           width: 2rem;
           transform: scale(1);
-          transition: filter .28s ease, transform .28s ease;
-          &:hover { filter: grayscale(0) brightness(1.35) contrast(1.05); transform: scale(.86); }
-          &:active { transform: scale(.78); filter: grayscale(0) brightness(1.15); }
+          transition: filter 0.28s ease, transform 0.28s ease;
+          &:hover {
+            filter: grayscale(0) brightness(1.35) contrast(1.05);
+            transform: scale(0.86);
+          }
+          &:active {
+            transform: scale(0.78);
+            filter: grayscale(0) brightness(1.15);
+          }
         }
       }
     }
   }
- }
+}
 
 // Layer blur (au-dessus du footer de base)
 .footerBlurLayer {
@@ -62,7 +80,7 @@
 
 .blurBubble {
   // fallback si backdrop-filter non supporté
-  background: rgba(255,255,255,0.04);
+  background: rgba(255, 255, 255, 0.04);
 }
 
 // Layer UI (icônes cliquables)
@@ -93,13 +111,19 @@
         align-items: center;
         justify-content: center;
         img {
-          filter: grayscale(0.4) brightness(0.85) contrast(.95);
+          filter: grayscale(0.4) brightness(0.85) contrast(0.95);
           cursor: pointer;
           width: 2rem;
           transform: scale(1);
-          transition: filter .28s ease, transform .28s ease;
-          &:hover { filter: grayscale(0) brightness(1.35) contrast(1.05); transform: scale(.86); }
-          &:active { transform: scale(.78); filter: grayscale(0) brightness(1.15); }
+          transition: filter 0.28s ease, transform 0.28s ease;
+          &:hover {
+            filter: grayscale(0) brightness(1.35) contrast(1.05);
+            transform: scale(0.86);
+          }
+          &:active {
+            transform: scale(0.78);
+            filter: grayscale(0) brightness(1.15);
+          }
         }
       }
     }
@@ -124,7 +148,7 @@
   left: 0;
   width: 100%;
   height: 4rem;
-  z-index: 50; 
+  z-index: 50;
 }
 
 // ================= DEBUG LAYERS =================
@@ -140,24 +164,30 @@
   position: relative;
   padding: 0.75rem 0.75rem 1.25rem;
   border-radius: 14px;
-  background: rgba(255,255,255,0.03);
+  background: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
-  border: 1px solid rgba(255,255,255,0.08);
-  box-shadow: 0 4px 12px -4px rgba(0,0,0,0.4);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 12px -4px rgba(0, 0, 0, 0.4);
 }
 
 .debugTitle {
   font: 600 12px/1.2 var(--font-sans, Arial, sans-serif);
-  letter-spacing: .5px;
+  letter-spacing: 0.5px;
   margin: 0 0 8px;
   text-transform: uppercase;
-  opacity: .7;
+  opacity: 0.7;
 }
 
-.debugBase { border: 2px solid #3b82f6; }
-.debugBlur { border: 2px solid #10b981; }
-.debugUi { border: 2px solid #f59e0b; }
+.debugBase {
+  border: 2px solid #3b82f6;
+}
+.debugBlur {
+  border: 2px solid #10b981;
+}
+.debugUi {
+  border: 2px solid #f59e0b;
+}
 
 .debugBlurViewport {
   position: relative;
@@ -170,5 +200,5 @@
 }
 
 [data-debug].blurBubble {
-  outline: 1px dashed rgba(255,255,255,0.15);
+  outline: 1px dashed rgba(255, 255, 255, 0.15);
 }

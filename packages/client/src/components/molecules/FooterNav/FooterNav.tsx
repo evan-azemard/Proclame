@@ -3,7 +3,7 @@ import homePng from "@atoms/Icon/icons/home.png";
 import favoritePng from "@atoms/Icon/icons/favorite.png";
 import profilePng from "@atoms/Icon/icons/profile.png";
 import { useLocation, useNavigate } from "react-router-dom";
-import { Button } from "@atoms/index";
+import { Button, Icon } from "@atoms/index";
 
 export default function FooterNav() {
   const navigate = useNavigate();
@@ -26,6 +26,38 @@ export default function FooterNav() {
 
     navigate(uri);
   };
+
+  if (
+    location.pathname === "/categories/categoryId/proclamations/proclamationsId"
+  ) {
+    return (
+      <>
+        <footer className={`${styles.footer} ${styles.footerReading}`}>
+          <nav aria-label="Navigation pied de page">
+            <ul>
+              <li>
+                <Button isBack />
+              </li>
+              <li>
+                <img src={favoritePng} alt="favori" title="favori" className={styles.logo} />
+              </li>
+              <span className={styles.line}></span>
+              <li>
+                <Icon name="fire" title="feu" />
+              </li>
+              <li>
+                <Icon name="storm" title="orage" />
+              </li>
+              <li>
+                <Icon name="melody" title="musique" />
+              </li>
+            </ul>
+          </nav>
+        </footer>
+        <div className={styles.mask}></div>
+      </>
+    );
+  }
   return (
     <>
       <footer className={styles.footer}>

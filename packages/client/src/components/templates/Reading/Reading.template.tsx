@@ -1,14 +1,11 @@
-import { Icon, Wave } from "@atoms/index";
+import { Wave } from "@atoms/index";
 import styles from "./Reading.module.scss";
 import { TitleWithParagraph } from "@molecules/index";
 export default function Reading() {
   const title = "lorem";
   return (
-    <>
+    <div className={styles.reading}>
       <Wave />
-      <div className={styles.contentFav}>
-        <Icon name="favorite" title="favorite" />
-      </div>
       <TitleWithParagraph title={title}>
         <p>Je proclame que Dieu transforme l’abandon en adoption.</p>
         <p>
@@ -26,16 +23,6 @@ export default function Reading() {
         </p>
       </TitleWithParagraph>
       <Wave />
-
-      <footer className={styles.footer}>
-        <nav>
-          <ul>
-            <li><Icon name="fire" title="feu"/></li>
-            <li><Icon name="storm" title="orage"/></li>
-            <li><Icon name="melody" title="musique"/></li>
-          </ul>
-        </nav>
-      </footer>
-    </>
+    </div>
   );
 }

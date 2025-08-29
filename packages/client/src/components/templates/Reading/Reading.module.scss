@@ -1,33 +1,35 @@
+body {
+  padding: 0 25px;
+}
+
 .contentFav {
   position: absolute;
   top: 100px;
   right: 0;
-
-  & {
-    transform: scale(3);
-  }
 }
 
-.footer {
-  backdrop-filter: blur(15px);
-  border-radius: 50px;
-  background: var(--gradient-default);
-  position: fixed;
-  bottom: 15px;
-  transform: translate(-50%);
-  left: 50%;
-  width: 50%;
-  ul {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
+@include respond-to(tablet) {
+  body {
+    padding: 0 50px;
+  }
+  main{
 
-    li{
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+    .reading{
+      div{
+
+        h2{
+          width: 100%;
+          text-align: center;
+        }
+        
+        span{
+
+          p{
+            text-align: justify;
+            width: 100%;
+          }
+        }
+      }
     }
   }
 }

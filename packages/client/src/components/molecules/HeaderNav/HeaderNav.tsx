@@ -45,10 +45,7 @@ export default function HeaderNav() {
   const navigate = useNavigate();
   const pageTitle = translations[location.pathname] || "Page inconnue";
 
-
   const handleClick = (home: string) => {
-
-
     if ("vibrate" in navigator) {
       navigator.vibrate(50);
       if (home == "home") {
@@ -62,6 +59,8 @@ export default function HeaderNav() {
       }
     }
   };
+
+  if (location.pathname === "/categories/categoryId/proclamations/proclamationsId") return null;
 
   return (
     <>
