@@ -6,4 +6,3 @@ export { default as MultiInput } from './MultiInput/MultiInput';
 export { default as SoundBar } from './SoundBar/SoundBar';
 export { default as Wave } from './Wave/Wave';
 export { default as Button } from './Button/Button';
-export { default as BackgroundInk } from './BackgroundInk/BackgroundInk';

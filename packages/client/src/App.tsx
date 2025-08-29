@@ -1,7 +1,6 @@
 import { FooterNav, HeaderNav } from "@molecules/index";
 import { BrowserRouter, useLocation } from "react-router-dom";
 import RouterProvider from "./router/rooter";
-import { BackgroundInk } from "@atoms/index";
 
 export default function App() {
   return (
@@ -17,7 +16,6 @@ function AppLayout() {
 
   return (
     <>
-      <BackgroundInk />
       {!hideChrome && <HeaderNav />}
       <main>
         <RouterProvider />

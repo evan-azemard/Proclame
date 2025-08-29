@@ -63,8 +63,7 @@ span {
 
 body {
   font-family: var(--font-main);
-  background: transparent;
-  backdrop-filter: blur(5)!important;
+  background: rgb(var(--color-noir));
   color: rgb(var(--color-taupe));
   padding: 100px 15px;
   min-height: 100vh;
@@ -72,17 +71,6 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  position: relative;
-  z-index: 0;
-}
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -1; /* au-dessus du canvas (qui passera à -2) */
-  pointer-events: none;
-  backdrop-filter: blur(24px) saturate(140%) brightness(0.9);
-  -webkit-backdrop-filter: blur(24px) saturate(140%) brightness(0.9);
 }
 
 main {
