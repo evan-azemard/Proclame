@@ -33,6 +33,11 @@ html {
   }
 }
 
+/* Ensure React root fills the viewport. */
+#root {
+  height: 100%;
+}
+
 h1 {
   @include fluid-font(2.5rem, 5vw, 3.5rem);
 }
@@ -64,19 +69,25 @@ span {
 body {
   font-family: var(--font-main);
   background: rgb(var(--color-noir));
+  margin: 0;
   color: rgb(var(--color-taupe));
-  padding: 100px 15px;
   min-height: 100vh;
   min-width: 100vw;
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 }
 
-main {
+.mainLayout {
   width: 100%;
-  min-height: 85vh;
-  padding-bottom: 1rem;
+  flex: 1 1 auto;
+  padding-top: calc(var(--header-height) + 15px);
+  padding-bottom: calc(var(--footer-height) + var(--footer-offset) + 5px);
+  padding-left: 20px;
+  padding-right: 20px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+
   @include respond-to(tablet) {
     h2,
     p {
@@ -84,7 +95,7 @@ main {
       margin: 0 auto;
     }
     h2 {
-      font-size: 1.6rem;
+      font-size: 1.9rem;
     }
   }
   @include respond-to(desktop) {
@@ -121,7 +132,7 @@ h6 {
     font-size: 0.8rem;
   }
   @include respond-to(desktop) {
-    width: 50%;
+    width: 100%;
     margin: 1rem auto;
     padding: 0 100px;
 

@@ -4,30 +4,39 @@
   width: 100%;
   padding: 25px;
   transform: scale(1) !important;
-  filter: brightness(3) grayscale(.7);
-  & svg {
+  filter: brightness(3) grayscale(0.7);
+
+  img {
     width: 100%;
     height: auto;
     display: block;
-    transform: scale(1) !important;
+    transform: scale(1);
+    transition: transform 0.3s ease, filter 0.3s ease;
 
-    &:active,
     &:hover {
-      transform: scale(1) !important;
+      transform: scale(.95);
+      filter: brightness(1.2) grayscale(0);
     }
 
-    @include respond-to(desktop) {
-      width: 50%;
-      margin: 0 auto;
-    }
-
-    @include respond-to(tablet) {
-      width: 65%;
-      margin: 0 auto;
+    &:active {
+      transform: scale(0.95);
+      filter: brightness(0.9);
     }
   }
 }
+
+@include respond-to(tablet) {
+  .wave img {
+    width: 65%;
+    margin: 0 auto;
+  }
+}
+
 @include respond-to(desktop) {
+  .wave img {
+    width: 100%;
+    margin: 0 auto;
+  }
   .wave-space {
     margin-top: -125px;
   }

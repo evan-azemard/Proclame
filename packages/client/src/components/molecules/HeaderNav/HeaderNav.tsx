@@ -45,6 +45,8 @@ export default function HeaderNav() {
   const navigate = useNavigate();
   const pageTitle = translations[location.pathname] || "Page inconnue";
 
+  // Le masquage du Header est maintenant géré dans AppLayout via l'URL.
+
   const handleClick = (home: string) => {
     if ("vibrate" in navigator) {
       navigator.vibrate(50);
@@ -59,8 +61,6 @@ export default function HeaderNav() {
       }
     }
   };
-
-  if (location.pathname === "/categories/categoryId/proclamations/proclamationsId") return null;
 
   return (
     <>

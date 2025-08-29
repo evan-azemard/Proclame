@@ -1,4 +1,4 @@
-body {
+.reading {
   padding: 0 25px;
 }
 
@@ -9,25 +9,17 @@ body {
 }
 
 @include respond-to(tablet) {
-  body {
-    padding: 0 50px;
-  }
-  main{
+  .reading {
+    div {
+      h2 {
+        width: 100%;
+        text-align: center;
+      }
 
-    .reading{
-      div{
-
-        h2{
+      span {
+        p {
+          text-align: justify;
           width: 100%;
-          text-align: center;
-        }
-        
-        span{
-
-          p{
-            text-align: justify;
-            width: 100%;
-          }
         }
       }
     }

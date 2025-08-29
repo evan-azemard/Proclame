@@ -1,6 +1,6 @@
 .footer {
   position: fixed;
-  bottom: 15px;
+  bottom: var(--footer-offset, 15px);
   left: 50%;
   transform: translateX(-50%);
   width: clamp(260px, 70vw, 800px);
@@ -8,18 +8,21 @@
   background: var(--gradient-footer);
   border-radius: 100px;
   padding: 15px;
+  height: var(--footer-height, 62px);
   box-shadow: var(--box-shadow);
   z-index: 100;
   overflow: hidden;
   position: fixed;
   backdrop-filter: blur(5px);
   &.footerReading {
-    @include respond-to(desktop) {
-      nav ul li {
-        img,
-        svg {
-          width: 1.4rem; // reduced size
-          height: 1.4rem;
+    nav {
+      ul {
+        li {
+          img,
+          svg {
+            width: 1.4rem;
+            height: 1.4rem;
+          }
         }
       }
     }
@@ -132,13 +135,21 @@
 
 @include respond-to(desktop) {
   .footer {
-    height: 60px;
-    width: 500px;
-    padding: 25px;
+  /* prefer desktop variable height */
+  height: 60px;
+  --footer-height: 60px;
+  width: 500px;
+  padding: 25px;
 
     .logo {
       width: 45px;
     }
+  }
+
+  .footer.footerReading nav ul li img,
+  .footer.footerReading nav ul li svg {
+    width: 1.4rem;
+    height: 1.4rem;
   }
 }
 

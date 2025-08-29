@@ -3,6 +3,10 @@
   --card-min: 210px;
   --card-max: 300px;
   width: clamp(var(--card-min), 30vw, var(--card-max));
+  box-sizing: border-box;
+  min-height: 200px;
+  max-height: 200px;
+  height: 200px;
   background: var(--gradient-card);
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: var(--radius-card);
@@ -17,7 +21,8 @@
   transition: box-shadow 0.2s ease, transform 0.2s ease, filter 0.25s ease;
   overflow: hidden;
 }
-.article:hover,.article:active {
+.article:hover,
+.article:active {
   filter: brightness(1.15);
 }
 
@@ -49,8 +54,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   letter-spacing: 0.25px;
-
-  word-break: break-all;
+  word-break: break-word;
   hyphens: auto;
 }
 .favWrapper {
@@ -67,38 +71,48 @@
 /* Corps */
 .main {
   flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
   overflow: hidden;
   margin-top: 0.2rem;
 }
+
 .desc {
-  font-size: 0.82rem;
-  line-height: 1.48;
+  font-size: 0.9rem;
+  line-height: 1.45;
   margin: 0;
-  color: var(--color-text, #ebe2d5ff);
+  color: var(--color-text, #ebe2d5);
   width: 100%;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 5;
-  line-clamp: 5;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
   overflow: hidden;
   text-overflow: ellipsis;
+  flex: 1 1 auto;
+  min-height: 0;
 }
 
 @include respond-to(tablet) {
   .article {
-    --card-min: 225px;
-    --card-max: 330px;
+    --card-min: 260px;
+    --card-max: 360px;
+    min-height: 220px;
+    max-height: 260px;
+    height: 260px;
+    padding: 1rem 1.1rem 1.1rem;
   }
   .titleWrap > * {
-    font-size: 1.1rem;
+    font-size: 1.12rem;
     width: 100%;
   }
   .favWrapper svg {
-    width: 1.4rem;
-    height: 1.4rem;
+    width: 1.45rem;
+    height: 1.45rem;
   }
   .desc {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     -webkit-line-clamp: 5;
     line-clamp: 5;
   }
@@ -106,20 +120,24 @@
 
 @include respond-to(desktop) {
   .article {
-    --card-min: 240px;
-    padding: 1.1rem 1.2rem 1.25rem;
+    --card-min: 320px;
+    --card-max: 420px;
+    min-height: 260px;
+    max-height: 320px;
+    height: 300px;
+    padding: 1.2rem 1.4rem 1.3rem;
   }
   .header {
-    width: 79%;
+    width: 80%;
   }
   .titleWrap > * {
-    font-size: 1.18rem;
+    font-size: 1.22rem;
   }
 
   .article span {
     position: absolute;
     right: -10px;
-    top: 50px;
+    top: 60px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -127,20 +145,12 @@
     text-align: center;
   }
   .article svg {
-    width: 1.8rem;
-    height: 1.5rem;
-    transform: scale(2);
-
-    &:hover {
-      filter: none!important;
-      transform: scale(2);
-    }
-    &:active {
-      transform: scale(1.5);
-    }
+    width: 2rem;
+    height: 1.8rem;
+    transform: scale(1.8);
   }
   .desc {
-    font-size: 0.84rem;
+    font-size: 0.96rem;
     -webkit-line-clamp: 6;
     line-clamp: 6;
   }

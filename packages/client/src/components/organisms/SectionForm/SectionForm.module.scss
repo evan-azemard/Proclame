@@ -10,19 +10,21 @@
     width: 100%;
     gap: 1rem;
   }
-
-  button{
+  .section__button{
     margin-top: 1rem;
-  }
-  @include respond-to(desktop) {
-    width: 500px;
-    margin: 0 auto;
   }
 }
 
 @include respond-to(tablet) {
   .section {
     width: 50%;
+    margin: 0 auto;
+  }
+}
+
+@include respond-to(desktop) {
+  .section {
+    width: 500px;
     margin: 0 auto;
   }
 }

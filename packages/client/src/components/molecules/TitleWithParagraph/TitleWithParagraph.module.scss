@@ -1,13 +1,26 @@
-.titleWithParagraph{
-    display: flex;
-    flex-direction: column;
-    margin: 0 auto;
-    gap: 10px;
+.titleWithParagraph {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  gap: 10px;
+
+  span {
+    p {
+      font-size: 1rem;
+    }
+  }
+
+  h2 {
+    width: 100%;
+  }
+  p {
     text-align: justify;
+    width: 100%;
+  }
 }
 
-@include respond-to(desktop){
-    .titleWithParagraph{
-        padding: 0 100px;
-    }
+@include respond-to(desktop) {
+  .titleWithParagraph {
+    padding: 0 100px;
+  }
 }

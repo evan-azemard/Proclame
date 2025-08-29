@@ -1,26 +1,13 @@
-import { FooterNav, HeaderNav } from "@molecules/index";
-import { BrowserRouter, useLocation } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import RouterProvider from "./router/rooter";
+import RootLayout from "./layouts/RootLayout";
 
 export default function App() {
   return (
     <BrowserRouter>
-      <AppLayout />
-    </BrowserRouter>
-  );
-}
-
-function AppLayout() {
-  const location = useLocation();
-  const hideChrome = location.pathname === "/categories/6/proclamations/5";
-
-  return (
-    <>
-      {!hideChrome && <HeaderNav />}
-      <main>
+      <RootLayout>
         <RouterProvider />
-      </main>
-      {!hideChrome && <FooterNav />}
-    </>
+      </RootLayout>
+    </BrowserRouter>
   );
 }

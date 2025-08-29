@@ -12,7 +12,7 @@
   grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem;
   scrollbar-width: none;
-  -ms-overflow-style: none;
+  -ms-overflow-style: none; 
 
   ul {
     li {
@@ -27,7 +27,7 @@
   grid-template-columns: repeat(5, 1fr);
   gap: 2rem;
   scrollbar-width: none;
-  -ms-overflow-style: none;
+  max-height: 200px;
   ul {
     li {
       font-size: 0.8em;
@@ -68,6 +68,8 @@
 @include respond-to(desktop) {
   .navProclamation,
   .navCategory {
+    background-color: orange;
+    height: 100vh;
     width: 70vw;
     margin: 0 auto;
   }

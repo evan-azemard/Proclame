@@ -1,17 +1,17 @@
 .header {
+  /* Use CSS variables for header height and make it fixed */
+  height: var(--header-height, 70px);
   position: fixed;
-  height: 70px;
   top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  margin: 0;
+  left: 0;
   width: 100%;
+  margin: 0;
   box-shadow: var(--box-shadow-header);
   backdrop-filter: blur(4px);
   background: var(--gradient-header);
   border-radius: 0 0 25px 25px;
   padding: 15px;
-  z-index: 100;
+  z-index: 1000;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -51,7 +51,9 @@
 
   @include respond-to(tablet) {
     & {
-      height: 80px;
+  height: 80px;
+  /* sync variable at tablet breakpoint */
+  --header-height: 80px;
 
       img.menu {
         width: 50px;
@@ -66,8 +68,10 @@
 
   @include respond-to(desktop) {
     & {
-      height: 95px;
-      padding: 50px 50px 50px 50px;
+  height: 95px;
+  /* sync variable at desktop breakpoint */
+  --header-height: 95px;
+      padding: 15px;
 
       img.menu {
         width: 50px;
@@ -82,21 +86,4 @@
       }
     }
   }
-}
-
-.mask {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 105px;
-  z-index: 50;
-}
-
-.mask2 {
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 15px;
-  z-index: 50;
 }

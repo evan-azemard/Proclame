@@ -5,7 +5,7 @@ export default function Reading() {
   const title = "lorem";
   return (
     <div className={styles.reading}>
-      <Wave />
+      <Wave space />
       <TitleWithParagraph title={title}>
         <p>Je proclame que Dieu transforme l’abandon en adoption.</p>
         <p>
