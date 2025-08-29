@@ -12,6 +12,7 @@
   z-index: 100;
   overflow: hidden;
   position: fixed;
+  backdrop-filter: blur(5px);
 
   // (Ancien BackdropBubbles retiré)
 
