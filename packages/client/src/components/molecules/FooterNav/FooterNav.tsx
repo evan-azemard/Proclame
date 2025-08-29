@@ -83,7 +83,6 @@ export default function FooterNav() {
           </ul>
         </nav>
       </footer>
-      <div className={styles.mask}></div>
     </>
   );
 }

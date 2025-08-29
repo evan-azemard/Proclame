@@ -7,13 +7,12 @@
   margin: 0;
   background: var(--gradient-footer);
   border-radius: 100px;
-  padding: 15px;
-  height: var(--footer-height, 62px);
+  padding: var(--footer-padding, 15px);
+  height: var(--footer-height, 62px); /* inner height */
   box-shadow: var(--box-shadow);
   z-index: 100;
   overflow: hidden;
-  position: fixed;
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px) grayscale(10) brightness(.8);
   &.footerReading {
     nav {
       ul {

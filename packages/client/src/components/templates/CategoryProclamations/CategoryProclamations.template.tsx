@@ -7,14 +7,15 @@ export default function CategoryProclamations() {
 
   const pages = [
     { name: "Accueil", path: "/" },
-    { name: "Catégorie", path: "/categories" },
-    { name: "Proclamation", path: location.pathname }
+    { name: "Catégorie", path: "/categories:categoryId" },
+    { name: "Proclamation", path: location.pathname },
   ];
 
   return (
     <>
+      <br />
       <Breadcrumb pages={pages} />
-      <Wave  />
+      <Wave />
       <SectionGrid type="proclamation" />
     </>
   );

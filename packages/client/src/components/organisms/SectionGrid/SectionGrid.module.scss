@@ -1,3 +1,6 @@
+.sectionGrid {
+  max-height: fit-content;
+}
 .navMenu {
   display: flex;
   flex-direction: column;
@@ -12,7 +15,7 @@
   grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem;
   scrollbar-width: none;
-  -ms-overflow-style: none; 
+  -ms-overflow-style: none;
 
   ul {
     li {
@@ -26,12 +29,74 @@
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 2rem;
+  height: 100%;
+  max-height: 100%;
   scrollbar-width: none;
-  max-height: 200px;
+  padding: 5px;
   ul {
     li {
       font-size: 0.8em;
     }
+  }
+}
+
+.proclamationsWrapper {
+  min-height: fit-content;
+  height: fit-content;
+  max-height: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.proclamationRow {
+  display: flex;
+  width: 100%;
+  gap: 1rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 0.5rem 5px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  align-items: stretch;
+  justify-content: flex-start; /* toujours aligné à gauche quand scrollable */
+  scroll-snap-type: x mandatory;
+}
+
+.proclamationRow::-webkit-scrollbar {
+  display: none;
+}
+
+/* Variante centrée (ajouter cette classe via JSX si < nombre minimal de cartes) */
+/* Classe ajoutée en JS quand la ligne ne déborde pas: centre les cartes et supprime le scroll */
+.noOverflow {
+  justify-content: center !important;
+  overflow-x: hidden;
+}
+
+.proclamationCard {
+  flex: 0 0 240px; /* largeur mobile */
+  width: 240px;
+  display: flex;
+  scroll-snap-align: start;
+}
+@include respond-to(tablet) {
+  .proclamationCard {
+    /* permettre à la carte interne (.article) de s'élargir */
+    flex: 0 0 340px;
+    width: auto;
+    max-width: 420px;
+  }
+}
+
+@include respond-to(desktop) {
+  .sectionGrid{
+    padding-left: 50px;
+  }
+  .proclamationCard {
+    flex: 0 0 380px;
+    width: auto;
+    max-width: 480px;
   }
 }
 
@@ -68,7 +133,6 @@
 @include respond-to(desktop) {
   .navProclamation,
   .navCategory {
-    background-color: orange;
     height: 100vh;
     width: 70vw;
     margin: 0 auto;

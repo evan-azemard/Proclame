@@ -2,8 +2,18 @@
 @use "./responsive" as *;
 * {
   box-sizing: border-box;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
 }
 
+*::-webkit-scrollbar {
+  display: none;
+  /* Chrome/Safari/Webkit */
+  and::-webkit-scrollbar {
+    display: none;
+    /* Chrome/Safari/Webkit */
+  }
+}
 html {
   overflow-x: scroll;
   scrollbar-width: none;
@@ -35,7 +45,11 @@ html {
 
 /* Ensure React root fills the viewport. */
 #root {
+  /* Make the app a vertical flex container so the main content can grow */
+  min-height: 100dvh; /* dynamic vh handles mobile browser UI */
   height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 h1 {
@@ -79,10 +93,16 @@ body {
 }
 
 .mainLayout {
-  width: 100%;
   flex: 1 1 auto;
+  width: 100%;
+  min-height: fit-content;
+  overflow-x: hidden; /* prevent horizontal scroll */
   padding-top: calc(var(--header-height) + 15px);
-  padding-bottom: calc(var(--footer-height) + var(--footer-offset) + 5px);
+  /* Laisser assez d'espace pour le footer fixe (hauteur + offset + marge de respiration) */
+  padding-bottom: calc(
+    var(--footer-total-height, var(--footer-height)) + var(--footer-offset) +
+      20px
+  );
   padding-left: 20px;
   padding-right: 20px;
   overflow-y: auto;

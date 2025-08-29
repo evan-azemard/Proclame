@@ -118,6 +118,9 @@
   --header-height: 70px; /* mobile default */
   --footer-height: 62px; /* mobile default (includes padding + icon) */
   --footer-offset: 15px; /* distance from bottom for fixed footer */
+  --footer-padding: 15px; /* vertical + horizontal padding (uniform) */
+  /* Total outer height (content height + vertical padding) used for layout spacing */
+  --footer-total-height: calc(var(--footer-height) + (2 * var(--footer-padding)));
 
   --box-shadow: 0 4px 32px 0 rgba(var(--color-primary), 0.2),
     0 1.5px 6px 0 rgba(255, 255, 255, 0.8) inset,

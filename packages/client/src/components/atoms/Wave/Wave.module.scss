@@ -4,25 +4,15 @@
   width: 100%;
   padding: 25px;
   transform: scale(1) !important;
-  filter: brightness(3) grayscale(0.7);
+}
 
-  img {
-    width: 100%;
-    height: auto;
-    display: block;
-    transform: scale(1);
-    transition: transform 0.3s ease, filter 0.3s ease;
-
-    &:hover {
-      transform: scale(.95);
-      filter: brightness(1.2) grayscale(0);
-    }
-
-    &:active {
-      transform: scale(0.95);
-      filter: brightness(0.9);
-    }
-  }
+.wave img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transform: scale(1);
+  transition: transform 0.3s ease, filter 0.3s ease;
+  filter: grayscale(1) brightness(1) !important;
 }
 
 @include respond-to(tablet) {

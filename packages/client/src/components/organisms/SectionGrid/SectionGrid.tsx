@@ -1,9 +1,22 @@
 import type { SectionGridProps } from "./SectionGrid.props";
 import styles from "./SectionGrid.module.scss";
 import { CardCategory, CardNav, CardProclamation } from "@molecules/index";
+import { useEffect, useRef } from "react";
 
 
 export default function SectionGrid({ type }: SectionGridProps) {
+  // Refs pour les rangées de proclamations (utilisé seulement si type === 'proclamation')
+  const proclamationRowsRef = useRef<HTMLDivElement[]>([]);
+
+  useEffect(() => {
+    if (type !== "proclamation") return;
+    proclamationRowsRef.current.forEach((row) => {
+      if (!row) return;
+      const hasOverflow = row.scrollWidth > row.clientWidth + 1;
+      if (!hasOverflow) row.classList.add(styles.noOverflow);
+      else row.classList.remove(styles.noOverflow);
+    });
+  }, [type]);
 
   const lorem =
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod, nibh in csectetur adipiscing elit. Pellentesque euismod, nibh in csectetur adipiscing elit. Pellentesque euismod, nibh in csectetur adipiscing elit. Pellentesque euismod, nibh in csectetur adipiscing elit. Pellentesque euismod, nibh in csectetur adipiscing elit. Pellentesque euismod, nibh in csectetur adipiscing elit. Pellentesque euismod, nibh in csectetur adipiscing elit. Pellentesque euismod, nibh in csectetur adipiscing elit. Pellentesque euismod, nibh in csectetur adipiscing elit. Pellentesque euismod, nibh in csectetur adipiscing elit. Pellentesque euismod, nibh in csectetur adipiscing elit. Pellentesque euismod, nibh in csectetur adipiscing elit. Pellentesque euismod, nibh in csectetur adipiscing elit. Pellentesque euismod, nibh in csectetur adipiscing elit. Pellentesque euismod, nibh in csectetur adipiscing elit. Pellentesque euismod, nibh in csectetur adipiscing elit. Pellentesque euismod, nibh in csectetur adipiscing elit. Pellentesque euismod, nibh in csectetur adipiscing elit. Pellentesque euismod, nibh in csectetur adipiscing elit. Pellentesque euismod, nibh in csectetur adipiscing elit. Pellentesque euismod, nibh in csectetur adipiscing elit. Pellentesque euismod, nibh in consequat sodales, urna justo cursus augue, vitae efficitur lectus sapien at lorem.";
@@ -66,28 +79,46 @@ export default function SectionGrid({ type }: SectionGridProps) {
                 <CardCategory title="CatégoriesCatégoriesCatégoriesCa" uri="/admin/categories" />
               </nav>
             );
-          case "proclamation":
+          case "proclamation": {
+            // 1) Données simulées
+            const total = 11;
+            const items = Array.from({ length: total }, (_, i) => ({
+              title: `Proclamation ${i + 1}`,
+              description: lorem,
+              uri: "/admin/categories",
+            }));
+
+            // 2) Première boucle: regrouper par paquets de 5
+            const groups: typeof items[] = [];
+            for (let i = 0; i < items.length; i += 3) {
+              groups.push(items.slice(i, i + 3));
+            }
+
+            // 3) Deuxième boucle: rendre chaque groupe (ligne scrollable)
             return (
-              <nav className={styles.navProclamation}>
-                <CardProclamation description={lorem} title="CatégoriesCatégories" uri="/admin/categories" />
-                <CardProclamation description={lorem} title="CatégoriesCatégoriesCatégories" uri="/admin/categories" />
-                <CardProclamation description={lorem} title="Catégories" uri="/admin/categories" />
-                <CardProclamation description={lorem} title="Catégories" uri="/admin/categories" />
-                <CardProclamation description={lorem} title="Catégories" uri="/admin/categories" />
-                <CardProclamation description={lorem} title="CatégoriesCatégoriesCatégories" uri="/admin/categories" />
-                <CardProclamation description={lorem} title="Catégories" uri="/admin/categories" />
-                <CardProclamation description={lorem} title="Catégories" uri="/admin/categories" />
-                <CardProclamation description={lorem} title="Catégories" uri="/admin/categories" />
-                <CardProclamation description={lorem} title="Catégories" uri="/admin/categories" />
-                <CardProclamation description={lorem} title="Catégories" uri="/admin/categories" />
-                <CardProclamation description={lorem} title="Catégories" uri="/admin/categories" />
-                <CardProclamation description={lorem} title="Catégories" uri="/admin/categories" />
-                <CardProclamation description={lorem} title="Catégories" uri="/admin/categories" />
-                <CardProclamation description={lorem} title="Catégories" uri="/admin/categories" />
-                <CardProclamation description={lorem} title="Catégories" uri="/admin/categories" />
-            
-              </nav>
+              <div className={styles.proclamationsWrapper}>
+                {groups.map((g, gi) => (
+                  <div
+                    key={gi}
+                    ref={(el) => {
+                      if (el) proclamationRowsRef.current[gi] = el;
+                    }}
+                    className={styles.proclamationRow}
+                  >
+                    {g.map((c, ci) => (
+                      <div key={ci} className={styles.proclamationCard}>
+                        <CardProclamation
+                          title={c.title}
+                          description={c.description}
+                          uri={c.uri}
+                        />
+                      </div>
+                    ))}
+                  </div>
+                ))}
+              </div>
             );
+          }
           default:
             return <p>Type non reconnu.</p>;
         }
