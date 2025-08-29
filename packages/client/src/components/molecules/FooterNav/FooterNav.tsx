@@ -3,7 +3,7 @@ import homePng from "@atoms/Icon/icons/home.png";
 import favoritePng from "@atoms/Icon/icons/favorite.png";
 import profilePng from "@atoms/Icon/icons/profile.png";
 import { useLocation, useNavigate } from "react-router-dom";
-import { Button, Icon } from "@atoms/index";
+import { Button, Icon, Wave } from "@atoms/index";
 import { useEffect, useState } from "react";
 
 export default function FooterNav() {
@@ -82,6 +82,9 @@ export default function FooterNav() {
             ))}
           </ul>
         </nav>
+        <span className={styles.wave}>
+          <Wave />
+        </span>
       </footer>
     </>
   );

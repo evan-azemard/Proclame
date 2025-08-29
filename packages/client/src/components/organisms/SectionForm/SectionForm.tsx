@@ -27,7 +27,7 @@ export default function SectionForm({ type }: SectionFormProps) {
                   type="checkbox"
                   label="J'accepte la politique des cookies"
                 />
-                <div className={styles.buttonGroup}>
+                <div className={`flex-end ${styles.buttonGroup}`}>
                   <Button text="S'inscrire" to="/register" />
                   <Button text="connexion" />
                 </div>
@@ -54,7 +54,7 @@ export default function SectionForm({ type }: SectionFormProps) {
                   label="Message"
                   placeholder="Entrer votre message"
                 />
-                <div className={styles.buttonGroup}>
+                <div className={`flex-end ${styles.buttonGroup}`}>
                   <Button text="Envoyer" />
                 </div>
               </section>
@@ -91,7 +91,7 @@ export default function SectionForm({ type }: SectionFormProps) {
                   type="checkbox"
                   label="J'accepte les conditions générales d'utilisation"
                 />
-                <div className={styles.buttonGroup}>
+                <div className={`flex-end ${styles.buttonGroup}`}>
                   <Button text="se connecter" to="/login" />
                   <Button text="valider" />
                 </div>
@@ -118,7 +118,7 @@ export default function SectionForm({ type }: SectionFormProps) {
                   label="Confirmez le nouveau mot de passe"
                   placeholder="Confirmez votre nouveau mot de passe"
                 />
-                <div className={styles.buttonGroup}>
+                <div className={`flex-end ${styles.buttonGroup}`}>
                   <Button text="enregistrer" />
                 </div>
               </section>
@@ -138,7 +138,7 @@ export default function SectionForm({ type }: SectionFormProps) {
                   label="Mot de passe"
                   placeholder="Entrez votre mot de passe"
                 />
-                <div className={styles.buttonGroup}>
+                <div className={`flex-end ${styles.buttonGroup}`}>
                   <Button text="connexion" />
                 </div>
               </section>
@@ -152,7 +152,7 @@ export default function SectionForm({ type }: SectionFormProps) {
                   label="Nom de la catégorie"
                   placeholder="Entrer le nom de la catégorie"
                 />
-                <div className={styles.buttonGroup}>
+                <div className={`flex-end ${styles.buttonGroup}`}>
                   <Button text="enregistrer" />
                 </div>
               </section>
@@ -166,7 +166,7 @@ export default function SectionForm({ type }: SectionFormProps) {
                   label="Ajouter un son"
                   placeholder="Sélectionner un fichier audio"
                 />
-                <div className={styles.buttonGroup}>
+                <div className={`flex-end ${styles.buttonGroup}`}>
                   <Button text="enregistrer" />
                 </div>
               </section>
@@ -186,7 +186,7 @@ export default function SectionForm({ type }: SectionFormProps) {
                   label="Texte de la proclamation"
                   placeholder="Entrer le texte de la proclamation"
                 />
-                <div className={styles.buttonGroup}>
+                <div className={`flex-end ${styles.buttonGroup}`}>
                   <Button text="enregistrer" />
                 </div>
               </section>

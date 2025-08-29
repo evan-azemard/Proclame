@@ -12,7 +12,7 @@
   box-shadow: var(--box-shadow);
   z-index: 100;
   overflow: hidden;
-  backdrop-filter: blur(5px) grayscale(10) brightness(.8);
+  backdrop-filter: blur(5px) grayscale(0.5) brightness(0.8);
   &.footerReading {
     nav {
       ul {
@@ -26,8 +26,26 @@
       }
     }
   }
-
-  .line{
+  .wave {
+    position: absolute;
+    top: 0%;
+    left: 0;
+    transform: translateY(-50%);
+    filter: blur(2px);
+    animation: wave 60s linear infinite;
+    @keyframes wave {
+      0% {
+        transform: translateX(100%) scale(6);
+      }
+      50% {
+        transform: translateX(-100%) scale(6);
+      }
+      100% {
+        transform: translateX(100%) scale(6);
+      }
+    }
+  }
+  .line {
     border: 1px solid rgba(245, 222, 179, 0.484);
     height: 25px;
   }
@@ -69,76 +87,13 @@
   }
 }
 
-// Layer blur (au-dessus du footer de base)
-.footerBlurLayer {
-  z-index: 101;
-  pointer-events: none;
-  mix-blend-mode: normal;
-  overflow: hidden;
-  border-radius: 100px;
-  // Légère transparence pour laisser voir gradient dessous
-  background: transparent;
-}
-
-.blurBubble {
-  // fallback si backdrop-filter non supporté
-  background: rgba(255, 255, 255, 0.04);
-}
-
-// Layer UI (icônes cliquables)
-.footerUiLayer {
-  z-index: 102;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  pointer-events: none; // on délègue aux enfants
-
-  .navProxy {
-    pointer-events: auto;
-    width: 100%;
-    height: 100%;
-    border-radius: 100px;
-    ul {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-around;
-      align-items: center;
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      li {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        img {
-          filter: grayscale(0.4) brightness(0.85) contrast(0.95);
-          cursor: pointer;
-          width: 2rem;
-          transform: scale(1);
-          transition: filter 0.28s ease, transform 0.28s ease;
-          &:hover {
-            filter: grayscale(0) brightness(1.35) contrast(1.05);
-            transform: scale(0.86);
-          }
-          &:active {
-            transform: scale(0.78);
-            filter: grayscale(0) brightness(1.15);
-          }
-        }
-      }
-    }
-  }
-}
-
 @include respond-to(desktop) {
   .footer {
-  /* prefer desktop variable height */
-  height: 60px;
-  --footer-height: 60px;
-  width: 500px;
-  padding: 25px;
+    /* prefer desktop variable height */
+    height: 60px;
+    --footer-height: 60px;
+    width: 500px;
+    padding: 25px;
 
     .logo {
       width: 45px;
@@ -150,65 +105,4 @@
     width: 1.4rem;
     height: 1.4rem;
   }
-}
-
-.mask {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 4rem;
-  z-index: 50;
-}
-
-// ================= DEBUG LAYERS =================
-.footerDebugGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.25rem;
-  padding: 1.5rem;
-  align-items: start;
-}
-
-.debugBox {
-  position: relative;
-  padding: 0.75rem 0.75rem 1.25rem;
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 4px 12px -4px rgba(0, 0, 0, 0.4);
-}
-
-.debugTitle {
-  font: 600 12px/1.2 var(--font-sans, Arial, sans-serif);
-  letter-spacing: 0.5px;
-  margin: 0 0 8px;
-  text-transform: uppercase;
-  opacity: 0.7;
-}
-
-.debugBase {
-  border: 2px solid #3b82f6;
-}
-.debugBlur {
-  border: 2px solid #10b981;
-}
-.debugUi {
-  border: 2px solid #f59e0b;
-}
-
-.debugBlurViewport {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 5 / 1.2;
-  min-height: 110px;
-  border-radius: 100px;
-  overflow: hidden;
-  background: var(--gradient-footer);
-}
-
-[data-debug].blurBubble {
-  outline: 1px dashed rgba(255, 255, 255, 0.15);
 }

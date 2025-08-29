@@ -154,7 +154,6 @@ h6 {
   @include respond-to(desktop) {
     width: 100%;
     margin: 1rem auto;
-    padding: 0 100px;
 
     button {
       font-size: 0.5rem !important;

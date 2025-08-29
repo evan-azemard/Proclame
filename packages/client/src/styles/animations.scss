@@ -1,8 +1,8 @@
-@use './responsive' as *;
+@use "./responsive" as *;
 
 header img,
 footer img,
-button{
+button {
   transition: 0.8s ease;
   transform: scale(1);
 }
@@ -27,20 +27,28 @@ h3:hover,
 h4:hover,
 h5:hover,
 h6:hover {
-  filter: brightness(2) !important;
+  filter: brightness(1.5);
 }
+
+footer:hover,
+header:hover {
+  transition: 0.4s ease-out;
+  filter: brightness(1.5);
+}
+
+
 @include respond-to(desktop) {
   header img:hover,
   footer img:hover,
   span:hover > svg {
     transition: 0.4s ease-out;
     transform: scale(0.9);
-    filter: grayscale(1) brightness(3) !important;
+    filter: grayscale(1) brightness(3);
     user-select: none;
   }
   button:hover {
     transition: 0.4s ease-out;
     transform: scale(0.9);
-    filter: brightness(3) !important;
+    filter: brightness(3);
   }
 }
