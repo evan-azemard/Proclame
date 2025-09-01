@@ -26,6 +26,7 @@
       }
     }
   }
+
   .wave {
     position: absolute;
     top: 0%;
@@ -86,7 +87,9 @@
     }
   }
 }
-
+// .footer:hover svg > img:hover {
+//   transform: scale(3) !important;
+// }
 @include respond-to(desktop) {
   .footer {
     /* prefer desktop variable height */
