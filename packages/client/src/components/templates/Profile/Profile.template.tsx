@@ -2,8 +2,13 @@ import { Button, Title, Wave, Container } from "@atoms/index";
 import { TitleWithParagraph } from "@molecules/index";
 import { SectionForm } from "@organisms/index";
 import styles from "./Profile.module.scss";
+import { useEffect } from "react";
 
 export default function Profile() {
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
+  
   return (
     <Container aria-labelledby="profile-title">
       <Wave />

@@ -1,6 +1,11 @@
 import { Container, MultiInput, Wave, Button, Title } from "@atoms/index";
+import { useEffect } from "react";
 
 export default function Accessibility() {
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
+  
   return (
     <Container>
       <Wave />

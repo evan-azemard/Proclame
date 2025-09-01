@@ -1,8 +1,13 @@
 import { Button, Wave, Container } from "@atoms/index";
 import { TitleWithParagraph } from "@molecules/index";
 import { SectionForm } from "@organisms/index";
+import { useEffect } from "react";
 
 export default function Login() {
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
+  
   return (
     <Container>
       <Wave />

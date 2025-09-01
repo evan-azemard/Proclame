@@ -8,6 +8,27 @@
   gap: 1rem;
 }
 
+.navHomeGuest, .navHome {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  animation: heart 3s ease-in-out infinite;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+@keyframes heart {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.01);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 .navCategory {
   overflow: auto;
   display: grid;

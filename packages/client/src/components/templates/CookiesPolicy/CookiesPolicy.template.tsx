@@ -1,7 +1,12 @@
 import { Button, Wave, Container } from "@atoms/index";
 import { TitleWithParagraph } from "@molecules/index";
+import { useEffect } from "react";
 
 export default function CookiesPolicy() {
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
+  
   return (
     <Container aria-labelledby="cookies-policy-title">
       <Wave />

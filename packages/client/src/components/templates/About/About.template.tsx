@@ -2,7 +2,12 @@ import { Container, Title } from "@atoms/index";
 import { TitleWithParagraph } from "@molecules/index";
 import styles from "./About.module.scss";
 import logo from "@atoms/Icon/icons/logo.png";
+import { useEffect } from "react";
 export default function About() {
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
+  
   return (
     <Container aria-labelledby="about-title">
       <div className={styles.logo}>

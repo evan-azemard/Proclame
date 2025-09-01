@@ -1,8 +1,13 @@
 import { Container, Title, Wave } from "@atoms/index";
 import { Link } from "react-router-dom";
 import styles from "./Sitemap.module.scss";
+import { useEffect } from "react";
 
 export default function Sitemap() {
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
+  
   return (
     <Container aria-labelledby="sitemap-title">
       <Wave />

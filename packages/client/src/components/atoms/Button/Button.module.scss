@@ -1,6 +1,6 @@
 .button {
   cursor: pointer;
-   box-shadow: var(--box-shadow);
+  box-shadow: var(--box-shadow);
 
   color: var(--color-white);
   background: var(--gradient-button);
@@ -37,25 +37,25 @@
     padding: 0;
   }
 
-@include respond-to(tablet) {
-  .button {
-    font-size: 0.5em;
-    min-width: 120px;
-    min-height: 20px;
-    overflow: auto;
-    height: auto;
-    display: flex;
-    justify-content: center;
+  @include respond-to(tablet) {
+    .button {
+      font-size: 0.5em;
+      min-width: 120px;
+      min-height: 20px;
+      overflow: auto;
+      height: auto;
+      display: flex;
+      justify-content: center;
+    }
   }
-}
 
-@include respond-to(desktop) {
-  .button {
-    padding: 0.5rem 0.5rem;
-    font-size: 0.5em;
-    min-width: 150px;
-    min-height: 20px;
-    height: auto;
+  @include respond-to(desktop) {
+    .button {
+      padding: 0.5rem 0.5rem;
+      font-size: 0.5em;
+      min-width: 150px;
+      min-height: 20px;
+      height: auto;
+    }
   }
-}
 }

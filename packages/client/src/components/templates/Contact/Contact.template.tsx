@@ -1,7 +1,12 @@
 import { Title, Wave, Container } from "@atoms/index";
 import { SectionForm } from "@organisms/index";
+import { useEffect } from "react";
 
 export default function Contact() {
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
+  
   return (
     <Container aria-labelledby="contact-title">
       <Wave />
