@@ -1,12 +1,11 @@
-import { Wave } from "@atoms/index";
+import { Wave, Container } from "@atoms/index";
 import { SectionGrid } from "@organisms/index";
 
 export default function Favorites() {
   return (
-    <section>
-      <br />
+    <Container>
       <Wave />
       <SectionGrid type="proclamation" />
-    </section>
+    </Container>
   );
 }

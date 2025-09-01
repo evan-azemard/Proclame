@@ -1,11 +1,11 @@
-import { Button, Wave } from "@atoms/index";
+import { Button, Wave, Container } from "@atoms/index";
 import { TitleWithParagraph } from "@molecules/index";
 
 export default function CookiesPolicy() {
   return (
-    <>
+    <Container aria-labelledby="cookies-policy-title">
       <Wave />
-      <TitleWithParagraph title="Politique des cookies">
+      <TitleWithParagraph title="Politique des cookies" titleId="cookies-policy-title">
         <p>
           Cette application utilise des cookies essentiels au bon fonctionnement
           de ses services.
@@ -35,9 +35,9 @@ export default function CookiesPolicy() {
           fonctionnement des services.
         </p>
       </TitleWithParagraph>
-      <div className="flex-end">
+      <div className="flex-end" aria-label="Actions cookies">
         <Button text="Je ne suis pas d’accord" />
       </div>
-    </>
+    </Container>
   );
 }

@@ -1,17 +1,17 @@
-import { Title } from "@atoms/index";
+import { Container, Title } from "@atoms/index";
 import { TitleWithParagraph } from "@molecules/index";
 import styles from "./About.module.scss";
 import logo from "@atoms/Icon/icons/logo.png";
 export default function About() {
   return (
-    <>
+    <Container aria-labelledby="about-title">
       <div className={styles.logo}>
         <img src={logo} alt="Proclame logo" className={styles.logoImg} />
         <div className={styles.logoTitle}>
           <Title>PROCLAME</Title>
         </div>
       </div>
-      <TitleWithParagraph title="A propos">
+      <TitleWithParagraph title="A propos" titleId="about-title">
         <p>
           Hey! moi c’est Evan. J’ai 24 ans et je suis en formation en
           développement web.
@@ -45,6 +45,6 @@ export default function About() {
           outil sincère, utile et durable.
         </p>
       </TitleWithParagraph>
-    </>
+    </Container>
   );
 }

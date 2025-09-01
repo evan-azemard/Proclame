@@ -15,7 +15,7 @@
   width: 250px;
   transform: translateX(-50%);
   z-index: 1;
-  filter: grayscale(0.8);
+  filter: grayscale(0.8) brightness(2);
   opacity: 0.2;
   max-width: 100%;
 }

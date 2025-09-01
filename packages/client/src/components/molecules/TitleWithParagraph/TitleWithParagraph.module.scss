@@ -10,17 +10,7 @@
     }
   }
 
-  h2 {
-    width: 100%;
-  }
   p {
     text-align: justify;
-    width: 100%;
-  }
-}
-
-@include respond-to(desktop) {
-  .titleWithParagraph {
-    padding: 0 100px;
   }
 }

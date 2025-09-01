@@ -1,11 +1,11 @@
-import { Button, Wave } from "@atoms/index";
+import { Button, Wave, Container } from "@atoms/index";
 import { TitleWithParagraph } from "@molecules/index";
 
 export default function TermsOfUse() {
   return (
-    <>
+    <Container>
       <Wave />
-      <TitleWithParagraph title="Conditions générales d’utilisation">
+      <TitleWithParagraph title="Conditions générales d’utilisation" titleId="terms-of-use-title">
         <p>
           En utilisant cette application, vous acceptez les présentes
           conditions.
@@ -36,9 +36,9 @@ export default function TermsOfUse() {
         </p>
         <p>Les conditions d’utilisation peuvent évoluer à tout moment.</p>
       </TitleWithParagraph>
-      <div className="flex-end">
+      <div className="flex-end" aria-label="Action conditions générales">
         <Button text="Je ne suis pas d’accord" />
       </div>
-    </>
+    </Container>
   );
 }

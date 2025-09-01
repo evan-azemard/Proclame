@@ -1,14 +1,14 @@
-import { Button, Wave } from "@atoms/index";
+import { Button, Wave, Container } from "@atoms/index";
 import { TitleWithParagraph } from "@molecules/index";
 import { SectionForm } from "@organisms/index";
 
 export default function Login() {
   return (
-    <>
+    <Container>
       <Wave />
       <SectionForm type="login" />
       <Wave />
-  <TitleWithParagraph title="Politique des cookies">
+  <TitleWithParagraph title="Politique des cookies" titleId="login-cookies-title">
         <p>
           Cette application utilise des cookies essentiels au bon fonctionnement
           de ses services.
@@ -38,9 +38,9 @@ export default function Login() {
           fonctionnement des services.
         </p>
       </TitleWithParagraph>
-      <div className="flex-end">
+      <div className="flex-end" aria-label="Action politique cookies">
         <Button text="Accepter" />
       </div>
-    </>
+    </Container>
   );
 }

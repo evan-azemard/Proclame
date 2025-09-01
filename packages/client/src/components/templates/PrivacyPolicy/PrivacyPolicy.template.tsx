@@ -1,11 +1,11 @@
-import { Button, Wave } from "@atoms/index";
+import { Button, Wave, Container } from "@atoms/index";
 import { TitleWithParagraph } from "@molecules/index";
 
 export default function PrivacyPolicy() {
   return (
-    <>
+    <Container  aria-labelledby="privacy-policy-title">
       <Wave />
-      <TitleWithParagraph title="Politique de confidentialité">
+      <TitleWithParagraph title="Politique de confidentialité" titleId="privacy-policy-title">
         <p>
           L’application collecte uniquement les données nécessaires à son bon
           fonctionnement, notamment votre nom d’utilisateur et votre adresse
@@ -50,9 +50,9 @@ export default function PrivacyPolicy() {
           mises à jour.
         </p>
       </TitleWithParagraph>
-      <div className="flex-end">
+      <div className="flex-end" aria-label="Action politique de confidentialité">
         <Button text="Je ne suis pas d’accord" />
       </div>
-    </>
+    </Container>
   );
 }

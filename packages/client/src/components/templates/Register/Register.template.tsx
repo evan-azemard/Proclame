@@ -1,16 +1,16 @@
-import { Button, Wave } from "@atoms/index";
+import { Button, Wave, Container } from "@atoms/index";
 import { TitleWithParagraph } from "@molecules/index";
 import { SectionForm } from "@organisms/index";
 
 export default function Register() {
   return (
-    <>
+    <Container>
       <Wave />
       <SectionForm type="register" />
       <Wave />
       <TitleWithParagraph
-        title="Conditions générales
-d’utilisation"
+        title="Conditions générales d’utilisation"
+        titleId="register-terms-title"
       >
         <p>
           En utilisant cette application, vous acceptez les présentes
@@ -41,9 +41,9 @@ d’utilisation"
           d’utilisation peuvent évoluer à tout moment.
         </p>
       </TitleWithParagraph>
-      <div className="flex-end">
+      <div className="flex-end" aria-label="Actions inscription">
         <Button text="valider" />
       </div>
-    </>
+    </Container>
   );
 }

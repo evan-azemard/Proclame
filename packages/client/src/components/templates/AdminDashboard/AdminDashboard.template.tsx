@@ -1,8 +1,10 @@
 
+import { Container, Title } from '@atoms/index';
+
 export default function AdminDashboard() {
   return (
-    <div>
-      <h1>Admin Dashboard</h1>
-    </div>
+    <Container>
+      <Title type={1} id="admin-dashboard-title">Admin Dashboard</Title>
+    </Container>
   );
 }

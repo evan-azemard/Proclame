@@ -109,21 +109,21 @@ body {
   -webkit-overflow-scrolling: touch;
 
   @include respond-to(tablet) {
-    h2,
-    p {
-      width: 50%;
-      margin: 0 auto;
-    }
-    h2 {
-      font-size: 1.9rem;
-    }
+    // h2,
+    // p {
+    //   width: 50%;
+    //   margin: 0 auto;
+    // }
+    // h2 {
+    //   font-size: 1.9rem;
+    // }
   }
   @include respond-to(desktop) {
-    h2,
-    p {
-      width: 50%;
-      margin: 0 auto;
-    }
+    // h2,
+    // p {
+    //   width: 50%;
+    //   margin: 0 auto;
+    // }
   }
 }
 

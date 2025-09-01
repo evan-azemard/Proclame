@@ -1,11 +1,11 @@
-import { Button, Wave } from "@atoms/index";
+import { Button, Wave, Container } from "@atoms/index";
 import { TitleWithParagraph } from "@molecules/index";
 
 export default function LegalNotice() {
   return (
-    <>
+    <Container aria-labelledby="legal-notice-title">
       <Wave />
-      <TitleWithParagraph title="Mention légales">
+      <TitleWithParagraph title="Mention légales" titleId="legal-notice-title">
         <p>
           <strong>Éditeur de l’application</strong>
           <br />
@@ -69,11 +69,11 @@ export default function LegalNotice() {
           l’expérience utilisateur.
         </p>
       </TitleWithParagraph>
-      <div className="flex-end">
+      <div className="flex-end" aria-label="Liens connexes mentions légales">
         <Button text="CGU" to="/terms-of-use" />
         <Button text="COOKIES" to="/cookies-policy" />
         <Button text="PDC" to="/privacy-policy" />
       </div>
-    </>
+    </Container>
   );
 }

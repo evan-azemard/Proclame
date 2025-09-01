@@ -1,4 +1,4 @@
-import { Breadcrumb, Wave } from "@atoms/index";
+import { Breadcrumb, Wave, Container } from "@atoms/index";
 import { SectionGrid } from "@organisms/index";
 import { useLocation } from "react-router-dom";
 
@@ -12,11 +12,11 @@ export default function CategoryProclamations() {
   ];
 
   return (
-    <>
+    <Container>
       <br />
       <Breadcrumb pages={pages} />
       <Wave />
       <SectionGrid type="proclamation" />
-    </>
+    </Container>
   );
 }

@@ -1,11 +1,11 @@
-import { Button, Wave } from "@atoms/index";
+import { Button, Wave, Container } from "@atoms/index";
 import { TitleWithParagraph } from "@molecules/index";
 
 export default function Forbidden403() {
   return (
-    <>
+    <Container  aria-labelledby="forbidden-title">
       <Wave/>
-      <TitleWithParagraph title="Tu n’es pas censé être ici">
+      <TitleWithParagraph title="Tu n’es pas censé être ici" titleId="forbidden-title">
         <p>
           Mais pas de panique, tout va bien. Parfois, les portes se ferment…
           mais ça ne veut pas dire qu’il n’y a rien derrière.
@@ -15,9 +15,9 @@ export default function Forbidden403() {
           moment.
         </p>
       </TitleWithParagraph>
-      <div className="flex-end">
+      <div className="flex-end" aria-label="Action retour">
         <Button text="Accueil" to="/" />
       </div>
-    </>
+    </Container>
   );
 }

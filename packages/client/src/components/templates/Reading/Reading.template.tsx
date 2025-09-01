@@ -1,12 +1,13 @@
-import { Wave } from "@atoms/index";
+import { Wave, Container } from "@atoms/index";
 import styles from "./Reading.module.scss";
 import { TitleWithParagraph } from "@molecules/index";
 export default function Reading() {
   const title = "lorem";
   return (
-    <div className={styles.reading}>
+    <Container  aria-labelledby="reading-title">
+      <div className={styles.reading}>
       <Wave space />
-      <TitleWithParagraph title={title}>
+      <TitleWithParagraph title={title} titleId="reading-title">
         <p>Je proclame que Dieu transforme l’abandon en adoption.</p>
         <p>
           “Le père des orphelins, le défenseur des veuves, c’est Dieu dans sa
@@ -23,6 +24,7 @@ export default function Reading() {
         </p>
       </TitleWithParagraph>
       <Wave />
-    </div>
+      </div>
+    </Container>
   );
 }
