@@ -1,10 +1,12 @@
 
-import { Container, Title } from '@atoms/index';
+import { Container, Wave } from '@atoms/index';
+import { SectionGrid } from '@organisms/index';
 
 export default function Category() {
   return (
     <Container>
-      <Title type={1} id="category-title">Cat</Title>
+      <Wave />
+      <SectionGrid type='category' />
     </Container>
   );
 }
