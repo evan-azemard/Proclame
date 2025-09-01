@@ -1,5 +1,11 @@
-.longueText{
-    line-height: 1.6;
-    color: var(--color-taupe);
-    text-align: justify;
+.longueText {
+  line-height: 1.6;
+  color: var(--color-taupe);
+  text-align: justify;
+}
+
+@include respond-to(desktop) {
+  p {
+    font-size: 0.6rem !important;
+  }
 }

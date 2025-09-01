@@ -1,111 +1,104 @@
-import { Route, Routes } from "react-router-dom";
-import * as Pages from "@pages/index";
+import { Navigate, Route, Routes } from "react-router-dom";
+import * as Templates from "@templates/index";
 import { ProtectedRoute } from "./ProtectedRoute";
 import { AdminRoute } from "./AdminRoute";
 
 export default function RouterProvider() {
-  <Routes>
-    {/* Routes admin */}
-    <Route
-      path="/admin/categories"
-      element={
-        <AdminRoute>
-          <Pages.AdminCategories />
-        </AdminRoute>
-      }
-    />
-    <Route
-      path="/admin/dashboard"
-      element={
-        <AdminRoute>
-          <Pages.AdminDashboard />
-        </AdminRoute>
-      }
-    />
-    <Route
-      path="/admin/kpi"
-      element={
-        <AdminRoute>
-          <Pages.AdminKpi />
-        </AdminRoute>
-      }
-    />
-    <Route
-      path="/admin/login"
-      element={
-        <AdminRoute>
-          <Pages.AdminLogin />
-        </AdminRoute>
-      }
-    />
-    <Route
-      path="/admin/proclamations"
-      element={
-        <AdminRoute>
-          <Pages.AdminProclamations />
-        </AdminRoute>
-      }
-    />
-    <Route
-      path="/admin/sounds"
-      element={
-        <AdminRoute>
-          <Pages.AdminSounds />
-        </AdminRoute>
-      }
-    />
-    <Route
-      path="/admin/users"
-      element={
-        <AdminRoute>
-          <Pages.AdminUsers />
-        </AdminRoute>
-      }
-    />
-    {/* Routes public */}
-    <Route path="/" element={<Pages.Home />} />
-    <Route path="/register" element={<Pages.Register />} />
-    <Route path="/login" element={<Pages.Login />} />
-    <Route path="/sitemap" element={<Pages.Sitemap />} />
-    <Route path="/about" element={<Pages.About />} />
-    <Route path="/terms-of-use" element={<Pages.TermsOfUse />} />
-    <Route path="/contact" element={<Pages.Contact />} />
-    <Route path="/cookies-policy" element={<Pages.CookiesPolicy />} />
-    <Route path="/legal-notice" element={<Pages.LegalNotice />} />
-    <Route path="/privacy-policy" element={<Pages.PrivacyPolicy />} />
-    <Route path="/accessibility" element={<Pages.Accessibility />} />
-    <Route path="/menu" element={<Pages.Menu />} />
-    <Route path="/403" element={<Pages.Forbidden403 />} />
-    <Route path="*" element={<Pages.NotFound404 />} />
+  return (
+    <Routes>
+      {/* Routes admin */}
+      <Route
+        path="/admin/categories"
+        element={
+          <AdminRoute>
+            <Templates.AdminCategories />
+          </AdminRoute>
+        }
+      />
+      <Route
+        path="/admin/"
+        element={
+          <AdminRoute>
+            <Templates.AdminHome />
+          </AdminRoute>
+        }
+      />
 
-    {/* Route protégé */}
-    <Route
-      path="/category/:categoryId/proclamations"
-      element={<Pages.CategoryProclamations />}
-    />
-    <Route
-      path="/favorites"
-      element={
-        <ProtectedRoute>
-          <Pages.Favorites />
-        </ProtectedRoute>
-      }
-    />
-    <Route
-      path="/reading/:proclamationId"
-      element={
-        <ProtectedRoute>
-          <Pages.Reading />
-        </ProtectedRoute>
-      }
-    />
-    <Route
-      path="/profile"
-      element={
-        <ProtectedRoute>
-          <Pages.Profile />
-        </ProtectedRoute>
-      }
-    />
-  </Routes>;
+      <Route
+        path="/admin/proclamations"
+        element={
+          <AdminRoute>
+            <Templates.AdminProclamations />
+          </AdminRoute>
+        }
+      />
+      <Route
+        path="/admin/sounds"
+        element={
+          <AdminRoute>
+            <Templates.AdminSounds />
+          </AdminRoute>
+        }
+      />
+      <Route
+        path="/admin/users"
+        element={
+          <AdminRoute>
+            <Templates.AdminUsers />
+          </AdminRoute>
+        }
+      />
+      {/* Routes public */}
+      <Route path="/" element={<Templates.Home />} />
+      <Route path="/register" element={<Templates.Register />} />
+      <Route path="/login" element={<Templates.Login />} />
+      <Route path="/sitemap" element={<Templates.Sitemap />} />
+      <Route path="/about" element={<Templates.About />} />
+      <Route path="/terms-of-use" element={<Templates.TermsOfUse />} />
+      <Route path="/contact" element={<Templates.Contact />} />
+      <Route path="/cookies-policy" element={<Templates.CookiesPolicy />} />
+      <Route path="/legal-notice" element={<Templates.LegalNotice />} />
+      <Route path="/privacy-policy" element={<Templates.PrivacyPolicy />} />
+      <Route path="/accessibility" element={<Templates.Accessibility />} />
+      <Route path="/menu" element={<Templates.Menu />} />
+      <Route path="/403" element={<Templates.Forbidden403 />} />
+      <Route path="/404" element={<Templates.NotFound404 />} />
+      <Route path="*" element={<Navigate to="/404" replace />} />
+
+      {/* Route protégé */}
+      <Route
+        path="/categories/:categoryId/proclamations"
+        element={<Templates.CategoryProclamations />}
+      />
+
+      <Route
+        path="/categories/"
+        element={<Templates.Category />}
+      />
+      <Route
+        path="/favorites"
+        element={
+          <ProtectedRoute>
+            <Templates.Favorites />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/categories/:categoryId/proclamations/:proclamationId"
+        element={
+          <ProtectedRoute>
+            <Templates.Reading />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/profile"
+        element={
+          <ProtectedRoute>
+            <Templates.Profile />
+          </ProtectedRoute>
+        }
+      />
+    </Routes>
+  );
 }

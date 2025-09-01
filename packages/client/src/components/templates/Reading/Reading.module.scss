@@ -1,0 +1,27 @@
+.reading {
+  padding: 0 25px;
+}
+
+.contentFav {
+  position: absolute;
+  top: 100px;
+  right: 0;
+}
+
+@include respond-to(tablet) {
+  .reading {
+    div {
+      h2 {
+        width: 100%;
+        text-align: center;
+      }
+
+      span {
+        p {
+          text-align: justify;
+          width: 100%;
+        }
+      }
+    }
+  }
+}

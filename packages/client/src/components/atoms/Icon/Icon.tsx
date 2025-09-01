@@ -11,7 +11,7 @@ import Home from "./icons/Icon-home.svg?react";
 import Melody from "./icons/Icon-melody.svg?react";
 import Plus from "./icons/Icon-plus.svg?react";
 import Profil from "./icons/Icon-profil.svg?react";
-import Shofar from "./icons/Icon-shofar.svg?react";
+// Shofar: remplacé par PNG servi depuis /public/converted (pas d'import direct nécessaire)
 import Storm from "./icons/Icon-storm.svg?react";
 import Validate from "./icons/Icon-validate.svg?react";
 import Warning from "./icons/Icon-warning.svg?react";
@@ -28,7 +28,9 @@ export default function Icon({
   uri,
   onClick,
 }: IconProps) {
-  const iconsMap: Record<string, React.FC<React.SVGProps<SVGSVGElement>>> = {
+  type SvgComponent = React.FC<React.SVGProps<SVGSVGElement>>;
+  type IconEntry = SvgComponent | 'shofar';
+  const iconsMap: Record<string, IconEntry> = {
     "arrow-back": ArrowBack,
     "arrow-down": ArrowDown,
     "arrow-up": ArrowUp,
@@ -41,7 +43,7 @@ export default function Icon({
     melody: Melody,
     plus: Plus,
     profil: Profil,
-    shofar: Shofar,
+  shofar: 'shofar',
     storm: Storm,
     validate: Validate,
     warning: Warning,
@@ -53,8 +55,11 @@ export default function Icon({
 
   const handleClick = (event: React.MouseEvent<HTMLSpanElement>) => {
     if (onClick) {
+      if ("vibrate" in navigator) {
+        navigator.vibrate(50);
+      }
       onClick(event);
-      if (event.isPropagationStopped()) return; 
+      if (event.isPropagationStopped()) return;
     }
     if (uri) navigate(uri);
   };
@@ -68,10 +73,19 @@ export default function Icon({
       title={title}
       onClick={handleClick}
     >
-      <IconComponent
-        width={finalWidth}
-        style={{ color: color || "currentColor" }}
-      />
+      {IconComponent === 'shofar' ? (
+        <img
+          src={'/converted/Icon-shofar-256.png'}
+          style={{ width: finalWidth, height: 'auto', filter: color ? `drop-shadow(0 0 0 ${color})` : undefined }}
+          alt={title || name}
+          loading="lazy"
+        />
+      ) : (
+        <IconComponent
+          width={finalWidth}
+          style={{ color: color || "currentColor" }}
+        />
+      )}
     </span>
   );
 }

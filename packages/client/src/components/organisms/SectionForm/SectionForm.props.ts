@@ -1,3 +1,3 @@
 export type SectionFormProps = {
-    type: string
+    type: "login" | "register" | "profile" | "contact" | "adminCategory" | "adminSound" | "adminProclamation"
 }

@@ -13,20 +13,43 @@ export default function Button({ isBack, text, to }: ButtonProps) {
 
   const handleClick = () => {
     if ("vibrate" in navigator) {
-      // vibration API supported
-      navigator.vibrate(1000);
+      navigator.vibrate(50);
     }
 
     if (isBack) {
-      navigate(-1);
+      if (window.history.length > 1) navigate(-1);
+      else navigate("/");
     } else if (to) {
-      navigate(to);
+      const route = to.startsWith("/") ? to : `/${to}`;
+      navigate(route);
     }
   };
 
   return (
-    <button className={styles.button} onClick={handleClick}>
-      <p>{isBack ? <Icon name="arrow-back" title="Retour" /> : text}</p>
-    </button>
+    <>
+      {isBack ? (
+        <>
+          <span
+            className={styles.back}
+            onClick={handleClick}
+            role="link"
+            tabIndex={0}
+            aria-label="Retour"
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                handleClick();
+              }
+            }}
+          >
+            <Icon name="arrow-back" title="Retour" />
+          </span>
+        </>
+      ) : (
+        <button className={styles.button} onClick={handleClick} aria-label={text}>
+          {text}
+        </button>
+      )}
+    </>
   );
 }

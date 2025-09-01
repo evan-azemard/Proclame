@@ -1,4 +1,5 @@
 export type TitleProps = {
-  children: string
-  type?: number
+  children: string;
+  type?: number;
+  id?: string;
 }

@@ -32,9 +32,6 @@ export default defineConfig({
       "@templates": fileURLToPath(
         new URL("./src/components/templates", import.meta.url)
       ),
-      "@pages": fileURLToPath(
-        new URL("./src/components/pages", import.meta.url)
-      ),
       "@store": fileURLToPath(new URL("./src/store", import.meta.url)),
       "@api": fileURLToPath(new URL("./src/api", import.meta.url)),
       "@hooks": fileURLToPath(new URL("./src/hooks", import.meta.url)),

@@ -9,50 +9,76 @@ export default function SectionForm({ type }: SectionFormProps) {
         switch (type) {
           case "login":
             return (
-              <section className={styles.section}>
+              <div className={styles.section}>
                 <MultiInput
                   name="email"
                   type="email"
                   label="Adresse email"
-                  placeholder="Entrez votre adresse email"
+                  placeholder="Entrer votre adresse email"
                 />
                 <MultiInput
                   name="password"
                   type="password"
                   label="Mot de passe"
-                  placeholder="Entrez votre mot de passe"
+                  placeholder="Entrer votre mot de passe"
                 />
                 <MultiInput
                   name="checkbox"
                   type="checkbox"
                   label="J'accepte la politique des cookies"
                 />
-                <div className={styles.buttonGroup}>
+                <div className={`flex-end ${styles.buttonGroup}`}>
                   <Button text="S'inscrire" to="/register" />
                   <Button text="connexion" />
                 </div>
-              </section>
+              </div>
             );
-          case "register":
+          case "contact":
             return (
-              <section className={styles.section}>
+              <div className={styles.section}>
+                <MultiInput
+                  name="email"
+                  type="email"
+                  label="Adresse email"
+                  placeholder="Entrer votre adresse email"
+                />
                 <MultiInput
                   name="username"
                   type="text"
                   label="Nom d'utilisateur"
-                  placeholder="Entrez votre nom d'utilisateur"
+                  placeholder="Entrer votre nom d'utilisateur"
+                />
+                <MultiInput
+                  name="text"
+                  type="textarea"
+                  label="Message"
+                  placeholder="Entrer votre message"
+                />
+                <div className={`flex-end ${styles.buttonGroup}`}>
+                  <Button text="Envoyer" />
+                </div>
+              </div>
+            );
+          case "register":
+            return (
+              <div className={styles.section}>
+                <MultiInput
+                  name="username"
+                  type="text"
+                  label="Nom d'utilisateur"
+                  placeholder="Entrer votre nom d'utilisateur"
                 />
                 <MultiInput
                   name="email"
                   type="email"
                   label="Adresse email"
-                  placeholder="Entrez votre adresse email"
+                  placeholder="Entrer votre adresse email"
                 />
                 <MultiInput
                   name="password"
                   type="password"
                   label="Mot de passe"
-                  placeholder="Entrez votre mot de passe"
+                  placeholder="Entrer votre mot de passe"
                 />
                 <MultiInput
                   name="confirm-password"
@@ -65,26 +91,26 @@ export default function SectionForm({ type }: SectionFormProps) {
                   type="checkbox"
                   label="J'accepte les conditions générales d'utilisation"
                 />
-                <div className={styles.buttonGroup}>
+                <div className={`flex-end ${styles.buttonGroup}`}>
                   <Button text="se connecter" to="/login" />
                   <Button text="valider" />
                 </div>
-              </section>
+              </div>
             );
           case "profile":
             return (
-              <section className={styles.section}>
+              <div className={styles.section}>
                 <MultiInput
                   name="current-password"
                   type="password"
                   label="Mot de passe actuel"
-                  placeholder="Entrez votre mot de passe actuel"
+                  placeholder="Entrer votre mot de passe actuel"
                 />
                 <MultiInput
                   name="new-password"
                   type="password"
                   label="Nouveau mot de passe"
-                  placeholder="Entrez votre nouveau mot de passe"
+                  placeholder="Entrer votre nouveau mot de passe"
                 />
                 <MultiInput
                   name="confirm-new-password"
@@ -92,78 +118,64 @@ export default function SectionForm({ type }: SectionFormProps) {
                   label="Confirmez le nouveau mot de passe"
                   placeholder="Confirmez votre nouveau mot de passe"
                 />
-                <div className={styles.buttonGroup}>
+                <div className={`flex-end ${styles.buttonGroup}`}>
                   <Button text="enregistrer" />
                 </div>
-              </section>
+              </div>
             );
-          case "admin-login":
+          case "adminCategory":
             return (
-              <section className={styles.section}>
-                <MultiInput
-                  name="email"
-                  type="email"
-                  label="Adresse email"
-                  placeholder="Entrez votre adresse email"
-                />
-                <MultiInput
-                  name="password"
-                  type="password"
-                  label="Mot de passe"
-                  placeholder="Entrez votre mot de passe"
-                />
-                <div className={styles.buttonGroup}>
-                  <Button text="connexion" />
-                </div>
-              </section>
-            );
-          case "admin-category":
-            return (
-              <section className={styles.section}>
+              <div className={styles.section}>
                 <MultiInput
                   name="category-name"
                   type="text"
                   label="Nom de la catégorie"
-                  placeholder="Entrez le nom de la catégorie"
+                  placeholder="Entrer le nom de la catégorie"
                 />
-                <div className={styles.buttonGroup}>
+                <div className={`flex-end ${styles.buttonGroup}`}>
                   <Button text="enregistrer" />
                 </div>
-              </section>
+              </div>
             );
-          case "admin-sound":
+          case "adminSound":
             return (
-              <section className={styles.section}>
+              <div className={styles.section}>
                 <MultiInput
                   name="sound-name"
+                  type="text"
+                  label="Nom du son"
+                  placeholder="Entrer le nom du son"
+                />
+                <MultiInput
+                  name="sound-file"
                   type="file"
                   label="Ajouter un son"
-                  placeholder="Sélectionnez un fichier audio"
+                  placeholder="Sélectionner un fichier audio"
                 />
-                <div className={styles.buttonGroup}>
+                <div className={`flex-end ${styles.buttonGroup}`}>
                   <Button text="enregistrer" />
                 </div>
-              </section>
+              </div>
             );
-          case "admin-proclamation":
+          case "adminProclamation":
             return (
-              <section className={styles.section}>
+              <div className={styles.section}>
                 <MultiInput
                   name="proclamation-name"
                   type="text"
                   label="Nom de la proclamation"
-                  placeholder="Entrez le nom de la proclamation"
+                  placeholder="Entrer le nom de la proclamation"
                 />
                 <MultiInput
                   name="proclamation-text"
                   type="textarea"
                   label="Texte de la proclamation"
-                  placeholder="Entrez le texte de la proclamation"
+                  placeholder="Entrer le texte de la proclamation"
                 />
-                <div className={styles.buttonGroup}>
+                <div className={`flex-end ${styles.buttonGroup}`}>
                   <Button text="enregistrer" />
                 </div>
-              </section>
+              </div>
             );
           default:
             return <p>Type de formulaire non reconnu.</p>;
