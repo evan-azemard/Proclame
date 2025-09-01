@@ -1,4 +1,4 @@
-import { Button, Container, MultiInput, Title, Wave } from "@atoms/index";
+import { Button, Container, MultiInput, Wave } from "@atoms/index";
 import { useEffect } from "react";
 import styles from "./AdminUsers.module.scss";
 export default function AdminUsers() {
@@ -34,7 +34,8 @@ export default function AdminUsers() {
               <th>Nom d'utilisateur</th>
               <th>Email</th>
               <th>Dernière connexion</th>
-              <th>Actions</th>
+              <th>Modifier</th>
+              <th>Supprimer</th>
             </tr>
           </thead>
           <tbody>
@@ -44,6 +45,8 @@ export default function AdminUsers() {
               <td>2023-03-15</td>
               <td className={styles.actions}>
                 <Button text="Modifier" />
+              </td>
+                <td className={styles.actions}>
                 <Button text="Supprimer" />
               </td>
             </tr>

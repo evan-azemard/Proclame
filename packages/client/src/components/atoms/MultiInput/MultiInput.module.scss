@@ -61,7 +61,69 @@ select option {
 }
 
 input[type="file"] {
-  display: none;
+  margin-top: 15px;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 2px dashed rgba(var(--color-primary), 0.8);
+  border-radius: var(--radius-input);
+  background: rgba(var(--color-primary), 0.08);
+  color: var(--color-white);
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: border-color .25s ease, background .25s ease, filter .25s ease;
+  
+  &:hover {
+    border-color: rgba(var(--color-primary), 1);
+    background: rgba(var(--color-primary), 0.12);
+  }
+  &:focus-visible {
+    outline: 2px solid rgba(var(--color-primary), 0.9);
+    outline-offset: 2px;
+  }
+
+  // Bouton interne moderne (Chromium, Firefox 98+, Edge, etc.)
+  &::file-selector-button {
+    background: linear-gradient(135deg, rgba(var(--color-primary), 0.95), rgba(var(--color-primary), 0.7));
+    border: none;
+    border-radius: 8px;
+    color: var(--color-white);
+    padding: 0.55rem 1rem;
+    margin-right: 1rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 6px 0 rgba(var(--color-primary), 0.35);
+    transition: transform .2s ease, filter .25s ease, box-shadow .25s ease;
+  }
+  &:hover::file-selector-button {
+    filter: brightness(1.15);
+  }
+  &:active::file-selector-button {
+    transform: translateY(1px);
+    filter: brightness(0.95);
+  }
+
+  // Fallback WebKit (Safari / anciens Chromium)
+  &::-webkit-file-upload-button {
+    background: linear-gradient(135deg, rgba(var(--color-primary), 0.95), rgba(var(--color-primary), 0.7));
+    border: none;
+    border-radius: 8px;
+    color: var(--color-white);
+    padding: 0.55rem 1rem;
+    margin-right: 1rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 6px 0 rgba(var(--color-primary), 0.35);
+    transition: transform .2s ease, filter .25s ease, box-shadow .25s ease;
+  }
+  &:hover::-webkit-file-upload-button {
+    filter: brightness(1.15);
+  }
+  &:active::-webkit-file-upload-button {
+    transform: translateY(1px);
+    filter: brightness(0.95);
+  }
 }
 
 textarea {
@@ -73,6 +135,7 @@ textarea {
   width: 100%;
   gap: 1.5rem;
 }
+
 
 .switch {
   position: relative;

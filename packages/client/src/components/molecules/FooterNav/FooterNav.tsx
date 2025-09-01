@@ -5,6 +5,7 @@ import profilePng from "@atoms/Icon/icons/profile.png";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Button, Icon, Wave } from "@atoms/index";
 import { useEffect, useState } from "react";
+import { useAuthStore } from "@store/authStore";
 
 export default function FooterNav() {
   const navigate = useNavigate();
@@ -16,6 +17,9 @@ export default function FooterNav() {
   useEffect(() => {
     setIsReadingFooter(isReadingPage);
   }, [isReadingPage]);
+
+  const isAdmin = useAuthStore((s) => s.user?.role === "admin");
+  const isLoggedIn = useAuthStore((s) => s.isLoggedIn);
 
   if (location.pathname === "/403") return null;
   if (location.pathname === "/404") return null;
@@ -29,6 +33,10 @@ export default function FooterNav() {
     { src: favoritePng, alt: "Favoris", title: "Favoris", uri: "/favorites" },
     { src: homePng, alt: "Accueil", title: "Accueil", uri: "/" },
     { src: profilePng, alt: "Profil", title: "Profil", uri: "/profile" },
+  ];
+
+  const itemsAdmin = [
+    { src: homePng, alt: "Accueil", title: "Accueil", uri: "/admin/" },
   ];
 
   if (isReadingFooter) {
@@ -62,6 +70,8 @@ export default function FooterNav() {
       </footer>
     );
   }
+
+  if (isLoggedIn) return null;
   return (
     <>
       <footer className={styles.footer}>
@@ -70,7 +80,7 @@ export default function FooterNav() {
             <li>
               <Button isBack />
             </li>
-            {items.map((item) => (
+            {(isAdmin ? itemsAdmin : items).map((item) => (
               <li
                 key={item.uri}
                 onClick={() => handleCLick(item.uri)}

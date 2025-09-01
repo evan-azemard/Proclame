@@ -123,27 +123,7 @@ export default function SectionForm({ type }: SectionFormProps) {
                 </div>
               </div>
             );
-          case "admin-login":
-            return (
-              <div className={styles.section}>
-                <MultiInput
-                  name="email"
-                  type="email"
-                  label="Adresse email"
-                  placeholder="Entrez votre adresse email"
-                />
-                <MultiInput
-                  name="password"
-                  type="password"
-                  label="Mot de passe"
-                  placeholder="Entrez votre mot de passe"
-                />
-                <div className={`flex-end ${styles.buttonGroup}`}>
-                  <Button text="connexion" />
-                </div>
-              </div>
-            );
-          case "admin-category":
+          case "adminCategory":
             return (
               <div className={styles.section}>
                 <MultiInput
@@ -157,11 +137,17 @@ export default function SectionForm({ type }: SectionFormProps) {
                 </div>
               </div>
             );
-          case "admin-sound":
+          case "adminSound":
             return (
               <div className={styles.section}>
                 <MultiInput
                   name="sound-name"
+                  type="text"
+                  label="Nom du son"
+                  placeholder="Entrer le nom du son"
+                />
+                <MultiInput
+                  name="sound-file"
                   type="file"
                   label="Ajouter un son"
                   placeholder="Sélectionner un fichier audio"
@@ -171,7 +157,7 @@ export default function SectionForm({ type }: SectionFormProps) {
                 </div>
               </div>
             );
-          case "admin-proclamation":
+          case "adminProclamation":
             return (
               <div className={styles.section}>
                 <MultiInput
