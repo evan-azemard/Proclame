@@ -5,7 +5,6 @@ import { useEffect, useRef } from "react";
 
 
 export default function SectionGrid({ type }: SectionGridProps) {
-  // Refs pour les rangées de proclamations (utilisé seulement si type === 'proclamation')
   const proclamationRowsRef = useRef<HTMLDivElement[]>([]);
 
   useEffect(() => {

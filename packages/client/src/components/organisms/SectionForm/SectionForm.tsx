@@ -9,7 +9,7 @@ export default function SectionForm({ type }: SectionFormProps) {
         switch (type) {
           case "login":
             return (
-              <section className={styles.section}>
+              <div className={styles.section}>
                 <MultiInput
                   name="email"
                   type="email"
@@ -31,11 +31,11 @@ export default function SectionForm({ type }: SectionFormProps) {
                   <Button text="S'inscrire" to="/register" />
                   <Button text="connexion" />
                 </div>
-              </section>
+              </div>
             );
           case "contact":
             return (
-              <section className={styles.section}>
+              <div className={styles.section}>
                 <MultiInput
                   name="email"
                   type="email"
@@ -57,11 +57,11 @@ export default function SectionForm({ type }: SectionFormProps) {
                 <div className={`flex-end ${styles.buttonGroup}`}>
                   <Button text="Envoyer" />
                 </div>
-              </section>
+              </div>
             );
           case "register":
             return (
-              <section className={styles.section}>
+              <div className={styles.section}>
                 <MultiInput
                   name="username"
                   type="text"
@@ -95,11 +95,11 @@ export default function SectionForm({ type }: SectionFormProps) {
                   <Button text="se connecter" to="/login" />
                   <Button text="valider" />
                 </div>
-              </section>
+              </div>
             );
           case "profile":
             return (
-              <section className={styles.section}>
+              <div className={styles.section}>
                 <MultiInput
                   name="current-password"
                   type="password"
@@ -121,11 +121,11 @@ export default function SectionForm({ type }: SectionFormProps) {
                 <div className={`flex-end ${styles.buttonGroup}`}>
                   <Button text="enregistrer" />
                 </div>
-              </section>
+              </div>
             );
           case "admin-login":
             return (
-              <section className={styles.section}>
+              <div className={styles.section}>
                 <MultiInput
                   name="email"
                   type="email"
@@ -141,11 +141,11 @@ export default function SectionForm({ type }: SectionFormProps) {
                 <div className={`flex-end ${styles.buttonGroup}`}>
                   <Button text="connexion" />
                 </div>
-              </section>
+              </div>
             );
           case "admin-category":
             return (
-              <section className={styles.section}>
+              <div className={styles.section}>
                 <MultiInput
                   name="category-name"
                   type="text"
@@ -155,11 +155,11 @@ export default function SectionForm({ type }: SectionFormProps) {
                 <div className={`flex-end ${styles.buttonGroup}`}>
                   <Button text="enregistrer" />
                 </div>
-              </section>
+              </div>
             );
           case "admin-sound":
             return (
-              <section className={styles.section}>
+              <div className={styles.section}>
                 <MultiInput
                   name="sound-name"
                   type="file"
@@ -169,11 +169,11 @@ export default function SectionForm({ type }: SectionFormProps) {
                 <div className={`flex-end ${styles.buttonGroup}`}>
                   <Button text="enregistrer" />
                 </div>
-              </section>
+              </div>
             );
           case "admin-proclamation":
             return (
-              <section className={styles.section}>
+              <div className={styles.section}>
                 <MultiInput
                   name="proclamation-name"
                   type="text"
@@ -189,7 +189,7 @@ export default function SectionForm({ type }: SectionFormProps) {
                 <div className={`flex-end ${styles.buttonGroup}`}>
                   <Button text="enregistrer" />
                 </div>
-              </section>
+              </div>
             );
           default:
             return <p>Type de formulaire non reconnu.</p>;

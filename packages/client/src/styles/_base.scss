@@ -96,9 +96,8 @@ body {
   flex: 1 1 auto;
   width: 100%;
   min-height: fit-content;
-  overflow-x: hidden; /* prevent horizontal scroll */
+  overflow-x: hidden;
   padding-top: calc(var(--header-height) + 15px);
-  /* Laisser assez d'espace pour le footer fixe (hauteur + offset + marge de respiration) */
   padding-bottom: calc(
     var(--footer-total-height, var(--footer-height)) + var(--footer-offset) +
       20px
@@ -107,24 +106,6 @@ body {
   padding-right: 20px;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-
-  @include respond-to(tablet) {
-    // h2,
-    // p {
-    //   width: 50%;
-    //   margin: 0 auto;
-    // }
-    // h2 {
-    //   font-size: 1.9rem;
-    // }
-  }
-  @include respond-to(desktop) {
-    // h2,
-    // p {
-    //   width: 50%;
-    //   margin: 0 auto;
-    // }
-  }
 }
 
 hr {

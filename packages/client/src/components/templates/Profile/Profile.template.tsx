@@ -1,15 +1,28 @@
 import { Button, Title, Wave, Container } from "@atoms/index";
 import { TitleWithParagraph } from "@molecules/index";
 import { SectionForm } from "@organisms/index";
+import styles from "./Profile.module.scss";
 
 export default function Profile() {
   return (
-    <Container  aria-labelledby="profile-title">
+    <Container aria-labelledby="profile-title">
       <Wave />
-      <p>Dernière connexion le {}</p>
-      <p>Dernière modification du mot de passe le {}</p>
+      <table className={styles.profileTable}>
+        <tbody>
+          <tr>
+            <th style={{ textAlign: "left", paddingRight: 16 }}>Dernière connexion</th>
+            <td>01/09/2025 à 14:32</td>
+          </tr>
+          <tr>
+            <th style={{ textAlign: "left", paddingRight: 16 }}>Dernière modification du mot de passe</th>
+            <td>28/08/2025 à 09:17</td>
+          </tr>
+        </tbody>
+      </table>
       <Wave />
-      <Title type={1} id="profile-password-title">Changer le mot de passe</Title>
+      <Title type={1} id="profile-password-title">
+        Changer le mot de passe
+      </Title>
       <SectionForm type="profile" />
       <Wave />
       <TitleWithParagraph title="Mes données" titleId="profile-title">

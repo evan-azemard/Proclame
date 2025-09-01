@@ -9,7 +9,6 @@
 }
 
 .navCategory {
-  padding: 1rem;
   overflow: auto;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -32,7 +31,6 @@
   height: 100%;
   max-height: 100%;
   scrollbar-width: none;
-  padding: 5px;
   ul {
     li {
       font-size: 0.8em;
@@ -59,7 +57,7 @@
   scrollbar-width: none;
   -ms-overflow-style: none;
   align-items: stretch;
-  justify-content: flex-start; /* toujours aligné à gauche quand scrollable */
+  justify-content: flex-start;
   scroll-snap-type: x mandatory;
 }
 
@@ -67,22 +65,19 @@
   display: none;
 }
 
-/* Variante centrée (ajouter cette classe via JSX si < nombre minimal de cartes) */
-/* Classe ajoutée en JS quand la ligne ne déborde pas: centre les cartes et supprime le scroll */
 .noOverflow {
   justify-content: center !important;
   overflow-x: hidden;
 }
 
 .proclamationCard {
-  flex: 0 0 240px; /* largeur mobile */
+  flex: 0 0 240px;
   width: 240px;
   display: flex;
   scroll-snap-align: start;
 }
 @include respond-to(tablet) {
   .proclamationCard {
-    /* permettre à la carte interne (.article) de s'élargir */
     flex: 0 0 340px;
     width: auto;
     max-width: 420px;
@@ -90,7 +85,7 @@
 }
 
 @include respond-to(desktop) {
-  .sectionGrid{
+  .sectionGrid {
     padding-left: 50px;
   }
   .proclamationCard {
@@ -113,7 +108,6 @@
   }
 
   .navMenu {
-    padding: 25px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     column-gap: 16px;
