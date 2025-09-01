@@ -1,0 +1,19 @@
+.sitemapList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  li {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 6px;
+    transition: 0.1s !important;
+  }
+
+  li:hover {
+    color: white;
+    transition: 0.1s !important;
+
+  }
+}
