@@ -1,0 +1,9 @@
+.container {
+  width: 100%;
+}
+
+@include respond-to("tablet") {
+  .container {
+    padding: 0 100px;
+  }
+}
