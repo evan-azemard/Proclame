@@ -1,5 +1,21 @@
 @use "./mixins" as *;
 @use "./responsive" as *;
+
+// Margins utilitaires
+@for $i from 1 through 10 {
+  .mb-#{$i} {
+    margin-bottom: 0.25rem * $i;
+  }
+  .mt-#{$i} {
+    margin-top: 0.25rem * $i;
+  }
+  .ml-#{$i} {
+    margin-left: 0.25rem * $i;
+  }
+  .mr-#{$i} {
+    margin-right: 0.25rem * $i;
+  }
+}
 * {
   box-sizing: border-box;
   scrollbar-width: none; /* Firefox */
@@ -134,9 +150,18 @@ h6 {
   @include respond-to(desktop) {
     width: 100%;
     margin: 1rem auto;
-
-    button {
-      font-size: 0.5rem !important;
-    }
   }
+}
+
+@include respond-to(desktop) {
+  button {
+    font-size: 0.5rem !important;
+  }
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }

@@ -25,8 +25,6 @@ export default function Button({ isBack, text, to }: ButtonProps) {
     }
   };
 
-  const className = styles.button;
-
   return (
     <>
       {isBack ? (
@@ -48,7 +46,7 @@ export default function Button({ isBack, text, to }: ButtonProps) {
           </span>
         </>
       ) : (
-        <button className={className} onClick={handleClick} aria-label={text}>
+        <button className={styles.button} onClick={handleClick} aria-label={text}>
           {text}
         </button>
       )}
