@@ -16,29 +16,14 @@ export default function RouterProvider() {
         }
       />
       <Route
-        path="/admin/dashboard"
-        element={
-          // <AdminRoute>
-            <Templates.AdminDashboard />
-          // </AdminRoute>
-        }
-      />
-      <Route
-        path="/admin/kpi"
+        path="/admin/"
         element={
           <AdminRoute>
-            <Templates.AdminKpi />
+            <Templates.AdminHome />
           </AdminRoute>
         }
       />
-      <Route
-        path="/admin/login"
-        element={
-          <AdminRoute>
-            <Templates.AdminLogin />
-          </AdminRoute>
-        }
-      />
+
       <Route
         path="/admin/proclamations"
         element={

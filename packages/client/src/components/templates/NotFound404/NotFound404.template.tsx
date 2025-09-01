@@ -3,12 +3,12 @@ import { TitleWithParagraph } from "@molecules/index";
 import { useEffect } from "react";
 
 export default function NotFound404() {
-    useEffect(() => {
-      window.scrollTo(0, 0);
-    }, []);
-  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
-    <Container  aria-labelledby="not-found-title">
+    <Container aria-labelledby="not-found-title">
       <Wave />
       <TitleWithParagraph
         title="Cette page semble 

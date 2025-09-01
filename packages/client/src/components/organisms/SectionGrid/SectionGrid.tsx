@@ -37,7 +37,6 @@ export default function SectionGrid({ type }: SectionGridProps) {
 
   const navItemAdmin = [
     { title: "Déconnexion", uri: "/logout" },
-    { title: "Tableau de bord", uri: "/admin/dashboard" },
     { title: "Utilisateurs", uri: "/admin/users" },
     { title: "Proclamations", uri: "/admin/proclamations" },
     { title: "Sons", uri: "/admin/sounds" },

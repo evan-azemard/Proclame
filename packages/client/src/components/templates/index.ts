@@ -1,9 +1,7 @@
 export { default as Home } from "./Home/Home.template";
 export { default as About } from "./About/About.template";
 export { default as AdminCategories } from "./AdminCategories/AdminCategories.template";
-export { default as AdminDashboard } from "./AdminDashboard/AdminDashboard.template";
-export { default as AdminKpi } from "./AdminKpi/AdminKpi.template";
-export { default as AdminLogin } from "./AdminLogin/AdminLogin.template";
+export { default as AdminHome } from "./AdminHome/AdminHome.template";
 export { default as AdminProclamations } from "./AdminProclamations/AdminProclamations.template";
 export { default as AdminSounds } from "./AdminSounds/AdminSounds.template";
 export { default as AdminUsers } from "./AdminUsers/AdminUsers.template";

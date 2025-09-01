@@ -5,14 +5,18 @@ import { useEffect } from "react";
 
 export default function Menu() {
   const isLoggedIn = useAuthStore((s) => s.isLoggedIn);
-
+  const isAdmin = useAuthStore((s) => s.user?.role === "admin");
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   return (
     <Container>
-      <SectionGrid type={!isLoggedIn ? "menu" : "menuGuest"} />
+      {isAdmin ? (
+        <SectionGrid type="admin" />
+      ) : (
+        <SectionGrid type={!isLoggedIn ? "menu" : "menuGuest"} />
+      )}
     </Container>
   );
 }

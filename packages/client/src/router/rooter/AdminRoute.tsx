@@ -10,8 +10,10 @@ export function AdminRoute({
   const isLoggedIn = useAuthStore((s) => s.isLoggedIn);
   const isAdmin = isLoggedIn && user?.role === "admin";
 
-  if (!isLoggedIn) return <Navigate to='/login' replace />
-  if (!isAdmin) return <Navigate to="/403" replace />;
+  if (isLoggedIn) return <Navigate to='/login' replace />
+  if (isAdmin) return <Navigate to="/403" replace />;
+  // if (!isLoggedIn) return <Navigate to='/login' replace />
+  // if (!isAdmin) return <Navigate to="/403" replace />;
 
   return <>{children}</>;
 }
