@@ -28,7 +28,8 @@ const translations: Record<string, string> = {
   "/privacy-policy": "Politique de confidentialité",
   "/menu": "Menu",
   "/favorite": "Favori",
-  "/profil": "profil",
+  "/profil": "Profil",
+  "/categories": "Categories ",
   "/403": "Accès interdit",
   "*": "Page non trouvée",
 
@@ -44,6 +45,23 @@ export default function HeaderNav() {
   const navigate = useNavigate();
   const pageTitle = translations[location.pathname] || "Page inconnue";
 
+  // Le masquage du Header est maintenant géré dans AppLayout via l'URL.
+
+  const handleClick = (home: string) => {
+    if ("vibrate" in navigator) {
+      navigator.vibrate(50);
+      if (home == "home") {
+        navigate("/");
+        return;
+      }
+      if (location.pathname === "/menu") {
+        navigate(-1);
+      } else {
+        navigate("/menu");
+      }
+    }
+  };
+
   return (
     <>
       <header className={styles.header}>
@@ -55,7 +73,7 @@ export default function HeaderNav() {
                   className={styles.logo}
                   src={logo}
                   alt="Logo du site, un shofar"
-                  onClick={() => navigate("/")}
+                  onClick={() => handleClick("home")}
                 />
               </li>
             </ul>
@@ -67,7 +85,7 @@ export default function HeaderNav() {
         <img
           src={burger}
           alt="Logo du menu"
-          onClick={() => navigate("/menu")}
+          onClick={() => handleClick("")}
           className={styles.menu}
         />
       </header>

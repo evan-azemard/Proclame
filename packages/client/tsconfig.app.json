@@ -23,12 +23,11 @@
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
-     "paths": {
+    "paths": {
       "@atoms/*": ["components/atoms/*"],
       "@molecules/*": ["components/molecules/*"],
       "@organisms/*": ["components/organisms/*"],
       "@templates/*": ["components/templates/*"],
-      "@pages/*": ["components/pages/*"],
 
       "@store/*": ["store/*"],
       "@api/*": ["api/*"],

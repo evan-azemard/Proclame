@@ -17,7 +17,7 @@
   z-index: 101;
   transition: transform 1s ease, top .5s ease;
 
-  div:first-child {
+  .dialog__content {
     overflow: auto;
     height: 70%;
   }
@@ -33,7 +33,10 @@
     justify-content: space-around;
   }
 
-  @include respond-to(desktop) {
+}
+
+@include respond-to(desktop) {
+  .dialog {
     min-height: 300px;
   }
 }

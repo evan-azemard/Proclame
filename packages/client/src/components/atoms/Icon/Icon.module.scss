@@ -1,9 +1,11 @@
+/* Couleur principale des icônes (ex-amber) */
 .icon {
   cursor: pointer;
   display: inline-flex;
-  color: var(--color-amber-icon);
-
-  svg{
-  width: 2rem;  
+  svg {
+    width: var(--icon-size, 2rem);
+    height: var(--icon-size, 2rem);
+    flex-shrink: 0;
+    display: block;
   }
 }

@@ -1,5 +1,6 @@
 import type { CardNavProps } from "./CardNav.props";
 import styles from "./CardNav.module.scss";
+
 import { useNavigate } from "react-router-dom";
 
 export default function CardNav({ title, uri }: CardNavProps) {
@@ -7,7 +8,9 @@ export default function CardNav({ title, uri }: CardNavProps) {
 
   if (!title || !uri) return null;
 
+
   const handleClick = () => {
+    if (window?.navigator?.vibrate) window.navigator.vibrate(30);
     navigate(uri);
   };
 

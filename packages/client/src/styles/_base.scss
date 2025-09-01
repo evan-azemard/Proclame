@@ -1,10 +1,40 @@
 @use "./mixins" as *;
 @use "./responsive" as *;
+
+// Margins utilitaires
+@for $i from 1 through 10 {
+  .mb-#{$i} {
+    margin-bottom: 0.25rem * $i;
+  }
+  .mt-#{$i} {
+    margin-top: 0.25rem * $i;
+  }
+  .ml-#{$i} {
+    margin-left: 0.25rem * $i;
+  }
+  .mr-#{$i} {
+    margin-right: 0.25rem * $i;
+  }
+}
 * {
   box-sizing: border-box;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
 }
 
+*::-webkit-scrollbar {
+  display: none;
+  /* Chrome/Safari/Webkit */
+  and::-webkit-scrollbar {
+    display: none;
+    /* Chrome/Safari/Webkit */
+  }
+}
 html {
+  overflow-x: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
   @include fluid-font(calc(var(--font-font-size-px, 16px)), 2vw, 32px);
   @include respond-to(tablet) {
     @include fluid-font(
@@ -13,27 +43,29 @@ html {
       32px
     );
   }
+  @include respond-to(tablet) {
+    overflow-x: hidden;
+    overflow-y: auto;
+    scrollbar-width: auto;
+    -ms-overflow-style: auto;
+  }
+
   @include respond-to(desktop) {
+    overflow-x: hidden;
+    overflow-y: auto;
+    scrollbar-width: auto;
+    -ms-overflow-style: auto;
     @include fluid-font(calc(var(--font-font-size-px, 21px) + 5px), 3vw, 32px);
   }
+}
 
-  overflow-x: scroll;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-
-  @include respond-to(tablet) {
-    overflow-x: hidden; 
-    overflow-y: auto;
-    scrollbar-width: auto;
-    -ms-overflow-style: auto;
-  }
-
-  @include respond-to(desktop) {
-    overflow-x: hidden; 
-    overflow-y: auto;
-    scrollbar-width: auto;
-    -ms-overflow-style: auto;
-  }
+/* Ensure React root fills the viewport. */
+#root {
+  /* Make the app a vertical flex container so the main content can grow */
+  min-height: 100dvh; /* dynamic vh handles mobile browser UI */
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 h1 {
@@ -41,6 +73,9 @@ h1 {
 }
 h2 {
   @include fluid-font(2rem, 4vw, 3rem);
+  @include respond-to(desktop) {
+    @include fluid-font(1.5rem, 4vw, 1rem);
+  }
 }
 h3 {
   @include fluid-font(1.5rem, 3vw, 2.5rem);
@@ -52,7 +87,6 @@ p,
 label,
 input,
 textarea,
-button,
 li,
 span {
   @include fluid-font(1rem, 2vw, 1.2rem);
@@ -63,24 +97,36 @@ span {
 
 body {
   font-family: var(--font-main);
-  background: var(--color-bg-dark);
-  color: var(--color-taupe);
-  padding: 100px 15px;
+  background: rgb(var(--color-noir));
+  margin: 0;
+  color: rgb(var(--color-taupe));
   min-height: 100vh;
   min-width: 100vw;
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 }
 
-main {
+.mainLayout {
+  flex: 1 1 auto;
   width: 100%;
+  min-height: fit-content;
+  overflow-x: hidden;
+  padding-top: calc(var(--header-height) + 15px);
+  padding-bottom: calc(
+    var(--footer-total-height, var(--footer-height)) + var(--footer-offset) +
+      20px
+  );
+  padding-left: 20px;
+  padding-right: 20px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 hr {
   border: none;
   height: 1px;
-  background-color: var(--color-taupe);
+  background-color: rgb(var(--couleur-taupe));
 }
 
 h1,
@@ -90,4 +136,32 @@ h4,
 h5,
 h6 {
   font-weight: var(--font-titles-weight);
+}
+
+.flex-end {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: end;
+  gap: 1rem;
+
+  button {
+    font-size: 0.8rem;
+  }
+  @include respond-to(desktop) {
+    width: 100%;
+    margin: 1rem auto;
+  }
+}
+
+@include respond-to(desktop) {
+  button {
+    font-size: 0.5rem !important;
+  }
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }

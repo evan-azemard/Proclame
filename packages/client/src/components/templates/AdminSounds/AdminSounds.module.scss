@@ -1,0 +1,39 @@
+.tableContainer {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+}
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border: 3px solid rgba(var(--color-primary), 0.4);
+  border-radius: 25px;
+  padding: 15px;
+  &:hover,
+  &:active {
+    box-shadow: 0 2px 12px 0 rgba(83, 82, 82, 0.699);
+  }
+
+  thead {
+    th {
+      text-align: center;
+      padding: 15px 16px;
+      border-bottom: 3px solid rgba(var(--color-primary), 0.4);
+      font-weight: 600;
+    }
+  }
+
+  tbody {
+    width: 100%;
+
+    td {
+      text-align: center;
+      padding: 15px 16px;
+      border-bottom: 1px solid rgba(var(--color-primary), 0.2);
+    }
+  }
+
+  button {
+    font-size: 0.7rem;
+  }
+}

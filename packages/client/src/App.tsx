@@ -1,14 +1,13 @@
-import { FooterNav, HeaderNav } from "@molecules/index";
 import { BrowserRouter } from "react-router-dom";
+import RouterProvider from "./router/rooter";
+import RootLayout from "./layouts/RootLayout";
 
 export default function App() {
   return (
     <BrowserRouter>
-      <HeaderNav />
-      <main>
-
-      </main>
-      <FooterNav />
+      <RootLayout>
+        <RouterProvider />
+      </RootLayout>
     </BrowserRouter>
   );
 }

@@ -1,86 +1,132 @@
 // Variables CSS — gardées modifiables dynamiquement après le build
 :root {
-  /* Polices */
+  /*********************************
+   * POLICES
+   *********************************/
   --font-main: "Open Sans", Arial, sans-serif;
   --font-titles-weight: 800;
 
-  /* Couleurs (noms alignés sur l'apparence réelle) */
-  --color-rose-fad: #ff4c6734; /* corail / rose */
-  --color-rose: #ff4c67; /* corail / rose */
-  --color-taupe: #a69e94; /* texte principal et lignes/separators */
-  --color-ink: #000000; /* couleur d'encre — utilisé comme 'noir' pour fonds/contrastes */
-  --color-bordeaux: #632d2d; /* accents sombres / ombres */
-  --color-bg-dark: #000000; /* background global de l'app */
-  --color-white: #ffffff71; // Text ...
-  --color-title: #dbd2bb86; // Text ...
-  --color-label-muted: rgba(255, 255, 255, 0.196);
+  /*********************************
+   * PALETTE (valeurs RGB nues)
+   *********************************/
+  --color-primary: 67, 87, 207; /* ancien: color-primary */
+  --color-primaryRGB: rgb(67, 87, 207); /* ancien: color-primary */
+  --color-taupe: 166, 158, 148; /* ancien: color-taupe */
+  --color-taupeRGB: rgb(166, 158, 148); /* ancien: color-taupe */
+  --color-noir: 0, 0, 0; /* ancien: color-ink/bg-dark */
+  --color-noirRGB: rgb(0, 0, 0); /* ancien: color-ink/bg-dark */
+  --color-prune: 110, 29, 72; /* ancien: color-bordeaux */
+  --color-pruneRGB: rgb(110, 29, 72); /* ancien: color-bordeaux */
+  --color-white: 255, 255, 255; /* ancien: color-white */
+  --color-whiteRGB: rgb(255, 255, 255); /* ancien: color-white */
+  --color-title: 219, 210, 187; /* ancien: color-title */
+  --color-titleRGB: rgb(219, 210, 187); /* ancien: color-title */
+  --color-label-muet: 255, 255, 255; /* ancien: color-label-muted */
+  --color-label-muetRGB: rgb(255, 255, 255); /* ancien: color-label-muted */
 
-  /* Dégradés (section claire) */
+  --color-wave: rgba(var(--color-primary), 0.7);
+  /*********************************
+   * OPACITÉ GLOBALE DES DEGRADÉS
+   *********************************/
+  --opacity: 0.4;
+
+  /*********************************
+   * DEGRADES GENERIQUES
+   *********************************/
+  /* DEFAULT (surfaces génériques) */
   --gradient-default: linear-gradient(
     32deg,
-    var(--color-rose) 1%,
-    var(--color-ink) 50%,
-    ² var(--color-bordeaux) 70%
+    rgba(var(--color-primary), var(--opacity)) 1%,
+    rgba(var(--color-noir), var(--opacity)) 50%,
+    rgba(var(--color-primary), 0) 70%
   );
 
+  /* CARTES */
   --gradient-card: linear-gradient(
     124deg,
-    var(--color-rose) 10%,
-    var(--color-ink) 70%,
-    var(--color-bordeaux) 100%
+    rgba(var(--color-primary), var(--opacity)) 10%,
+    rgba(var(--color-noir), 0) 70%,
+    rgba(var(--color-prune), var(--opacity)) 100%
   );
 
+  /* CARTES NAVIGATION */
   --gradient-card-nav: linear-gradient(
     -15deg,
-    var(--color-ink) 1%,
-    black 65%,
-    var(--color-rose) 95%
+    rgba(var(--color-noir), var(--opacity)) 1%,
+    rgba(var(--color-noir), var(--opacity)) 65%,
+    rgba(var(--color-primary), var(--opacity)) 95%
   );
 
-  /* Dégradés spécifiques (modifiable individuellement) */
+  /*********************************
+   * DEGRADES SPECIFIQUES
+   *********************************/
+  /* INPUTS */
   --gradient-input: linear-gradient(
     90deg,
-    rgba(0, 0, 0, 1) 9%,
-    rgba(209, 62, 85, 0.47) 54%,
-    rgba(0, 0, 0, 1) 90%
+    rgba(var(--color-noir), var(--opacity)) 9%,
+    rgba(var(--color-primary), var(--opacity)) 54%,
+    rgba(var(--color-noir), var(--opacity)) 90%
   );
 
+  /* MODALES */
   --gradient-modal: linear-gradient(
     90deg,
-    rgba(0, 0, 0, 1) 9%,
-    rgba(209, 62, 85, 0.47) 54%,
-    rgba(0, 0, 0, 1) 90%
+    rgba(var(--color-noir), var(--opacity)) 9%,
+    rgba(var(--color-primary), var(--opacity)) 54%,
+    rgba(var(--color-noir), var(--opacity)) 90%
   );
+  /* HEADER */
   --gradient-header: linear-gradient(
     18deg,
-    rgb(33, 8, 10) 0%,
-    rgba(0, 0, 0, 1) 18%,
-    rgba(168, 45, 64, 0.71) 58%,
-    rgba(0, 0, 0, 1) 86%,
-    rgb(25, 4, 7) 100%
+    rgba(33, 8, 10, var(--opacity)) 0%,
+    rgba(var(--color-noir), var(--opacity)) 18%,
+    rgba(var(--color-primary), var(--opacity)) 58%,
+    rgba(var(--color-noir), var(--opacity)) 86%,
+    rgba(25, 4, 7, var(--opacity)) 100%
   );
+  /* FOOTER */
   --gradient-footer: linear-gradient(
     18deg,
-    rgb(32, 5, 8) 0%,
-    rgba(0, 0, 0, 1) 18%,
-    rgba(168, 45, 64, 0.71) 58%,
-    rgba(0, 0, 0, 1) 86%,
-    rgb(20, 4, 7) 100%
+    rgba(32, 5, 8, var(--opacity)) 0%,
+    rgba(var(--color-noir), 0.1) 18%,
+    rgba(var(--color-primary), .3) 58%,
+    rgba(var(--color-noir), .1) 86%,
+    rgba(20, 4, 7, var(--opacity)) 100%
   );
+  /* BOUTONS */
   --gradient-button: linear-gradient(
     15deg,
-    var(--color-rose-fad) 0%,
-    var(--color-ink) 10%,
-    var(--color-rose) 100%
-  ); 
-  
+    rgba(var(--color-primary), 1) 0%,
+    rgba(var(--color-noir), var(--opacity)) 10%,
+    rgba(var(--color-primary), 0.7) 100%
+  );
 
-  /* Rayons / formes */
+  /*********************************
+   * RAYONS / FORMES
+   *********************************/
   --radius-card: 8px;
   --radius-button: 40px;
   --radius-modal: 30px;
   --radius-input: 25px;
 
-  /* Taille */
+  /*********************************
+   * TAILLE BASE
+   *********************************/
   --font-font-size-px: 16px;
+
+  /* Header / Footer heights (mobile-first defaults) */
+  --header-height: 70px; /* mobile default */
+  --footer-height: 62px; /* mobile default (includes padding + icon) */
+  --footer-offset: 15px; /* distance from bottom for fixed footer */
+  --footer-padding: 15px; /* vertical + horizontal padding (uniform) */
+  /* Total outer height (content height + vertical padding) used for layout spacing */
+  --footer-total-height: calc(var(--footer-height) + (2 * var(--footer-padding)));
+
+  --box-shadow: 0 4px 32px 0 rgba(var(--color-primary), 0.2),
+    0 1.5px 6px 0 rgba(255, 255, 255, 0.8) inset,
+    0 0 0 2px rgba(var(--color-primary), 0.1) inset !important;
+
+  --box-shadow-header: 0 0 0 0 rgba(var(--color-primary), 0.5),
+    0 -1px 5px 0 rgba(255, 255, 255, 0.9) inset,
+    0 0 0 2px rgba(var(--color-primary), 0.235) inset !important;
 }

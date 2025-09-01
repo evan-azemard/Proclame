@@ -1,78 +1,147 @@
+/* Card proclamation – design épuré */
 .article {
-  background: var(--gradient-card);
-  width: 15rem;
+  --card-min: 210px;
+  --card-max: 300px;
+  width: clamp(var(--card-min), 30vw, var(--card-max));
+  box-sizing: border-box;
+  min-height: 200px;
+  max-height: 200px;
   height: 200px;
+  background: var(--gradient-card);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: var(--radius-card);
-  position: relative;
+  padding: 1rem 1rem 1.05rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  padding: 15px;
+  gap: 0.75rem;
+  position: relative;
+  box-shadow: var(--box-shadow);
+  backdrop-filter: blur(4px);
   cursor: pointer;
-  box-shadow: 0 4px 32px 0 rgba(116, 18, 101, 0.31),
-    0 1.5px 6px 0 rgba(255, 255, 255, 0.641) inset,
-    0 0 0 2px var(--color-rose-fad) inset;
-  backdrop-filter: blur(12px);
-  span {
-    width: 50px;
-    display: flex;
-    justify-content: end;
-    height: 35px;
-    position: absolute;
-    right: 15px;
-    top: 15px;
+  transition: box-shadow 0.2s ease, transform 0.2s ease, filter 0.25s ease;
+  overflow: hidden;
+}
+.article:hover,
+.article:active {
+  filter: brightness(1.18);
+}
 
-    svg {
-      width: 1.5rem;
-    }
-  }
+.article:focus-within {
+  outline: 2px solid var(--color-rose-fad);
+  outline-offset: 2px;
+}
 
-  header {
-    display: flex;
-    width: 80%;
+/* Header */
+.header {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+}
+.titleWrap {
+  flex: 1 1 0;
+  min-width: 0;
+}
+/* Titre multi‑ligne (2) */
+.titleWrap > * {
+  font-size: 1.08rem;
+  line-height: 1.18;
+  font-weight: 650;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  letter-spacing: 0.25px;
+  word-break: break-word;
+  hyphens: auto;
+}
+.favWrapper {
+  position: relative;
+  min-width: 2.15rem;
+  min-height: 2.15rem;
+}
 
-    h2 {
-      font-size: 1.3rem;
-      max-width: 100%;
-      overflow-x: auto;
-      overflow-y: hidden;
-    }
-  }
-  main {
-    padding: 5px;
-    overflow: hidden;
+.favWrapper svg {
+  width: 1.35rem;
+  height: 1.35rem;
+}
+/* debug */
+/* (debug retiré) */
 
-    p {
-      display: block;
-      height: 100%;
-      overflow: hidden;
-    }
-  }
-  &:active {
-    transform: scale(1.05);
-    filter: brightness(2);
-  }
+/* Corps */
+.main {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  overflow: hidden;
+  margin-top: 0.2rem;
+}
+
+.desc {
+  font-size: 0.9rem;
+  line-height: 1.45;
+  margin: 0;
+  color: var(--color-text, #ebe2d5);
+  width: 100%;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1 1 auto;
+  min-height: 0;
 }
 
 @include respond-to(tablet) {
-  .article header h2 {
-    font-size: 0.8rem;
+  .article {
+    /* élargir + augmenter hauteur sur tablette */
+    --card-min: 320px;
+    --card-max: 420px;
+    width: clamp(var(--card-min), 35vw, var(--card-max));
+    min-height: 260px;
+    max-height: 320px;
+    height: 300px; /* hauteur visuelle cible */
   }
-  p {
-    font-size: 0.64rem;
+  .titleWrap > h2 {
+    font-size: 1.12rem;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+
+  .main p {
+    font-size: 0.92rem;
+    margin: 0 !important;
+    padding: 0;
+    width: 100%;
   }
 }
 
 @include respond-to(desktop) {
-  .article:hover {
-    transform: scale(1.05);
-    filter: brightness(2);
+  .article {
+    /* encore plus large sur desktop */
+    --card-min: 360px;
+    --card-max: 480px;
+    width: clamp(var(--card-min), 28vw, var(--card-max));
+    min-height: 300px;
+    max-height: 360px;
+    height: 340px;
   }
+  .titleWrap > h2 {
+    font-size: 1rem;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  } 
 
-  .article header h2 {
+  .main p {
     font-size: .8rem;
-  }
-  p {
-    font-size: .7rem;
+    margin: 0;
+    padding: 0;
+    width: 100%;
   }
 }
