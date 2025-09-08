@@ -8,7 +8,12 @@
   "dev": "concurrently \"pnpm dev:client\" \"pnpm dev:server\"",
   "dev:https:client": "pnpm --filter client dev:https",
   "dev:https:server": "pnpm --filter server dev:https",
-  "dev:https": "concurrently \"pnpm dev:https:client\" \"pnpm dev:https:server\""
+  "dev:https": "concurrently \"pnpm dev:https:client\" \"pnpm dev:https:server\"",
+  "build;client": "pnpm --filter client build",
+  "build:server": "pnpm --filter server build",
+  "build": "pnpm build:client && pnpm build:server",
+  "generate": "drizzle-kit-generate --config=packages/server/src/config/drizzle.ts",
+  "migrate": "tsx packages/server/src/config/migrate.ts"
   },
   "workspaces": [
     "packages/*"
