@@ -3,7 +3,6 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import { env } from 'config/env';
 
-// Create and configure Express application (no server.listen here)
 const app = express();
 
 app.use(cors({
