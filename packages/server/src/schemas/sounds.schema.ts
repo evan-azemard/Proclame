@@ -2,7 +2,7 @@ import { pgTable, timestamp, uuid, varchar } from "drizzle-orm/pg-core";
 import { status } from "./status.schema";
 
 export const sounds = pgTable('sounds', {
-    id: uuid('id').primaryKey().defaultRandom(),
+    id: uuid('id').primaryKey().defaultRandom().notNull(),
     label: varchar('label', {length: 50}).notNull().unique(),
     description: varchar('description', {length: 255}),
     iconUri: varchar('icon_uri', {length: 255}).notNull().unique(),

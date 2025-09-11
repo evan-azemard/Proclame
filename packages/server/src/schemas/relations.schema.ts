@@ -67,3 +67,13 @@ export const statusRelations = relations(status, ({ many }) => ({
   categories: many(categories),
   sounds: many(sounds),
 }));
+
+export const usersRelations = relations(users, ({ many, one }) => ({
+  proclamations: many(proclamations),
+  categories: many(categories),
+  favorites: many(favorites),
+  role: one(roles, {
+    fields: [users.roleId],
+    references: [roles.id],
+  }),
+}));

@@ -4,7 +4,7 @@ import { status } from "./status.schema";
 import { users } from "./users.schema";
 
 export const proclamations = pgTable("proclamations", {
-  id: uuid("id").primaryKey().defaultRandom(),
+  id: uuid("id").primaryKey().defaultRandom().notNull(),
   title: varchar("title", { length: 50 }).notNull().unique(),
   description: text("description").notNull(),
   categoryId: uuid("category_id")
