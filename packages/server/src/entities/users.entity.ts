@@ -1,0 +1,5 @@
+import { users } from "@/schemas";
+export type User = typeof users.$inferSelect;
+export type PublicUser = Omit<User, "password">;
+export type NewUser = typeof users.$inferInsert;
+export type UpdateUser = Partial<NewUser>;
