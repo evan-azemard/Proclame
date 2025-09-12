@@ -33,9 +33,9 @@ export const userModel = {
       },
     }),
 
-  create: async (user: NewUser): Promise<PublicUser | undefined> => {
+  create: async (newUserData: NewUser): Promise<PublicUser | undefined> => {
     //return db.execute(sql`INSERT INTO users (email, password, username, roleId) VALUES (${user.email}, ${user.password}, ${user.username}, ${user.roleId}) RETURNING *`);
-    const result = await db.insert(users).values(user).returning({
+    const createdUser = await db.insert(users).values(newUserData).returning({
       id: users.id,
       email: users.email,
       username: users.username,
@@ -44,13 +44,29 @@ export const userModel = {
       updatedAt: users.updatedAt,
       lastLogin: users.lastLogin,
     });
-    return result[0];
+    return createdUser[0];
   },
 
-  update: async (userId: string, user: UpdateUser): Promise<number> => {
+  update: async (
+    userId: string,
+    updateUserData: UpdateUser
+  ): Promise<PublicUser | undefined> => {
     // return db.execute(sql`UPDATE users SET email = ${user.email}, password = ${user.password}, username = ${user.username}, roleId = ${user.roleId} WHERE id = ${userId} RETURNING *`);
-    const result = await db.update(users).set(user).where(eq(users.id, userId));
-    return result.rowCount ?? 0;
+    const now = new Date();
+    const result = await db
+      .update(users)
+      .set({ ...updateUserData, updatedAt: now })
+      .where(eq(users.id, userId))
+      .returning({
+        id: users.id,
+        email: users.email,
+        username: users.username,
+        roleId: users.roleId,
+        createdAt: users.createdAt,
+        updatedAt: users.updatedAt,
+        lastLogin: users.lastLogin,
+      });
+    return result[0];
   },
 
   delete: async (userId: string): Promise<number> => {

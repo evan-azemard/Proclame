@@ -6,20 +6,20 @@ export const getUserById = async (
 ): Promise<PublicUser | undefined> => {
   return await userModel.getById(userId);
 };
-export const getAllUsers = async (): Promise<PublicUser[] | undefined> => {
+export const getAll = async (): Promise<PublicUser[] | undefined> => {
   return await userModel.getAll();
 };
-export const createUser = async (
-  user: NewUser
+export const create = async (
+  newUserData: NewUser
 ): Promise<PublicUser | undefined> => {
-  return await userModel.create(user);
+  return await userModel.create(newUserData);
 };
-export const updateUser = async (
+export const update = async (
   userId: string,
-  user: UpdateUser
-): Promise<number> => {
-  return await userModel.update(userId, user);
+  updateUserData: UpdateUser
+): Promise<PublicUser | undefined> => {
+  return await userModel.update(userId, updateUserData);
 };
-export const deleteUser = async (userId: string): Promise<number> => {
+export const remove = async (userId: string): Promise<number> => {
   return await userModel.delete(userId);
 };

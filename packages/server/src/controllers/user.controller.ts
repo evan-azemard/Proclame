@@ -21,7 +21,7 @@ export const getUserById = async (
 
 export const getAllUsers = async (_req: Request, res: Response) => {
   try {
-    const user = await userService.getAllUsers();
+    const user = await userService.getAll();
     if (!user || user.length === 0) {
       return res.status(404).json({ message: "Aucun utilisateur trouvé" });
     }
@@ -38,11 +38,12 @@ export const createUser = async (
   res: Response
 ) => {
   try {
-    const user = await userService.createUser(req.body);
-    if (!user) {
+    const newUserData = req.body;
+    const createdUser = await userService.create(newUserData);
+    if (!createdUser) {
       return res.status(400).json({ message: "Erreur lors de la création" });
     }
-    return res.status(201).json(user);
+    return res.status(201).json(createdUser);
   } catch (error) {
     return res
       .status(400)
@@ -56,9 +57,9 @@ export const updateUser = async (
 ) => {
   try {
     const userId = req.params.id;
-    const updatedUser = req.body;
-    const result = await userService.updateUser(userId, updatedUser);
-    if (result === 0) {
+    const updateUserData = req.body;
+    const updatedUserData = await userService.update(userId, updateUserData);
+    if (!updatedUserData) {
       return res.status(404).json({ message: "Utilisateur non trouvé" });
     }
     return res.json({ message: "Utilisateur mis à jour avec succès" });
@@ -75,7 +76,7 @@ export const deleteUser = async (
 ) => {
   try {
     const userId = req.params.id;
-    const result = await userService.deleteUser(userId);
+    const result = await userService.remove(userId);
     if (result === 0) {
       return res.status(404).json({ message: "Utilisateur non trouvé" });
     }
