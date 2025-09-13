@@ -1,4 +1,4 @@
-import { NewRole, Role, UpdateRole } from "@/entities/roles.entity";
+import { NewRole, Role, UpdateRole } from "@/entities/";
 
 export interface RoleModel {
   getAll: () => Promise<Role[]>;

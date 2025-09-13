@@ -1,4 +1,4 @@
-import { Category, NewCategory, UpdateCategory } from "@/entities/categories.entity";
+import { Category, NewCategory, UpdateCategory } from "@/entities";
 
 export interface CategoryModel {
   getAll: () => Promise<Category[]>;

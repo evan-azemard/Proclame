@@ -1,79 +1,71 @@
 import { relations } from "drizzle-orm";
-import {
-  categories,
-  favorites,
-  proclamations,
-  roles,
-  sounds,
-  statuses,
-  users,
-} from "./index";
+import * as schemas from "@/schemas";
 
-export const categoriesRelations = relations(categories, ({ many, one }) => ({
-  proclamations: many(proclamations),
-  status: one(statuses, {
-    fields: [categories.statusId],
-    references: [statuses.id],
+export const categoriesRelations = relations(schemas.categories, ({ many, one }) => ({
+  proclamations: many(schemas.proclamations),
+  status: one(schemas.statuses, {
+    fields: [schemas.categories.statusId],
+    references: [schemas.statuses.id],
   }),
-  user: one(users, {
-    fields: [categories.userId],
-    references: [users.id],
+  user: one(schemas.users, {
+    fields: [schemas.categories.userId],
+    references: [schemas.users.id],
   }),
 }));
 
-export const favoritesRelations = relations(favorites, ({ one }) => ({
-  user: one(users, {
-    fields: [favorites.userId],
-    references: [users.id],
+export const favoritesRelations = relations(schemas.favorites, ({ one }) => ({
+  user: one(schemas.users, {
+    fields: [schemas.favorites.userId],
+    references: [schemas.users.id],
   }),
-  proclamation: one(proclamations, {
-    fields: [favorites.proclamationId],
-    references: [proclamations.id],
+  proclamation: one(schemas.proclamations, {
+    fields: [schemas.favorites.proclamationId],
+    references: [schemas.proclamations.id],
   }),
 }));
 
 export const proclamationsRelations = relations(
-  proclamations,
+  schemas.proclamations,
   ({ many, one }) => ({
-    favorites: many(favorites),
-    user: one(users, {
-      fields: [proclamations.userId],
-      references: [users.id],
+    favorites: many(schemas.favorites),
+    user: one(schemas.users, {
+      fields: [schemas.proclamations.userId],
+      references: [schemas.users.id],
     }),
-    category: one(categories, {
-      fields: [proclamations.categoryId],
-      references: [categories.id],
+    category: one(schemas.categories, {
+      fields: [schemas.proclamations.categoryId],
+      references: [schemas.categories.id],
     }),
-    status: one(statuses, {
-      fields: [proclamations.statusId],
-      references: [statuses.id],
+    status: one(schemas.statuses, {
+      fields: [schemas.proclamations.statusId],
+      references: [schemas.statuses.id],
     }),
   })
 );
 
-export const rolesRelations = relations(roles, ({ many }) => ({
-  users: many(users),
+export const rolesRelations = relations(schemas.roles, ({ many }) => ({
+  users: many(schemas.users),
 }));
 
-export const soundsRelations = relations(sounds, ({ one }) => ({
-  status: one(statuses, {
-    fields: [sounds.statusId],
-    references: [statuses.id],
+export const soundsRelations = relations(schemas.sounds, ({ one }) => ({
+  status: one(schemas.statuses, {
+    fields: [schemas.sounds.statusId],
+    references: [schemas.statuses.id],
   }),
 }));
 
-export const statusRelations = relations(statuses, ({ many }) => ({
-  proclamations: many(proclamations),
-  categories: many(categories),
-  sounds: many(sounds),
+export const statusRelations = relations(schemas.statuses, ({ many }) => ({
+  proclamations: many(schemas.proclamations),
+  categories: many(schemas.categories),
+  sounds: many(schemas.sounds),
 }));
 
-export const usersRelations = relations(users, ({ many, one }) => ({
-  proclamations: many(proclamations),
-  categories: many(categories),
-  favorites: many(favorites),
-  role: one(roles, {
-    fields: [users.roleId],
-    references: [roles.id],
+export const usersRelations = relations(schemas.users, ({ many, one }) => ({
+  proclamations: many(schemas.proclamations),
+  categories: many(schemas.categories),
+  favorites: many(schemas.favorites),
+  role: one(schemas.roles, {
+    fields: [schemas.users.roleId],
+    references: [schemas.roles.id],
   }),
 }));

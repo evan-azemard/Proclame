@@ -1,4 +1,4 @@
-import { NewStatus, Status, UpdateStatus } from "@/entities/statuses.entity";
+import { NewStatus, Status, UpdateStatus } from "@/entities";
 
 export interface StatusesModel {
   getAll: () => Promise<Status[]>;

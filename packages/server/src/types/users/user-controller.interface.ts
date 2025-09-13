@@ -1,4 +1,4 @@
-import { NewUser, PublicUser, UpdateUser } from "@/entities/users.entity";
+import { NewUser, PublicUser, UpdateUser } from "@/entities";
 import { Request, Response } from "express";
 
 export interface UserController {

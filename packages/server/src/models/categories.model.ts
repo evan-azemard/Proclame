@@ -1,6 +1,6 @@
 import { categories } from "@/schemas";
 import { CategoryModel } from "@/types";
-import { db } from "config/pool";
+import { db } from "@/config";
 import { eq } from "drizzle-orm";
 
 export const categoryModel: CategoryModel = {

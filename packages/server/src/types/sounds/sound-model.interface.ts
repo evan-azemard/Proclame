@@ -1,4 +1,4 @@
-import { NewSound, Sound, UpdateSound } from "@/entities/sounds.entity";
+import { NewSound, Sound, UpdateSound } from "@/entities";
 
 export interface SoundModel {
   getAll: () => Promise<Sound[]>;

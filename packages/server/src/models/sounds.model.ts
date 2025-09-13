@@ -1,6 +1,6 @@
 import { sounds } from "@/schemas";
 import { SoundModel } from "@/types";
-import { db } from "config/pool";
+import { db } from "@/config";
 import { eq } from "drizzle-orm";
 
 export const soundModel: SoundModel = {

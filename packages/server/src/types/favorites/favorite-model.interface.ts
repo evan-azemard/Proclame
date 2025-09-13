@@ -1,4 +1,4 @@
-import { Favorits, NewFavorite } from "@/entities/favorites.entity";
+import { Favorits, NewFavorite } from "@/entities";
 
 export interface FavoriteModel {
   getAll: () => Promise<Favorits[]>;

@@ -1,4 +1,4 @@
-import { NewUser, PublicUser, UpdateUser } from "@/entities/users.entity";
+import { NewUser, PublicUser, UpdateUser } from "@/entities";
 
 export interface UserService {
   getUserById: (userId: string) => Promise<PublicUser | undefined>;

@@ -1,4 +1,4 @@
-import { NewProclamation, Proclamation, UpdateProclamation } from "@/entities/proclamations.entity";
+import { NewProclamation, Proclamation, UpdateProclamation } from "@/entities";
 
 export interface ProclamationModel {
   getAll: () => Promise<Proclamation[]>;

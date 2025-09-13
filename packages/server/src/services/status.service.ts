@@ -1,14 +1,19 @@
-import { NewStatus, Status, UpdateStatus } from "@/entities/statuses.entity";
-import { statusesModel } from "@/models/statuses.model";
+import { NewStatus, Status, UpdateStatus } from "@/entities";
+import { statusesModel } from "@/models";
 
-export const statusService = {
-  getAll: async (): Promise<Status[] | undefined> => {
+export interface IStatusService {
+  getAll(): Promise<Status[] | undefined>;
+  create(newStatusData: NewStatus): Promise<Status | string | undefined>;
+  update(statusData: UpdateStatus): Promise<Status | undefined>;
+  remove(statusId: string): Promise<number>;
+}
+
+export const statusService: IStatusService = {
+  getAll: async () => {
     return await statusesModel.getAll();
   },
 
-  create: async (
-    newStatusData: NewStatus
-  ): Promise<Status | string | undefined> => {
+  create: async (newStatusData) => {
     try {
       return await statusesModel.create(newStatusData);
     } catch (error: any) {
@@ -23,11 +28,11 @@ export const statusService = {
     }
   },
 
-  update: async (statusData: UpdateStatus): Promise<Status | undefined> => {
+  update: async (statusData) => {
     return await statusesModel.update(statusData);
   },
 
-  remove: async (statusId: string): Promise<number> => {
+  remove: async (statusId) => {
     return await statusesModel.delete(statusId);
   },
 };
