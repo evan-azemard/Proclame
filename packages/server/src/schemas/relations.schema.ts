@@ -5,15 +5,15 @@ import {
   proclamations,
   roles,
   sounds,
-  status,
+  statuses,
   users,
 } from "./index";
 
 export const categoriesRelations = relations(categories, ({ many, one }) => ({
   proclamations: many(proclamations),
-  status: one(status, {
+  status: one(statuses, {
     fields: [categories.statusId],
-    references: [status.id],
+    references: [statuses.id],
   }),
   user: one(users, {
     fields: [categories.userId],
@@ -44,9 +44,9 @@ export const proclamationsRelations = relations(
       fields: [proclamations.categoryId],
       references: [categories.id],
     }),
-    status: one(status, {
+    status: one(statuses, {
       fields: [proclamations.statusId],
-      references: [status.id],
+      references: [statuses.id],
     }),
   })
 );
@@ -56,13 +56,13 @@ export const rolesRelations = relations(roles, ({ many }) => ({
 }));
 
 export const soundsRelations = relations(sounds, ({ one }) => ({
-  status: one(status, {
+  status: one(statuses, {
     fields: [sounds.statusId],
-    references: [status.id],
+    references: [statuses.id],
   }),
 }));
 
-export const statusRelations = relations(status, ({ many }) => ({
+export const statusRelations = relations(statuses, ({ many }) => ({
   proclamations: many(proclamations),
   categories: many(categories),
   sounds: many(sounds),

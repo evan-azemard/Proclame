@@ -1,24 +1,10 @@
-import { NewUser, PublicUser, UpdateUser, User } from "@/entities/users.entity";
 import { users } from "@/schemas";
+import { UserModel } from "@/types";
 import { db } from "config/pool";
-import { eq, sql } from "drizzle-orm";
+import { eq } from "drizzle-orm";
 
-export const userModel = {
-  getAll: async (): Promise<PublicUser[]> =>
-    // return db.execute(sql`SELECT * FROM users`);
-    await db
-      .select({
-        id: users.id,
-        email: users.email,
-        username: users.username,
-        roleId: users.roleId,
-        createdAt: users.createdAt,
-        updatedAt: users.updatedAt,
-        lastLogin: users.lastLogin,
-      })
-      .from(users),
-
-  getById: async (userId: string): Promise<PublicUser | undefined> =>
+export const userModel: UserModel = {
+  getById: async (userId) =>
     // return db.execute(sql`SELECT * FROM users WHERE id = ${userId}`);
     await db.query.users.findFirst({
       where: eq(users.id, userId),
@@ -33,7 +19,21 @@ export const userModel = {
       },
     }),
 
-  create: async (newUserData: NewUser): Promise<PublicUser | undefined> => {
+  getAll: async () =>
+    // return db.execute(sql`SELECT * FROM users`);
+    await db
+      .select({
+        id: users.id,
+        email: users.email,
+        username: users.username,
+        roleId: users.roleId,
+        createdAt: users.createdAt,
+        updatedAt: users.updatedAt,
+        lastLogin: users.lastLogin,
+      })
+      .from(users),
+
+  create: async (newUserData) => {
     //return db.execute(sql`INSERT INTO users (email, password, username, roleId) VALUES (${user.email}, ${user.password}, ${user.username}, ${user.roleId}) RETURNING *`);
     const createdUser = await db.insert(users).values(newUserData).returning({
       id: users.id,
@@ -47,10 +47,7 @@ export const userModel = {
     return createdUser[0];
   },
 
-  update: async (
-    userId: string,
-    updateUserData: UpdateUser
-  ): Promise<PublicUser | undefined> => {
+  update: async (userId, updateUserData) => {
     // return db.execute(sql`UPDATE users SET email = ${user.email}, password = ${user.password}, username = ${user.username}, roleId = ${user.roleId} WHERE id = ${userId} RETURNING *`);
     const now = new Date();
     const result = await db
@@ -69,15 +66,13 @@ export const userModel = {
     return result[0];
   },
 
-  delete: async (userId: string): Promise<number> => {
+  delete: async (userId) => {
     // return db.execute(sql`DELETE FROM users WHERE id = ${userId}`);
     const result = await db.delete(users).where(eq(users.id, userId));
     return result.rowCount ?? 0;
   },
 
-  findUserByEmail: async (
-    email: string
-  ): Promise<{ id: string; password: string } | undefined> => {
+  findUserByEmail: async (email) => {
     // return db.execute(sql`SELECT * FROM users WHERE email = ${email}`);
     return db.query.users.findFirst({
       where: eq(users.email, email),

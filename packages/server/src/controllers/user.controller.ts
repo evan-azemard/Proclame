@@ -1,89 +1,108 @@
-import { NewUser, UpdateUser } from "@/entities/users.entity";
 import { userService } from "@/services";
-import { Request, Response } from "express";
+import { UserController } from "@/types";
 
-export const getUserById = async (
-  req: Request<{ id: string }>,
-  res: Response
-) => {
-  try {
-    const user = await userService.getUserById(req.params.id);
-    if (!user) {
-      return res.status(404).json({ message: "Utilisateur introuvable" });
-    }
-    return res.json(user);
-  } catch (error) {
-    return res
-      .status(400)
-      .json({ message: "Erreur lors de la récupération de l'utilisateur" });
-  }
-};
 
-export const getAllUsers = async (_req: Request, res: Response) => {
-  try {
-    const user = await userService.getAll();
-    if (!user || user.length === 0) {
-      return res.status(404).json({ message: "Aucun utilisateur trouvé" });
+export const userController: UserController = {
+  getUserById: async (req, res) => {
+    try {
+      const user = await userService.getUserById(req.params.id);
+      if (!user) {
+        res.status(404).json({ message: "Utilisateur introuvable" });
+        return;
+      }
+      res.json(user);
+    } catch (error: unknown) {
+      const message = error instanceof Error ? error.message : String(error);
+      res
+        .status(400)
+        .json({ message: "Erreur lors de la récupération de l'utilisateur" });
     }
-    return res.json(user);
-  } catch (error) {
-    return res
-      .status(400)
-      .json({ message: "Erreur lors de la récupération des utilisateurs" });
-  }
-};
+  },
 
-export const createUser = async (
-  req: Request<{}, {}, NewUser>,
-  res: Response
-) => {
-  try {
-    const newUserData = req.body;
-    const createdUser = await userService.create(newUserData);
-    if (!createdUser) {
-      return res.status(400).json({ message: "Erreur lors de la création" });
+  getAllUsers: async (_req, res) => {
+    try {
+      const users = await userService.getAll();
+      res.json(users);
+    } catch (error: unknown) {
+      const message = error instanceof Error ? error.message : String(error);
+      res
+        .status(400)
+        .json({ message: "Erreur lors de la récupération des utilisateurs" });
     }
-    return res.status(201).json(createdUser);
-  } catch (error) {
-    return res
-      .status(400)
-      .json({ message: "Erreur lors de la création de l'utilisateur" });
-  }
-};
+  },
 
-export const updateUser = async (
-  req: Request<{ id: string }, {}, UpdateUser>,
-  res: Response
-) => {
-  try {
-    const userId = req.params.id;
-    const updateUserData = req.body;
-    const updatedUserData = await userService.update(userId, updateUserData);
-    if (!updatedUserData) {
-      return res.status(404).json({ message: "Utilisateur non trouvé" });
+  createUser: async (req, res) => {
+    try {
+      const newUserData = req.body;
+      const result = await userService.create(newUserData);
+      if (result === "DUPLICATE_EMAIL") {
+        res.status(409).json({ message: "Cet email est déjà utilisé" });
+        return;
+      }
+      if (result === "DUPLICATE_USERNAME") {
+        res
+          .status(409)
+          .json({ message: "Ce nom d'utilisateur est déjà utilisé" });
+        return;
+      }
+      if (!result) {
+        res
+          .status(400)
+          .json({ message: "Erreur lors de la création de l'utilisateur" });
+        return;
+      }
+      res.status(201).json(result);
+    } catch (error: unknown) {
+      const message = error instanceof Error ? error.message : String(error);
+      res
+        .status(400)
+        .json({ message: "Erreur lors de la création de l'utilisateur" });
     }
-    return res.json({ message: "Utilisateur mis à jour avec succès" });
-  } catch (error) {
-    return res
-      .status(400)
-      .json({ message: "Erreur lors de la mise à jour de l'utilisateur" });
-  }
-};
+  },
 
-export const deleteUser = async (
-  req: Request<{ id: string }>,
-  res: Response
-) => {
-  try {
-    const userId = req.params.id;
-    const result = await userService.remove(userId);
-    if (result === 0) {
-      return res.status(404).json({ message: "Utilisateur non trouvé" });
+  updateUser: async (req, res) => {
+    try {
+      const userId = req.params.id;
+      const updateUserData = req.body;
+      const result = await userService.update(userId, updateUserData);
+
+      if (result === "DUPLICATE_EMAIL") {
+        res.status(409).json({ message: "Cet email est déjà utilisé" });
+        return;
+      }
+      if (result === "DUPLICATE_USERNAME") {
+        res
+          .status(409)
+          .json({ message: "Ce nom d'utilisateur est déjà utilisé" });
+        return;
+      }
+      if (result === "USER_NOT_FOUND") {
+        res.status(404).json({ message: "Utilisateur non trouvé" });
+        return;
+      }
+      res.json(result);
+    } catch (error: unknown) {
+      const message = error instanceof Error ? error.message : String(error);
+      res
+        .status(400)
+        .json({ message: "Erreur lors de la mise à jour de l'utilisateur" });
     }
-    return res.json({ message: "Utilisateur supprimé avec succès" });
-  } catch (error) {
-    return res
-      .status(400)
-      .json({ message: "Erreur lors de la suppression de l'utilisateur" });
-  }
+  },
+
+  removeUser: async (req, res) => {
+    try {
+      const userId = req.params.id;
+      const deletedCount = await userService.remove(userId);
+      if (deletedCount === 0) {
+        res.status(404).json({ message: "Utilisateur non trouvé" });
+        return;
+      }
+      res.json({ message: "Utilisateur supprimé avec succès" });
+    } catch (error: unknown) {
+      const message = error instanceof Error ? error.message : String(error);
+      res
+        .status(400)
+        .json({ message: "Erreur lors de la suppression de l'utilisateur" });
+    }
+  },
 };

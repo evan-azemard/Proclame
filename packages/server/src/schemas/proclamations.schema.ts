@@ -1,6 +1,6 @@
 import { pgTable, text, timestamp, uuid, varchar } from "drizzle-orm/pg-core";
 import { categories } from "./categories.schema";
-import { status } from "./status.schema";
+import { statuses } from "./statuses.schema";
 import { users } from "./users.schema";
 
 export const proclamations = pgTable("proclamations", {
@@ -13,7 +13,7 @@ export const proclamations = pgTable("proclamations", {
     })
     .notNull(),
   statusId: uuid("status_id")
-    .references(() => status.id, {
+    .references(() => statuses.id, {
       onDelete: "restrict",
     })
     .notNull(),
