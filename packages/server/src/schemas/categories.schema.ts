@@ -2,7 +2,7 @@ import { pgTable, timestamp, uuid, varchar } from "drizzle-orm/pg-core";
 import { users, statuses } from "@/schemas";
 
 export const categories = pgTable("categories", {
-  id: uuid("id").primaryKey().defaultRandom().notNull(),
+  id: uuid("id").primaryKey().defaultRandom(),
   title: varchar("title", { length: 50 }).notNull().unique(),
   statusId: uuid("status_id")
     .references(() => statuses.id, { onDelete: "restrict" })
@@ -11,7 +11,6 @@ export const categories = pgTable("categories", {
     .references(() => users.id, { onDelete: "restrict" })
     .notNull(),
   createdAt: timestamp("created_at", { withTimezone: true })
-    .notNull()
     .defaultNow(),
   updatedAt: timestamp("updated_at", { withTimezone: true })
     .notNull()
