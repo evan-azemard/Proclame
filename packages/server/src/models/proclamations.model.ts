@@ -1,31 +1,25 @@
-import {
-  NewProclamation,
-  Proclamation,
-  UpdateProclamation,
-} from "@/entities/proclamations.entity";
 import { proclamations } from "@/schemas";
+import { ProclamationModel } from "@/types";
 import { db } from "config/pool";
 import { eq } from "drizzle-orm";
 
-export const proclamationModel = {
-  getAll: async (): Promise<Proclamation[]> =>
+export const proclamationModel: ProclamationModel = {
+  getAll: async () =>
     // SELECT * FROM proclamations
     await db.select().from(proclamations),
 
-  getById: async (
-    proclamationId: string
-  ): Promise<Proclamation[] | undefined> =>
+  getById: async (proclamationId) =>
     // SELECT * FROM proclamations WHERE proclamations.id = ${proclamationId}
     await db
       .select()
       .from(proclamations)
       .where(eq(proclamations.id, proclamationId)),
 
-  create: async (proclamation: NewProclamation): Promise<Proclamation[]> =>
+  create: async (proclamation) =>
     // INSERT INTO proclamations ... VALUE (...)
     await db.insert(proclamations).values(proclamation).returning(),
 
-  update: async (proclamation: UpdateProclamation): Promise<number> => {
+  update: async (proclamation) => {
     // UPDATE proclamations SET ... = ... WHERE proclamations.id = ${proclamationId}
     const result = await db
       .update(proclamations)
@@ -34,7 +28,7 @@ export const proclamationModel = {
     return result.rowCount ?? 0;
   },
 
-  delete: async (proclamationId: string): Promise<number> => {
+  delete: async (proclamationId) => {
     // DELETE proclamations WHERE proclamations.id = ${proclamationId}
     const result = await db
       .delete(proclamations)

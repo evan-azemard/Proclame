@@ -1,17 +1,17 @@
-import { NewSound, Sound, UpdateSound } from "@/entities/sounds.entity";
 import { sounds } from "@/schemas";
+import { SoundModel } from "@/types";
 import { db } from "config/pool";
 import { eq } from "drizzle-orm";
 
-export const soundModel = {
+export const soundModel: SoundModel = {
   //SELECT * FROM sounds
-  getAll: async (): Promise<Sound[]> => await db.select().from(sounds),
+  getAll: async () => await db.select().from(sounds),
 
-  create: async (sound: NewSound): Promise<Sound[]> =>
+  create: async (sound) =>
     // INSERT INTO sounds ... VALUE (...)
     await db.insert(sounds).values(sound).returning(),
 
-  update: async (sound: UpdateSound): Promise<number> => {
+  update: async (sound) => {
     // UPDATE sounds SET ... = ... WHERE sounds.id = ${soundId}
     const result = await db
       .update(sounds)
@@ -20,7 +20,7 @@ export const soundModel = {
     return result.rowCount ?? 0;
   },
 
-  delete: async (soundId: string): Promise<number> => {
+  delete: async (soundId) => {
     // DELETE sounds WHERE sounds.id = ${soundId}
     const result = await db.delete(sounds).where(eq(sounds.id, soundId));
     return result.rowCount ?? 0;

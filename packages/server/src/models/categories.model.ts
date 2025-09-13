@@ -1,26 +1,21 @@
-import {
-  Category,
-  NewCategory,
-  UpdateCategory,
-} from "@/entities/categories.entity";
 import { categories } from "@/schemas";
+import { CategoryModel } from "@/types";
 import { db } from "config/pool";
-import { create } from "domain";
 import { eq } from "drizzle-orm";
 
-export const categoryModel = {
+export const categoryModel: CategoryModel = {
   // SELECT * FROM categories
-  getAll: async (): Promise<Category[]> => await db.select().from(categories),
+  getAll: async () => await db.select().from(categories),
 
-  getById: async (categoryId: string): Promise<Category[] | undefined> =>
+  getById: async (categoryId) =>
     // SELECT * FROM categories WHERE categories.id = ${categoryId}
     await db.select().from(categories).where(eq(categories.id, categoryId)),
 
-  create: async (category: NewCategory): Promise<Category[]> =>
+  create: async (category) =>
     // INSERT INTO categories ... VALUE (...)
     await db.insert(categories).values(category).returning(),
 
-  update: async (category: UpdateCategory): Promise<number> => {
+  update: async (category) => {
     // UPDATE categories SET ... = ... WHERE categories.id = ${categoryId}
     const result = await db
       .update(categories)
@@ -29,7 +24,7 @@ export const categoryModel = {
     return result.rowCount ?? 0;
   },
 
-  delete: async (categoryId: string): Promise<number> => {
+  delete: async (categoryId) => {
     // DELETE FROM categories WHERE categories.id = ${categoryId}
     const result = await db
       .delete(categories)

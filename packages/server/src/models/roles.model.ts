@@ -1,17 +1,17 @@
-import { NewRole, Role, UpdateRole } from "@/entities/roles.entity";
 import { roles } from "@/schemas";
+import { RoleModel } from "@/types";
 import { db } from "config/pool";
 import { eq } from "drizzle-orm";
 
-export const roleModel = {
+export const roleModel: RoleModel = {
   // SELECT * FROM roles
-  getAll: async (): Promise<Role[]> => await db.select().from(roles),
+  getAll: async () => await db.select().from(roles),
 
-  create: async (role: NewRole): Promise<Role[]> =>
+  create: async (role) =>
     // INSERT INTO roles ... VALUE (...)
     await db.insert(roles).values(role).returning(),
 
-  update: async (role: UpdateRole): Promise<number> => {
+  update: async (role) => {
     // UPDATE roles SET ... = ... WHERE roles.id = ${roleId}
     const result = await db
       .update(roles)
@@ -20,7 +20,7 @@ export const roleModel = {
     return result.rowCount ?? 0;
   },
 
-  delete: async (roleId: string): Promise<number> => {
+  delete: async (roleId) => {
     // DELETE roles WHERE roles.id = ${roleId}
     const result = await db.delete(roles).where(eq(roles.id, roleId));
     return result.rowCount ?? 0;
