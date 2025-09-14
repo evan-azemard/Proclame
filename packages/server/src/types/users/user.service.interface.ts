@@ -2,7 +2,7 @@ import { NewUser, PublicUser, UpdateUser } from "@/entities";
 
 export interface UserService {
   getUserById: (userId: string) => Promise<PublicUser | undefined>;
-  getAll: () => Promise<PublicUser[] | undefined>;
+  getAll: () => Promise<PublicUser[] | undefined | "USER_NOT_FOUND">;
   create: (
     newUserData: NewUser
   ) => Promise<

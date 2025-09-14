@@ -1,26 +1,24 @@
-import { NewStatus, Status, UpdateStatus } from "@/entities";
 import { statusesModel } from "@/models";
+import { StatusService } from "@/types";
 
-export interface IStatusService {
-  getAll(): Promise<Status[] | undefined>;
-  create(newStatusData: NewStatus): Promise<Status | string | undefined>;
-  update(statusData: UpdateStatus): Promise<Status | undefined>;
-  remove(statusId: string): Promise<number>;
-}
-
-export const statusService: IStatusService = {
+export const statusService: StatusService = {
   getAll: async () => {
-    return await statusesModel.getAll();
+    const statuses = await statusesModel.getAll();
+    if (!statuses) return "STATUS_NOT_FOUND";
+    return statuses;
   },
 
   create: async (newStatusData) => {
     try {
-      return await statusesModel.create(newStatusData);
-    } catch (error: any) {
+      const created = await statusesModel.create(newStatusData);
+      if (!created) return "DUPLICATE_LABEL";
+      return created;
+    } catch (error: unknown) {
+      const err = error as { code?: string; message?: string; detail?: string };
       if (
-        error.code === "23505" ||
-        error.message?.includes("duplicate key") ||
-        error.code === "ER_DUP_ENTRY"
+        err.code === "23505" ||
+        err.message?.includes("duplicate key") ||
+        err.code === "ER_DUP_ENTRY"
       ) {
         return "DUPLICATE_LABEL";
       }
@@ -29,7 +27,21 @@ export const statusService: IStatusService = {
   },
 
   update: async (statusData) => {
-    return await statusesModel.update(statusData);
+    try {
+      const updated = await statusesModel.update(statusData);
+      if (!updated) return "STATUS_NOT_FOUND";
+      return updated;
+    } catch (error: unknown) {
+      const err = error as { code?: string; message?: string; detail?: string };
+      if (
+        err.code === "23505" ||
+        err.message?.includes("duplicate key") ||
+        err.code === "ER_DUP_ENTRY"
+      ) {
+        return "DUPLICATE_LABEL";
+      }
+      throw error;
+    }
   },
 
   remove: async (statusId) => {

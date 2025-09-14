@@ -22,6 +22,10 @@ export const userController: UserController = {
   getAllUsers: async (_req, res) => {
     try {
       const users = await userService.getAll();
+      if (users === "USER_NOT_FOUND") {
+        res.status(404).json({ message: "Aucun utilisateur trouvé" });
+        return;
+      }
       res.json(users);
     } catch (error: unknown) {
       const message = error instanceof Error ? error.message : String(error);
@@ -55,7 +59,7 @@ export const userController: UserController = {
     } catch (error: unknown) {
       const message = error instanceof Error ? error.message : String(error);
       res
-        .status(400)
+        .status(500)
         .json({ message: "Erreur lors de la création de l'utilisateur" });
     }
   },
@@ -84,7 +88,7 @@ export const userController: UserController = {
     } catch (error: unknown) {
       const message = error instanceof Error ? error.message : String(error);
       res
-        .status(400)
+        .status(500)
         .json({ message: "Erreur lors de la mise à jour de l'utilisateur" });
     }
   },
@@ -97,11 +101,11 @@ export const userController: UserController = {
         res.status(404).json({ message: "Utilisateur non trouvé" });
         return;
       }
-      res.json({ message: "Utilisateur supprimé avec succès" });
+      res.status(204).send();
     } catch (error: unknown) {
       const message = error instanceof Error ? error.message : String(error);
       res
-        .status(400)
+        .status(500)
         .json({ message: "Erreur lors de la suppression de l'utilisateur" });
     }
   },

@@ -7,20 +7,24 @@ export const userService: UserService = {
   },
 
   getAll: async () => {
-    return await userModel.getAll();
+    const users = await userModel.getAll();
+    if (!users) return "USER_NOT_FOUND";
+    return users;
   },
 
   create: async (newUserData) => {
     try {
       return await userModel.create(newUserData);
-    } catch (error: any) {
+    } catch (error: unknown) {
+      const err = error as { code?: string; message?: string; detail?: string };
+
       if (
-        error.code === "23505" ||
-        error.message?.includes("duplicate key") ||
-        error.code === "ER_DUP_ENTRY"
+        err.code === "23505" ||
+        err.message?.includes("duplicate key") ||
+        err.code === "ER_DUP_ENTRY"
       ) {
-        if (error.detail?.includes("email")) return "DUPLICATE_EMAIL";
-        if (error.detail?.includes("username")) return "DUPLICATE_USERNAME";
+        if (err.detail?.includes("email")) return "DUPLICATE_EMAIL";
+        if (err.detail?.includes("username")) return "DUPLICATE_USERNAME";
       }
       throw error;
     }
@@ -31,14 +35,15 @@ export const userService: UserService = {
       const updated = await userModel.update(userId, updateUserData);
       if (!updated) return "USER_NOT_FOUND";
       return updated;
-    } catch (error: any) {
+    } catch (error: unknown) {
+      const err = error as { code?: string; message?: string; detail?: string };
       if (
-        error.code === "23505" ||
-        error.message?.includes("duplicate key") ||
-        error.code === "ER_DUP_ENTRY"
+        err.code === "23505" ||
+        err.message?.includes("duplicate key") ||
+        err.code === "ER_DUP_ENTRY"
       ) {
-        if (error.detail?.includes("email")) return "DUPLICATE_EMAIL";
-        if (error.detail?.includes("username")) return "DUPLICATE_USERNAME";
+        if (err.detail?.includes("email")) return "DUPLICATE_EMAIL";
+        if (err.detail?.includes("username")) return "DUPLICATE_USERNAME";
       }
       throw error;
     }
