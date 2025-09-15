@@ -1,7 +1,7 @@
-import { Favorits, NewFavorite } from "@/entities";
+import { Favorit, NewFavorite } from "@/entities";
 
 export interface FavoriteService {
-	getAll: () => Promise<Favorits[]>;
-	create: (data: NewFavorite) => Promise<Favorits | "NO_FAVORITE_CREATED">;
-	remove: (id: string) => Promise<Favorits | "FAVORITE_NOT_FOUND">;
+	getAll: () => Promise<Favorit[]>;
+	create: (data: NewFavorite) => Promise<Favorit | "NO_FAVORITE_CREATED">;
+	remove: (id: string) => Promise<Favorit | "FAVORITE_NOT_FOUND">;
 }
