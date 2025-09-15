@@ -4,18 +4,18 @@ import { Request, Response } from "express";
 export interface StatusController {
   getAllStatuses(
     req: Request,
-    res: Response
+    res: Response<Status[ ] | {message: string}>
   ): Promise<void>;
   createStatus(
     req: Request<{}, {}, NewStatus>,
-    res: Response
+    res: Response<Status | {message: string}>
   ): Promise<void>;
   updateStatus(
     req: Request<{ id: string }, {}, UpdateStatus>,
-    res: Response
+    res: Response<Status | {message: string}>
   ): Promise<void>;
   removeStatus(
     req: Request<{ id: string }>,
-    res: Response
+    res: Response<{message: string}>
   ): Promise<void>;
 }
