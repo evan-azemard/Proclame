@@ -16,6 +16,13 @@ export const proclamationModel: ProclamationModel = {
         .where(eq(proclamations.id, proclamationId))
     )[0],
 
+  // SELECT * FROM proclamations WHERE categoryId = ${categoryId}
+  getByCategoryId: async (categoryId: string) =>
+    await db
+      .select()
+      .from(proclamations)
+      .where(eq(proclamations.categoryId, categoryId)),
+
   // INSERT INTO proclamations ... VALUE (...)
   create: async (newProclamationData) =>
     (await db.insert(proclamations).values(newProclamationData).returning())[0],
