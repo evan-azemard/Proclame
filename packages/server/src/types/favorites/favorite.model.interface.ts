@@ -2,6 +2,6 @@ import { Favorits, NewFavorite } from "@/entities";
 
 export interface FavoriteModel {
   getAll: () => Promise<Favorits[]>;
-  create: (favorite: NewFavorite) => Promise<Favorits[]>;
-  delete: (favoriteId: string) => Promise<number>;
+  create: (NewFavoriteData: NewFavorite) => Promise<Favorits | undefined>;
+  delete: (favoriteId: string) => Promise<Favorits | undefined>;
 }

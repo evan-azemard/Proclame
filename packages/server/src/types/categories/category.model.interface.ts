@@ -1,9 +1,12 @@
 import { Category, NewCategory, UpdateCategory } from "@/entities";
 
 export interface CategoryModel {
+  getById: (categoryId: string) => Promise<Category | undefined>;
   getAll: () => Promise<Category[]>;
-  getById: (categoryId: string) => Promise<Category[] | undefined>;
-  create: (category: NewCategory) => Promise<Category[]>;
-  update: (category: UpdateCategory) => Promise<number>;
-  delete: (categoryId: string) => Promise<number>;
+  create: (newCategoryData: NewCategory) => Promise<Category | undefined>;
+  update: (
+    categoryId: string,
+    updateCategoryData: UpdateCategory
+  ) => Promise<Category | undefined>;
+  delete: (categoryId: string) => Promise<Category | undefined>;
 }

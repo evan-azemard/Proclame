@@ -2,7 +2,7 @@ import { NewSound, Sound, UpdateSound } from "@/entities";
 
 export interface SoundModel {
   getAll: () => Promise<Sound[]>;
-  create: (sound: NewSound) => Promise<Sound[]>;
-  update: (sound: UpdateSound) => Promise<number>;
-  delete: (soundId: string) => Promise<number>;
+  create: (newSoundData: NewSound) => Promise<Sound | undefined>;
+  update: (soundId: string, updateSoundData: UpdateSound) => Promise<Sound | undefined>;
+  delete: (soundId: string) => Promise<Sound | undefined>;
 }

@@ -1,22 +1,12 @@
-import { NewUser, PublicUser, UpdateUser } from "@/entities";
+import { NewUser, PublicUser, UpdateUser, User } from "@/entities";
 
 export interface UserService {
-  getUserById: (userId: string) => Promise<PublicUser | undefined>;
-  getAll: () => Promise<PublicUser[] | undefined | "USER_NOT_FOUND">;
-  create: (
-    newUserData: NewUser
-  ) => Promise<
-    PublicUser | "DUPLICATE_EMAIL" | "DUPLICATE_USERNAME" | undefined
-  >;
+  getUserById: (userId: string) => Promise<PublicUser | "USER_NOT_FOUND">;
+  getAll: () => Promise<PublicUser[]>;
+  create: (newUserData: NewUser) => Promise<PublicUser | "NO_USER_CREATED">;
   update: (
     userId: string,
     updateUserData: UpdateUser
-  ) => Promise<
-    | PublicUser
-    | "DUPLICATE_EMAIL"
-    | "DUPLICATE_USERNAME"
-    | "USER_NOT_FOUND"
-    | undefined
-  >;
-  remove: (userId: string) => Promise<number>;
-};
+  ) => Promise<PublicUser | "USER_NOT_FOUND">;
+  remove: (userId: string) => Promise<PublicUser | "USER_NOT_FOUND">;
+}

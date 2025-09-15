@@ -8,7 +8,7 @@ export interface UserModel {
     userId: string,
     updateUserData: UpdateUser
   ): Promise<PublicUser | undefined>;
-  delete(userId: string): Promise<number>;
+  delete: (userId: string) => Promise<PublicUser | undefined>;
   findUserByEmail(
     email: string
   ): Promise<{ id: string; password: string } | undefined>;

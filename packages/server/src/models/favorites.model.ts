@@ -8,14 +8,12 @@ export const favoritesModel: FavoriteModel = {
   getAll: async () => await db.select().from(favorites),
 
   // INSERT INTO favorites ... VALUE (...)
-  create: async (favorite) =>
-    await db.insert(favorites).values(favorite).returning(),
+  create: async (newFavoriteData) =>
+    (await db.insert(favorites).values(newFavoriteData).returning())[0],
 
   // DELETE FROM favorites WHERE favorites.id = ${favoriteId}
-  delete: async (favoriteId) => {
-    const result = await db
-      .delete(favorites)
-      .where(eq(favorites.id, favoriteId));
-    return result.rowCount ?? 0;
-  },
+  delete: async (favoriteId) =>
+    (
+      await db.delete(favorites).where(eq(favorites.id, favoriteId)).returning()
+    )[0],
 };
