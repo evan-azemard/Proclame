@@ -4,35 +4,46 @@ import { db } from "@/config";
 import { eq } from "drizzle-orm";
 
 export const proclamationModel: ProclamationModel = {
-  getAll: async () =>
-    // SELECT * FROM proclamations
-    await db.select().from(proclamations),
+  // SELECT * FROM proclamations
+  getAll: async () => await db.select().from(proclamations),
 
+  // SELECT * FROM proclamations WHERE proclamations.id = ${proclamationId}
   getById: async (proclamationId) =>
-    // SELECT * FROM proclamations WHERE proclamations.id = ${proclamationId}
+    (
+      await db
+        .select()
+        .from(proclamations)
+        .where(eq(proclamations.id, proclamationId))
+    )[0],
+
+  // SELECT * FROM proclamations WHERE categoryId = ${categoryId}
+  getByCategoryId: async (categoryId: string) =>
     await db
       .select()
       .from(proclamations)
-      .where(eq(proclamations.id, proclamationId)),
+      .where(eq(proclamations.categoryId, categoryId)),
 
-  create: async (proclamation) =>
-    // INSERT INTO proclamations ... VALUE (...)
-    await db.insert(proclamations).values(proclamation).returning(),
+  // INSERT INTO proclamations ... VALUE (...)
+  create: async (newProclamationData) =>
+    (await db.insert(proclamations).values(newProclamationData).returning())[0],
 
-  update: async (proclamation) => {
-    // UPDATE proclamations SET ... = ... WHERE proclamations.id = ${proclamationId}
-    const result = await db
+  // UPDATE proclamations SET ... = ... WHERE proclamations.id = ${proclamationId}
+  update: async (proclamationId, updateProclamationData) => {
+    const now = new Date();
+    const updatedProclamation = await db
       .update(proclamations)
-      .set(proclamation)
-      .where(eq(proclamations.id, proclamation.id!));
-    return result.rowCount ?? 0;
+      .set({ ...updateProclamationData, updatedAt: now })
+      .where(eq(proclamations.id, proclamationId))
+      .returning();
+    return updatedProclamation[0];
   },
 
-  delete: async (proclamationId) => {
-    // DELETE proclamations WHERE proclamations.id = ${proclamationId}
-    const result = await db
-      .delete(proclamations)
-      .where(eq(proclamations.id, proclamationId));
-    return result.rowCount ?? 0;
-  },
+  // DELETE proclamations WHERE proclamations.id = ${proclamationId}
+  delete: async (proclamationId) =>
+    (
+      await db
+        .delete(proclamations)
+        .where(eq(proclamations.id, proclamationId))
+        .returning()
+    )[0],
 };

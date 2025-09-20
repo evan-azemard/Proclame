@@ -1,50 +1,33 @@
 import { userModel } from "@/models";
 import { UserService } from "@/types";
+import { throwIfDuplicate } from "@/utils/throwIfDuplicate";
 
 export const userService: UserService = {
-  getUserById: async (userId) => {
-    return await userModel.getById(userId);
-  },
+  getUserById: async (userId) =>
+    (await userModel.getById(userId)) ?? "USER_NOT_FOUND",
 
-  getAll: async () => {
-    return await userModel.getAll();
-  },
+  getAll: async () => await userModel.getAll(),
 
   create: async (newUserData) => {
     try {
-      return await userModel.create(newUserData);
-    } catch (error: any) {
-      if (
-        error.code === "23505" ||
-        error.message?.includes("duplicate key") ||
-        error.code === "ER_DUP_ENTRY"
-      ) {
-        if (error.detail?.includes("email")) return "DUPLICATE_EMAIL";
-        if (error.detail?.includes("username")) return "DUPLICATE_USERNAME";
-      }
-      throw error;
+      return (await userModel.create(newUserData)) ?? "NO_USER_CREATED";
+    } catch (error: unknown) {
+      throwIfDuplicate(error, "CREATING", "USER", ["email", "username"]);
+      throw new Error("ERROR_CREATING_USER: " + String(error));
     }
   },
 
   update: async (userId, updateUserData) => {
     try {
-      const updated = await userModel.update(userId, updateUserData);
-      if (!updated) return "USER_NOT_FOUND";
-      return updated;
-    } catch (error: any) {
-      if (
-        error.code === "23505" ||
-        error.message?.includes("duplicate key") ||
-        error.code === "ER_DUP_ENTRY"
-      ) {
-        if (error.detail?.includes("email")) return "DUPLICATE_EMAIL";
-        if (error.detail?.includes("username")) return "DUPLICATE_USERNAME";
-      }
-      throw error;
+      return (
+        (await userModel.update(userId, updateUserData)) ?? "USER_NOT_FOUND"
+      );
+    } catch (error: unknown) {
+      throwIfDuplicate(error, "UPDATING", "USER", ["email", "username"]);
+      throw new Error("ERROR_UPDATING_USER: " + String(error));
     }
   },
 
-  remove: async (userId) => {
-    return await userModel.delete(userId);
-  },
+  remove: async (userId) =>
+    (await userModel.delete(userId)) ?? "USER_NOT_FOUND",
 };

@@ -7,28 +7,32 @@ export const categoryModel: CategoryModel = {
   // SELECT * FROM categories
   getAll: async () => await db.select().from(categories),
 
+  // SELECT * FROM categories WHERE categories.id = ${categoryId}
   getById: async (categoryId) =>
-    // SELECT * FROM categories WHERE categories.id = ${categoryId}
-    await db.select().from(categories).where(eq(categories.id, categoryId)),
+    (await db.select().from(categories).where(eq(categories.id, categoryId)))[0],
 
-  create: async (category) =>
     // INSERT INTO categories ... VALUE (...)
-    await db.insert(categories).values(category).returning(),
+  create: async (newCategoryData) =>
+    (await db.insert(categories).values(newCategoryData).returning())[0],
 
-  update: async (category) => {
-    // UPDATE categories SET ... = ... WHERE categories.id = ${categoryId}
+  // UPDATE categories SET ... = ... WHERE categories.id = ${categoryId}
+  update: async (categoryId, updateCategoryData) => {
+    const now = new Date();
     const result = await db
       .update(categories)
-      .set(category)
-      .where(eq(categories.id, category.id!));
-    return result.rowCount ?? 0;
+      .set({ ...updateCategoryData, updatedAt: now })
+      .where(eq(categories.id, categoryId))
+      .returning();
+
+    return result[0];
   },
 
-  delete: async (categoryId) => {
-    // DELETE FROM categories WHERE categories.id = ${categoryId}
-    const result = await db
+  // DELETE FROM categories WHERE categories.id = ${categoryId}
+  delete: async (categoryId) =>
+    (
+      await db
       .delete(categories)
-      .where(eq(categories.id, categoryId));
-    return result.rowCount ?? 0;
-  },
+      .where(eq(categories.id, categoryId))
+      .returning()
+    )[0],
 };

@@ -2,7 +2,7 @@ import { NewRole, Role, UpdateRole } from "@/entities/";
 
 export interface RoleModel {
   getAll: () => Promise<Role[]>;
-  create: (role: NewRole) => Promise<Role[]>;
-  update: (role: UpdateRole) => Promise<number>;
-  delete: (roleId: string) => Promise<number>;
+  create: (newRoleData: NewRole) =>  Promise<Role | undefined>;
+  update: (roleId: string, updateRoleData: UpdateRole) =>  Promise<Role | undefined>;
+  delete: (roleId: string) => Promise<Role | undefined>;
 }
