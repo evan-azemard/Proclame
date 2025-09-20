@@ -11,7 +11,7 @@ export interface RoleController {
     res: Response<Role | { message: string }>
   ) => Promise<void>;
   update: (
-    req: Request<{}, { roleId: string }, UpdateRole>,
+    req: Request<{ roleId: string }, {}, UpdateRole>,
     res: Response<Role | { message: string }>
   ) => Promise<void>;
   remove: (req: Request, res: Response<{ message: string }>) => Promise<void>;
