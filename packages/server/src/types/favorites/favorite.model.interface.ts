@@ -1,7 +1,7 @@
-import { Favorit, NewFavorite } from "@/entities";
+import { Favorite, NewFavorite } from "@/entities";
 
 export interface FavoriteModel {
-  getAll: () => Promise<Favorit[]>;
-  create: (NewFavoriteData: NewFavorite) => Promise<Favorit | undefined>;
-  delete: (favoriteId: string) => Promise<Favorit | undefined>;
+  getAll: () => Promise<Favorite[]>;
+  create: (NewFavoriteData: NewFavorite) => Promise<Favorite | undefined>;
+  delete: (favoriteId: string) => Promise<Favorite | undefined>;
 }
