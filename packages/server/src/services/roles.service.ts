@@ -3,7 +3,10 @@ import { RoleService } from "@/types";
 import { throwIfDuplicate } from "@/utils/throwIfDuplicate";
 
 export const roleService: RoleService = {
+	getById: async (roleId) => await roleModel.getById(roleId) ?? "NO_ROLE",
+	
 	getAll: async () => await roleModel.getAll(),
+
 
 	create: async (newRoleData) => {
 		try {

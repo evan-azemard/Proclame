@@ -4,11 +4,19 @@ import { db } from "@/config";
 import { eq } from "drizzle-orm";
 
 export const roleModel: RoleModel = {
+  getById: async (roleId) => {
+    const result = await db.query.roles.findFirst({
+      where: eq(roles.id, roleId),
+    });
+    return result;
+  },
+
   // SELECT * FROM roles
   getAll: async () => await db.select().from(roles),
 
   // INSERT INTO roles ... VALUE (...)
-  create: async (newRoleData) => (await db.insert(roles).values(newRoleData).returning())[0],
+  create: async (newRoleData) =>
+    (await db.insert(roles).values(newRoleData).returning())[0],
 
   // UPDATE roles SET ... = ... WHERE roles.id = ${roleId}
   update: async (roleId, updateRoleData) => {

@@ -10,10 +10,7 @@ export interface UserController {
     req: Request,
     res: Response<PublicUser[] | { message: string }>
   ) => Promise<void>;
-  createUser: (
-    req: Request<{}, {}, NewUser>,
-    res: Response<PublicUser | { message: string }>
-  ) => Promise<void>;
+
   updateUser: (
     req: Request<{ id: string }, {}, UpdateUser>,
     res: Response<PublicUser | { message: string }>

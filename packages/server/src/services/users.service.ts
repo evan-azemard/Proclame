@@ -8,15 +8,6 @@ export const userService: UserService = {
 
   getAll: async () => await userModel.getAll(),
 
-  create: async (newUserData) => {
-    try {
-      return (await userModel.create(newUserData)) ?? "NO_USER_CREATED";
-    } catch (error: unknown) {
-      throwIfDuplicate(error, "CREATING", "USER", ["email", "username"]);
-      throw new Error("ERROR_CREATING_USER: " + String(error));
-    }
-  },
-
   update: async (userId, updateUserData) => {
     try {
       return (

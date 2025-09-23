@@ -28,33 +28,6 @@ export const userController: UserController = {
     }
   },
 
-  createUser: async (req, res) => {
-    try {
-      const newUserData = req.body;
-      const result = await userService.create(newUserData);
-      if (result === "NO_USER_CREATED") {
-        res.status(400).json({ message: "Aucun utilisateur créé" });
-        return;
-      }
-      res.status(201).json(result);
-    } catch (error) {
-      const err = error as Error;
-      if (err.message.includes("DUPLICATE_EMAIL")) {
-        res.status(409).json({ message: "Cet email est déjà utilisé" });
-        return;
-      }
-      if (err.message.includes("DUPLICATE_USERNAME")) {
-        res
-          .status(409)
-          .json({ message: "Ce nom d'utilisateur est déjà utilisé" });
-        return;
-      }
-      res
-        .status(500)
-        .json({ message: "Erreur lors de la création de l'utilisateur" });
-    }
-  },
-
   updateUser: async (req, res) => {
     try {
       const userId = req.params.id;

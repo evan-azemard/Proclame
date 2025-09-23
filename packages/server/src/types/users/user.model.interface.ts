@@ -3,6 +3,7 @@ import { NewUser, PublicUser, UpdateUser } from "@/entities";
 export interface UserModel {
   getById(userId: string): Promise<PublicUser | undefined>;
   getAll(): Promise<PublicUser[]>;
+  getPassword(email:string): Promise<{id: string, password: string} | undefined>
   create(newUserData: NewUser): Promise<PublicUser | undefined>;
   update(
     userId: string,

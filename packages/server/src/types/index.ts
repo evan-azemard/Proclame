@@ -25,3 +25,6 @@ export * from "./sounds/sound.service.interface";
 export * from "./statuses/status.controller.interface";
 export * from "./statuses/status.model.interface";
 export * from "./statuses/status.service.interface";
+
+export * from "./auth/auth.controller.interface";
+export * from "./auth/auth.service.interface";

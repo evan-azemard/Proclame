@@ -33,6 +33,16 @@ export const userModel: UserModel = {
       })
       .from(users),
 
+  // SELECT password FROM users WHERE email = ${email} LIMIT 1
+  getPassword: async (email) =>
+    await db.query.users.findFirst({
+      where: eq(users.email, email),
+      columns: {
+        id: true,
+        password: true,
+      },
+    }),
+
   //return db.execute(sql`INSERT INTO users (email, password, username, roleId) VALUES (${user.email}, ${user.password}, ${user.username}, ${user.roleId}) RETURNING *`);
   create: async (newUserData) => {
     const createdUser = await db.insert(users).values(newUserData).returning({
