@@ -1,10 +1,8 @@
 import { pgTable, text, timestamp, uuid, varchar } from "drizzle-orm/pg-core";
-import { categories } from "./categories.schema";
-import { status } from "./status.schema";
-import { users } from "./users.schema";
+import { users, statuses, categories } from "@/schemas";
 
 export const proclamations = pgTable("proclamations", {
-  id: uuid("id").primaryKey().defaultRandom().notNull(),
+  id: uuid("id").primaryKey().defaultRandom(),
   title: varchar("title", { length: 50 }).notNull().unique(),
   description: text("description").notNull(),
   categoryId: uuid("category_id")
@@ -13,7 +11,7 @@ export const proclamations = pgTable("proclamations", {
     })
     .notNull(),
   statusId: uuid("status_id")
-    .references(() => status.id, {
+    .references(() => statuses.id, {
       onDelete: "restrict",
     })
     .notNull(),
@@ -21,7 +19,6 @@ export const proclamations = pgTable("proclamations", {
     .references(() => users.id, { onDelete: "restrict" })
     .notNull(),
   createdAt: timestamp("created_at", { withTimezone: true })
-    .notNull()
     .defaultNow(),
   updatedAt: timestamp("updated_at", { withTimezone: true })
     .notNull()
