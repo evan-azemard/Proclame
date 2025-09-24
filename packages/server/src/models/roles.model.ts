@@ -1,28 +1,35 @@
-import { NewRole, Role, UpdateRole } from "@/entities/roles.entity";
 import { roles } from "@/schemas";
-import { db } from "config/pool";
+import { RoleModel } from "@/types";
+import { db } from "@/config";
 import { eq } from "drizzle-orm";
 
-export const roleModel = {
+export const roleModel: RoleModel = {
+  getById: async (roleId) => {
+    const result = await db.query.roles.findFirst({
+      where: eq(roles.id, roleId),
+    });
+    return result;
+  },
+
   // SELECT * FROM roles
-  getAll: async (): Promise<Role[]> => await db.select().from(roles),
+  getAll: async () => await db.select().from(roles),
 
-  create: async (role: NewRole): Promise<Role[]> =>
-    // INSERT INTO roles ... VALUE (...)
-    await db.insert(roles).values(role).returning(),
+  // INSERT INTO roles ... VALUE (...)
+  create: async (newRoleData) =>
+    (await db.insert(roles).values(newRoleData).returning())[0],
 
-  update: async (role: UpdateRole): Promise<number> => {
-    // UPDATE roles SET ... = ... WHERE roles.id = ${roleId}
+  // UPDATE roles SET ... = ... WHERE roles.id = ${roleId}
+  update: async (roleId, updateRoleData) => {
+    const now = new Date();
     const result = await db
       .update(roles)
-      .set(role)
-      .where(eq(roles.id, role.id!));
-    return result.rowCount ?? 0;
+      .set({ ...updateRoleData, updatedAt: now })
+      .where(eq(roles.id, roleId))
+      .returning();
+    return result[0];
   },
 
-  delete: async (roleId: string): Promise<number> => {
-    // DELETE roles WHERE roles.id = ${roleId}
-    const result = await db.delete(roles).where(eq(roles.id, roleId));
-    return result.rowCount ?? 0;
-  },
+  // DELETE roles WHERE roles.id = ${roleId}
+  delete: async (roleId) =>
+    (await db.delete(roles).where(eq(roles.id, roleId)).returning())[0],
 };

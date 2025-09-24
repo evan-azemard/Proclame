@@ -1,25 +1,11 @@
-import { NewUser, PublicUser, UpdateUser, User } from "@/entities/users.entity";
 import { users } from "@/schemas";
-import { db } from "config/pool";
-import { eq, sql } from "drizzle-orm";
+import { UserModel } from "@/types";
+import { db } from "@/config";
+import { eq } from "drizzle-orm";
 
-export const userModel = {
-  getAll: async (): Promise<PublicUser[]> =>
-    // return db.execute(sql`SELECT * FROM users`);
-    await db
-      .select({
-        id: users.id,
-        email: users.email,
-        username: users.username,
-        roleId: users.roleId,
-        createdAt: users.createdAt,
-        updatedAt: users.updatedAt,
-        lastLogin: users.lastLogin,
-      })
-      .from(users),
-
-  getById: async (userId: string): Promise<PublicUser | undefined> =>
-    // return db.execute(sql`SELECT * FROM users WHERE id = ${userId}`);
+export const userModel: UserModel = {
+  // return db.execute(sql`SELECT * FROM users WHERE id = ${userId}`);
+  getById: async (userId) =>
     await db.query.users.findFirst({
       where: eq(users.id, userId),
       columns: {
@@ -33,9 +19,33 @@ export const userModel = {
       },
     }),
 
-  create: async (user: NewUser): Promise<PublicUser[]> =>
-    //return db.execute(sql`INSERT INTO users (email, password, username, roleId) VALUES (${user.email}, ${user.password}, ${user.username}, ${user.roleId}) RETURNING *`);
-    await db.insert(users).values(user).returning({
+  // return db.execute(sql`SELECT * FROM users`);
+  getAll: async () =>
+    await db
+      .select({
+        id: users.id,
+        email: users.email,
+        username: users.username,
+        roleId: users.roleId,
+        createdAt: users.createdAt,
+        updatedAt: users.updatedAt,
+        lastLogin: users.lastLogin,
+      })
+      .from(users),
+
+  // SELECT password FROM users WHERE email = ${email} LIMIT 1
+  getPassword: async (email) =>
+    await db.query.users.findFirst({
+      where: eq(users.email, email),
+      columns: {
+        id: true,
+        password: true,
+      },
+    }),
+
+  //return db.execute(sql`INSERT INTO users (email, password, username, roleId) VALUES (${user.email}, ${user.password}, ${user.username}, ${user.roleId}) RETURNING *`);
+  create: async (newUserData) => {
+    const createdUser = await db.insert(users).values(newUserData).returning({
       id: users.id,
       email: users.email,
       username: users.username,
@@ -43,27 +53,48 @@ export const userModel = {
       createdAt: users.createdAt,
       updatedAt: users.updatedAt,
       lastLogin: users.lastLogin,
-    }),
+    });
+    return createdUser[0];
+  },
 
-  update: async (user: UpdateUser): Promise<number> => {
-    // return db.execute(sql`UPDATE users SET email = ${user.email}, password = ${user.password}, username = ${user.username}, roleId = ${user.roleId} WHERE id = ${user.id} RETURNING *`);
-    const result = await db
+  // return db.execute(sql`UPDATE users SET email = ${user.email}, password = ${user.password}, username = ${user.username}, roleId = ${user.roleId} WHERE id = ${userId} RETURNING *`);
+  update: async (userId, updateUserData) => {
+    const now = new Date();
+    const updatedUser = await db
       .update(users)
-      .set(user)
-      .where(eq(users.id, user.id!));
-    return result.rowCount ?? 0;
+      .set({ ...updateUserData, updatedAt: now })
+      .where(eq(users.id, userId))
+      .returning({
+        id: users.id,
+        email: users.email,
+        username: users.username,
+        roleId: users.roleId,
+        createdAt: users.createdAt,
+        updatedAt: users.updatedAt,
+        lastLogin: users.lastLogin,
+      });
+    return updatedUser[0];
   },
 
-  delete: async (userId: string): Promise<number> => {
-    // return db.execute(sql`DELETE FROM users WHERE id = ${userId}`);
-    const result = await db.delete(users).where(eq(users.id, userId));
-    return result.rowCount ?? 0;
+  // return db.execute(sql`DELETE FROM users WHERE id = ${userId}`);
+  delete: async (userId) => {
+    const result = await db
+      .delete(users)
+      .where(eq(users.id, userId))
+      .returning({
+        id: users.id,
+        email: users.email,
+        username: users.username,
+        roleId: users.roleId,
+        createdAt: users.createdAt,
+        updatedAt: users.updatedAt,
+        lastLogin: users.lastLogin,
+      });
+    return result[0];
   },
 
-  findUserByEmail: async (
-    email: string
-  ): Promise<{ id: string; password: string } | undefined> => {
-    // return db.execute(sql`SELECT * FROM users WHERE email = ${email}`);
+  // return db.execute(sql`SELECT * FROM users WHERE email = ${email}`);
+  findUserByEmail: async (email) => {
     return db.query.users.findFirst({
       where: eq(users.email, email),
       columns: { id: true, password: true },

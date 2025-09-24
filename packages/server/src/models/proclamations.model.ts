@@ -1,44 +1,49 @@
-import {
-  NewProclamation,
-  Proclamation,
-  UpdateProclamation,
-} from "@/entities/proclamations.entity";
 import { proclamations } from "@/schemas";
-import { db } from "config/pool";
+import { ProclamationModel } from "@/types";
+import { db } from "@/config";
 import { eq } from "drizzle-orm";
 
-export const proclamationModel = {
-  getAll: async (): Promise<Proclamation[]> =>
-    // SELECT * FROM proclamations
-    await db.select().from(proclamations),
+export const proclamationModel: ProclamationModel = {
+  // SELECT * FROM proclamations
+  getAll: async () => await db.select().from(proclamations),
 
-  getById: async (
-    proclamationId: string
-  ): Promise<Proclamation[] | undefined> =>
-    // SELECT * FROM proclamations WHERE proclamations.id = ${proclamationId}
+  // SELECT * FROM proclamations WHERE proclamations.id = ${proclamationId}
+  getById: async (proclamationId) =>
+    (
+      await db
+        .select()
+        .from(proclamations)
+        .where(eq(proclamations.id, proclamationId))
+    )[0],
+
+  // SELECT * FROM proclamations WHERE categoryId = ${categoryId}
+  getByCategoryId: async (categoryId: string) =>
     await db
       .select()
       .from(proclamations)
-      .where(eq(proclamations.id, proclamationId)),
+      .where(eq(proclamations.categoryId, categoryId)),
 
-  create: async (proclamation: NewProclamation): Promise<Proclamation[]> =>
-    // INSERT INTO proclamations ... VALUE (...)
-    await db.insert(proclamations).values(proclamation).returning(),
+  // INSERT INTO proclamations ... VALUE (...)
+  create: async (newProclamationData) =>
+    (await db.insert(proclamations).values(newProclamationData).returning())[0],
 
-  update: async (proclamation: UpdateProclamation): Promise<number> => {
-    // UPDATE proclamations SET ... = ... WHERE proclamations.id = ${proclamationId}
-    const result = await db
+  // UPDATE proclamations SET ... = ... WHERE proclamations.id = ${proclamationId}
+  update: async (proclamationId, updateProclamationData) => {
+    const now = new Date();
+    const updatedProclamation = await db
       .update(proclamations)
-      .set(proclamation)
-      .where(eq(proclamations.id, proclamation.id!));
-    return result.rowCount ?? 0;
+      .set({ ...updateProclamationData, updatedAt: now })
+      .where(eq(proclamations.id, proclamationId))
+      .returning();
+    return updatedProclamation[0];
   },
 
-  delete: async (proclamationId: string): Promise<number> => {
-    // DELETE proclamations WHERE proclamations.id = ${proclamationId}
-    const result = await db
-      .delete(proclamations)
-      .where(eq(proclamations.id, proclamationId));
-    return result.rowCount ?? 0;
-  },
+  // DELETE proclamations WHERE proclamations.id = ${proclamationId}
+  delete: async (proclamationId) =>
+    (
+      await db
+        .delete(proclamations)
+        .where(eq(proclamations.id, proclamationId))
+        .returning()
+    )[0],
 };
