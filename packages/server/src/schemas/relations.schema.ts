@@ -1,17 +1,20 @@
 import { relations } from "drizzle-orm";
 import * as schemas from "@/schemas";
 
-export const categoriesRelations = relations(schemas.categories, ({ many, one }) => ({
-  proclamations: many(schemas.proclamations),
-  status: one(schemas.statuses, {
-    fields: [schemas.categories.statusId],
-    references: [schemas.statuses.id],
-  }),
-  user: one(schemas.users, {
-    fields: [schemas.categories.userId],
-    references: [schemas.users.id],
-  }),
-}));
+export const categoriesRelations = relations(
+  schemas.categories,
+  ({ many, one }) => ({
+    proclamations: many(schemas.proclamations),
+    status: one(schemas.statuses, {
+      fields: [schemas.categories.statusId],
+      references: [schemas.statuses.id],
+    }),
+    user: one(schemas.users, {
+      fields: [schemas.categories.userId],
+      references: [schemas.users.id],
+    }),
+  })
+);
 
 export const favoritesRelations = relations(schemas.favorites, ({ one }) => ({
   user: one(schemas.users, {

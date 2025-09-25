@@ -9,9 +9,11 @@ export const categoryModel: CategoryModel = {
 
   // SELECT * FROM categories WHERE categories.id = ${categoryId}
   getById: async (categoryId) =>
-    (await db.select().from(categories).where(eq(categories.id, categoryId)))[0],
+    (
+      await db.select().from(categories).where(eq(categories.id, categoryId))
+    )[0],
 
-    // INSERT INTO categories ... VALUE (...)
+  // INSERT INTO categories ... VALUE (...)
   create: async (newCategoryData) =>
     (await db.insert(categories).values(newCategoryData).returning())[0],
 
@@ -31,8 +33,8 @@ export const categoryModel: CategoryModel = {
   delete: async (categoryId) =>
     (
       await db
-      .delete(categories)
-      .where(eq(categories.id, categoryId))
-      .returning()
+        .delete(categories)
+        .where(eq(categories.id, categoryId))
+        .returning()
     )[0],
 };

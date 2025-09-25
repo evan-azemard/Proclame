@@ -5,3 +5,4 @@ export { roleService } from "./roles.service";
 export { proclamationService } from "./proclamations.service";
 export { favoriteService } from "./favorites.service";
 export { categoryService } from "./categories.service";
+export { authService } from "./auth.service";

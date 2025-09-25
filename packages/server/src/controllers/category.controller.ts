@@ -12,7 +12,7 @@ export const categoryController: CategoryController = {
         .json({ message: "Erreur lors de la récupération des catégories" });
     }
   },
-  
+
   getById: async (req, res) => {
     try {
       const categoryId = req.params.id;

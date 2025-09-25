@@ -22,7 +22,7 @@ export const authController: AuthController = {
 
     const resultRole = await roleService.getById(roleId);
     if (resultRole === "NO_ROLE") {
-      res.send(400).json({ mesage: "Aucun role trouvé" });
+      res.status(400).json({ message: "Aucun role trouvé" });
       return;
     }
     const { label: role } = resultRole;
@@ -82,7 +82,7 @@ export const authController: AuthController = {
       const verify = await argon2.verify(hash, password);
 
       if (!verify) {
-        res.send(400).json({ message: "Le mot de passe est inccorrecte" });
+        res.status(400).json({ message: "Le mot de passe est inccorrecte" });
         return;
       }
       const userResult = await authService.getUserById(id);
@@ -95,7 +95,7 @@ export const authController: AuthController = {
       const resultRole = await roleService.getById(roleId);
 
       if (resultRole === "NO_ROLE") {
-        res.send(400).json({ mesage: "Aucun role trouvé" });
+        res.status(400).json({ message: "Aucun role trouvé" });
         return;
       }
 
