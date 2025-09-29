@@ -5,7 +5,7 @@ import { NextFunction, Request, Response } from "express";
 const { JWT_SECRET } = env;
 
 export const isAuthenticated = (
-  req: Request & { user: { id: string; roleId: string } },
+  req: Request & { user: { id: string; role: string } },
   res: Response,
   next: NextFunction
 ) => {
@@ -21,7 +21,7 @@ export const isAuthenticated = (
       id: string;
       role: string;
     };
-    req.user = { id: payload.id, roleId: payload.role };
+    req.user = { id: payload.id, role: payload.role };
     next();
   } catch (error) {
     res.status(401).json({ message: "Token invalide ou expiré" });
