@@ -23,7 +23,7 @@ export const userUpdateSchema = z
           /[\d!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(val),
         {
           message:
-            "Le mot de passe doit contenir une minuscule, une majuscule et un chiffre ou symbole.",
+            "Le mot de passe doit contenir au moins 8 caractères, au moins une majuscule et minuscule, un chiffre ou symbole parmi !@#$%^&*()_+-=[]{};':\"\\|,.<>/?." ,
         }
       )
       .optional(),

@@ -43,7 +43,13 @@ export const authController: AuthController = {
           .json({ message: "Un problème est survenu lors du hash" });
         return;
       }
-      const result = await authService.create({ ...req.body, password: hash });
+
+      const roleId = await roleService.getByName("USER");
+      if (roleId === "NO_ROLE") {
+        res.status(400).json({ message: "Aucun role trouvé" });
+        return;
+      }
+      const result = await authService.create({ ...req.body, password: hash, roleId: roleId.id });
       if (result === "NO_USER_CREATED") {
         res.status(400).json({ message: "Aucun utilisateur créé" });
         return;

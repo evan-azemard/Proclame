@@ -45,7 +45,8 @@ export const userModel: UserModel = {
 
   //return db.execute(sql`INSERT INTO users (email, password, username, roleId) VALUES (${user.email}, ${user.password}, ${user.username}, ${user.roleId}) RETURNING *`);
   create: async (newUserData) => {
-    const createdUser = await db.insert(users).values(newUserData).returning({
+    const roleId = newUserData.roleId;
+    const createdUser = await db.insert(users).values({ ...newUserData, roleId }).returning({
       id: users.id,
       email: users.email,
       username: users.username,

@@ -7,6 +7,9 @@ export const roleService: RoleService = {
 
   getAll: async () => await roleModel.getAll(),
 
+  getByName: async (roleName) =>
+    (await roleModel.getByName(roleName)) ?? "NO_ROLE",
+
   create: async (newRoleData) => {
     try {
       return (await roleModel.create(newRoleData)) ?? "NO_ROLE_CREATED";
