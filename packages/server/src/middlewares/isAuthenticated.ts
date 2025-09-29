@@ -4,20 +4,20 @@ import { NextFunction, Request, Response } from "express";
 
 const { JWT_SECRET } = env;
 
-export const isAuthentificated = (
+export const isAuthenticated  = (
   req: Request & { user: { id: string; roleId: string } },
   next: NextFunction,
   res: Response
 ) => {
-  const accessToken = req.cookies?.accessToken;
+  const token = req.cookies?.token;
 
-  if (!accessToken) {
+  if (!token) {
     res.status(401).json({ message: "Non authentifié" });
     return;
   }
 
   try {
-    const payload = jwt.verify(accessToken, JWT_SECRET) as {
+    const payload = jwt.verify(token, JWT_SECRET) as {
       id: string;
       role: string;
     };

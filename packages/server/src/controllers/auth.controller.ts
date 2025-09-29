@@ -100,11 +100,11 @@ export const authController: AuthController = {
       }
 
       const { label: role } = resultRole;
-      const accesToken = jwt.sign({ id, role }, JWT_SECRET, {
+      const token = jwt.sign({ id, role }, JWT_SECRET, {
         expiresIn: "1h",
       });
 
-      res.cookie("accessToken", accesToken, {
+      res.cookie("token", token, {
         httpOnly: true,
         sameSite: "strict",
         secure: NODE_ENV === "prod",
