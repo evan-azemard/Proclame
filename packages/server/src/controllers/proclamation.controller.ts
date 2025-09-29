@@ -39,7 +39,9 @@ export const proclamationController: ProclamationController = {
     } catch (error) {
       const message = (error as Error).message;
       if (message === "ERROR_CREATING_PROCLAMATION_DUPLICATE_TITLE") {
-        res.status(409).json({ message: "Le titre de la proclamation existe déjà." });
+        res
+          .status(409)
+          .json({ message: "Le titre de la proclamation existe déjà." });
         return;
       }
       res
@@ -51,7 +53,10 @@ export const proclamationController: ProclamationController = {
     try {
       const proclamationId = req.params.id;
       const updatedData = req.body;
-      const result = await proclamationService.update(proclamationId, updatedData);
+      const result = await proclamationService.update(
+        proclamationId,
+        updatedData
+      );
       if (result === "PROCLAMATION_NOT_FOUND") {
         res.status(404).json({ message: "Proclamation non trouvée" });
         return;
@@ -60,7 +65,9 @@ export const proclamationController: ProclamationController = {
     } catch (error) {
       const message = (error as Error).message;
       if (message === "ERROR_UPDATING_PROCLAMATION_DUPLICATE_TITLE") {
-        res.status(409).json({ message: "Le titre de la proclamation existe déjà." });
+        res
+          .status(409)
+          .json({ message: "Le titre de la proclamation existe déjà." });
         return;
       }
       res

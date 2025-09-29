@@ -1,3 +1,5 @@
+// Cette fonction permet de remonté une erreur et formate un message de log
+
 export function throwIfDuplicate(
   error: unknown,
   type: "CREATING" | "UPDATING",

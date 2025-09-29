@@ -38,7 +38,7 @@ export const statusController: StatusController = {
       const updateId = req.params.id;
       const updateStatusData = req.body;
       const result = await statusService.update(updateId, updateStatusData);
-  
+
       if (result === "STATUS_NOT_FOUND") {
         res.status(404).json({ message: "Statut non trouvé" });
         return;

@@ -64,7 +64,9 @@ export const roleController: RoleController = {
       }
       res.sendStatus(204);
     } catch (error) {
-      res.status(500).json({ message: "Erreur lors de la suppression du rôle" });
+      res
+        .status(500)
+        .json({ message: "Erreur lors de la suppression du rôle" });
     }
   },
 };

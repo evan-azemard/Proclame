@@ -18,8 +18,7 @@ export const proclamations = pgTable("proclamations", {
   userId: uuid("user_id")
     .references(() => users.id, { onDelete: "restrict" })
     .notNull(),
-  createdAt: timestamp("created_at", { withTimezone: true })
-    .defaultNow(),
+  createdAt: timestamp("created_at", { withTimezone: true }).defaultNow(),
   updatedAt: timestamp("updated_at", { withTimezone: true })
     .notNull()
     .defaultNow(),
