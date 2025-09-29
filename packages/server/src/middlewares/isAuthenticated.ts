@@ -4,10 +4,10 @@ import { NextFunction, Request, Response } from "express";
 
 const { JWT_SECRET } = env;
 
-export const isAuthenticated  = (
+export const isAuthenticated = (
   req: Request & { user: { id: string; roleId: string } },
-  next: NextFunction,
-  res: Response
+  res: Response,
+  next: NextFunction
 ) => {
   const token = req.cookies?.token;
 

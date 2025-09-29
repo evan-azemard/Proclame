@@ -49,7 +49,11 @@ export const authController: AuthController = {
         res.status(400).json({ message: "Aucun role trouvé" });
         return;
       }
-      const result = await authService.create({ ...req.body, password: hash, roleId: roleId.id });
+      const result = await authService.create({
+        ...req.body,
+        password: hash,
+        roleId: roleId.id,
+      });
       if (result === "NO_USER_CREATED") {
         res.status(400).json({ message: "Aucun utilisateur créé" });
         return;
@@ -88,7 +92,7 @@ export const authController: AuthController = {
       const verify = await argon2.verify(hash, password);
 
       if (!verify) {
-        res.status(400).json({ message: "Le mot de passe est inccorrecte" });
+        res.status(400).json({ message: "Le mot de passe est incorrect" });
         return;
       }
       const userResult = await authService.getUserById(id);
