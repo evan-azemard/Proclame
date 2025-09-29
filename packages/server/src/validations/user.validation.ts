@@ -46,5 +46,5 @@ export const userUpdateSchema = z
   .refine(
     (data) =>
       !!data.email || !!data.password || !!data.roleId || !!data.username,
-    { message: "Au moins un champ doit être renseigné." }
+    { message: "Au moins un champ doit être renseigné pour mettre à jour l'utilisateur." }
   );
