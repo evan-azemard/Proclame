@@ -9,8 +9,7 @@ export const users = pgTable("users", {
   roleId: uuid("role_id")
     .references(() => roles.id, { onDelete: "restrict" })
     .notNull(),
-  createdAt: timestamp("created_at", { withTimezone: true })
-    .defaultNow(),
+  createdAt: timestamp("created_at", { withTimezone: true }).defaultNow(),
   updatedAt: timestamp("updated_at", { withTimezone: true })
     .notNull()
     .defaultNow(),

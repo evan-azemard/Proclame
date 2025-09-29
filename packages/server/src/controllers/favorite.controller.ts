@@ -1,7 +1,6 @@
 import { favoriteService } from "@/services";
 import { FavoriteController } from "@/types";
 
-
 export const favoriteController: FavoriteController = {
   getAll: async (req, res) => {
     try {
@@ -29,12 +28,12 @@ export const favoriteController: FavoriteController = {
         return;
       }
       if (message === "ERROR_CREATING_FAVORITE_DUPLICATE_PROCLAMATION_ID") {
-        res.status(409).json({ message: "La proclamation est déjà en favori." });
+        res
+          .status(409)
+          .json({ message: "La proclamation est déjà en favori." });
         return;
       }
-      res
-        .status(500)
-        .json({ message: "Erreur lors de la création du favori" });
+      res.status(500).json({ message: "Erreur lors de la création du favori" });
     }
   },
   remove: async (req, res) => {
@@ -47,7 +46,9 @@ export const favoriteController: FavoriteController = {
       }
       res.sendStatus(204);
     } catch (error) {
-      
+      res
+        .status(500)
+        .json({ message: "Erreur lors de la suppression du favori" });
     }
   },
 };

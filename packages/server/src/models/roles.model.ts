@@ -11,6 +11,13 @@ export const roleModel: RoleModel = {
     return result;
   },
 
+  getByName: async (roleName) => {
+    const result = await db.query.roles.findFirst({
+      where: eq(roles.label, roleName),
+    });
+    return result;
+  },
+
   // SELECT * FROM roles
   getAll: async () => await db.select().from(roles),
 

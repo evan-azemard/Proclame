@@ -22,7 +22,7 @@ export const authController: AuthController = {
 
     const resultRole = await roleService.getById(roleId);
     if (resultRole === "NO_ROLE") {
-      res.send(400).json({ mesage: "Aucun role trouvé" });
+      res.status(400).json({ message: "Aucun role trouvé" });
       return;
     }
     const { label: role } = resultRole;
@@ -43,7 +43,17 @@ export const authController: AuthController = {
           .json({ message: "Un problème est survenu lors du hash" });
         return;
       }
-      const result = await authService.create({ ...req.body, password: hash });
+
+      const roleId = await roleService.getByName("USER");
+      if (roleId === "NO_ROLE") {
+        res.status(400).json({ message: "Aucun role trouvé" });
+        return;
+      }
+      const result = await authService.create({
+        ...req.body,
+        password: hash,
+        roleId: roleId.id,
+      });
       if (result === "NO_USER_CREATED") {
         res.status(400).json({ message: "Aucun utilisateur créé" });
         return;
@@ -82,7 +92,7 @@ export const authController: AuthController = {
       const verify = await argon2.verify(hash, password);
 
       if (!verify) {
-        res.send(400).json({ message: "Le mot de passe est inccorrecte" });
+        res.status(400).json({ message: "Le mot de passe est incorrect" });
         return;
       }
       const userResult = await authService.getUserById(id);
@@ -95,16 +105,16 @@ export const authController: AuthController = {
       const resultRole = await roleService.getById(roleId);
 
       if (resultRole === "NO_ROLE") {
-        res.send(400).json({ mesage: "Aucun role trouvé" });
+        res.status(400).json({ message: "Aucun role trouvé" });
         return;
       }
 
       const { label: role } = resultRole;
-      const accesToken = jwt.sign({ id, role }, JWT_SECRET, {
+      const token = jwt.sign({ id, role }, JWT_SECRET, {
         expiresIn: "1h",
       });
 
-      res.cookie("accessToken", accesToken, {
+      res.cookie("token", token, {
         httpOnly: true,
         sameSite: "strict",
         secure: NODE_ENV === "prod",

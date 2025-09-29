@@ -10,4 +10,5 @@ export interface RoleModel {
     updateRoleData: UpdateRole
   ) => Promise<Role | undefined>;
   delete: (roleId: string) => Promise<Role | undefined>;
+  getByName: (roleName: string) => Promise<Role | undefined>;
 }

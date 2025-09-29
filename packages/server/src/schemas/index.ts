@@ -6,4 +6,3 @@ export * from "./roles.schema";
 export * from "./sounds.schema";
 export * from "./statuses.schema";
 export * from "./users.schema";
-export * from "./relations.schema"
