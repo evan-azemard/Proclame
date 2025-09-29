@@ -4,7 +4,8 @@ import { UserController } from "@/types";
 export const userController: UserController = {
   getUserById: async (req, res) => {
     try {
-      const result = await userService.getUserById(req.params.id);
+      const userId = req.params.id;
+      const result = await userService.getUserById(userId);
       if (result === "USER_NOT_FOUND") {
         res.status(404).json({ message: "Utilisateur introuvable" });
         return;
