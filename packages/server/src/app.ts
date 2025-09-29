@@ -16,6 +16,8 @@ app.use(
   })
 );
 
+app.use(cookieParser());
+
 const authLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 10,
@@ -26,9 +28,6 @@ const authLimiter = rateLimit({
 app.post("/login", authLimiter);
 app.post("/register", authLimiter);
 app.post("/update", authLimiter);
-
-app.use(cookieParser());
-
 
 app.get("/api/csrf-token", csrfProtection, (req, res) => {
   res.json({ csrfToken: req.csrfToken() });
