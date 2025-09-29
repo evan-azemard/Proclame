@@ -3,7 +3,7 @@ import { z } from "zod";
 export const statusCreateValidation = z.object({
   label: z
     .string()
-    .min(2, { message: "Le libéllé doit contenir au moins 2 caractères." })
+    .min(2, { message: "Le libellé doit contenir au moins 2 caractères." })
     .max(50, { message: "Le libellé doit contenir au maximum 50 caractères." }),
   description: z
     .string()
@@ -18,7 +18,7 @@ export const statusUpdateValidation = z
   .object({
     label: z
       .string()
-      .min(2, { message: "Le libéllé doit contenir au moins 2 caractères." })
+      .min(2, { message: "Le libellé doit contenir au moins 2 caractères." })
       .max(50, {
         message: "Le libellé doit contenir au maximum 50 caractères.",
       })
