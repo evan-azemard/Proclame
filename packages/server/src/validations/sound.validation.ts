@@ -3,8 +3,8 @@ import { z } from "zod";
 export const soundCreateValidation = z.object({
   label: z
     .string()
-    .min(2, { message: "Le libéllé doit contenir au moins 2 caractères." })
-    .max(50, { message: "Le libéllé ne doit pas dépasser 50 caractères." }),
+    .min(2, { message: "Le libellé doit contenir au moins 2 caractères." })
+    .max(50, { message: "Le libellé ne doit pas dépasser 50 caractères." }),
   description: z
     .string()
     .min(10, {
@@ -33,8 +33,8 @@ export const soundUpdateValidation = z
   .object({
     label: z
       .string()
-      .min(2, { message: "Le libéllé doit contenir au moins 2 caractères." })
-      .max(50, { message: "Le libéllé ne doit pas dépasser 50 caractères." })
+      .min(2, { message: "Le libellé doit contenir au moins 2 caractères." })
+      .max(50, { message: "Le libellé ne doit pas dépasser 50 caractères." })
       .optional(),
     description: z
       .string()

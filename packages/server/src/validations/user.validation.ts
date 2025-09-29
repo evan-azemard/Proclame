@@ -23,7 +23,7 @@ export const userUpdateSchema = z
           /[\d!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(val),
         {
           message:
-            "Le mot de passe doit contenir au moins 8 caractères, au moins une majuscule et minuscule, un chiffre ou symbole parmi !@#$%^&*()_+-=[]{};':\"\\|,.<>/?." ,
+            "Le mot de passe doit contenir au moins 8 caractères, au moins une majuscule et minuscule, un chiffre ou symbole parmi !@#$%^&*()_+-=[]{};':\"\\|,.<>/?.",
         }
       )
       .optional(),
@@ -46,5 +46,8 @@ export const userUpdateSchema = z
   .refine(
     (data) =>
       !!data.email || !!data.password || !!data.roleId || !!data.username,
-    { message: "Au moins un champ doit être renseigné pour mettre à jour l'utilisateur." }
+    {
+      message:
+        "Au moins un champ doit être renseigné pour mettre à jour l'utilisateur.",
+    }
   );

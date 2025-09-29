@@ -34,5 +34,6 @@ export const categoryUpdateValidation = z
       .optional(),
   })
   .refine((data) => !!data.title || !!data.statusId || !!data.userId, {
-    message: "Au moins un champ doit être fourni pour la mise à jour de la catégorie.",
+    message:
+      "Au moins un champ doit être fourni pour la mise à jour de la catégorie.",
   });

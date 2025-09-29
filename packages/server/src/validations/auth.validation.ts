@@ -30,13 +30,22 @@ export const authRegisterValidation = z.object({
     .max(255, { message: "L'email ne doit pas dépasser 255 caractères." }),
   username: z
     .string()
-    .min(3, { message: "Le nom d'utilisateur doit contenir au moins 3 caractères." })
-    .max(50, { message: "Le nom d'utilisateur ne doit pas dépasser 50 caractères." })
-    .regex(/^[a-zA-Z0-9_]+$/, { message: "Le nom d'utilisateur ne peut contenir que des lettres, des chiffres et des underscores." }),
+    .min(3, {
+      message: "Le nom d'utilisateur doit contenir au moins 3 caractères.",
+    })
+    .max(50, {
+      message: "Le nom d'utilisateur ne doit pas dépasser 50 caractères.",
+    })
+    .regex(/^[a-zA-Z0-9_]+$/, {
+      message:
+        "Le nom d'utilisateur ne peut contenir que des lettres, des chiffres et des underscores.",
+    }),
   password: z
     .string()
     .min(8, { message: "Le mot de passe doit contenir au moins 8 caractères." })
-    .max(255, { message: "Le mot de passe ne doit pas dépasser 255 caractères." })
+    .max(255, {
+      message: "Le mot de passe ne doit pas dépasser 255 caractères.",
+    })
     .refine(
       (val: string) =>
         /[a-z]/.test(val) &&
