@@ -28,3 +28,5 @@ export * from "./statuses/status.service.interface";
 
 export * from "./auth/auth.controller.interface";
 export * from "./auth/auth.service.interface";
+
+export * from "./env.d";
