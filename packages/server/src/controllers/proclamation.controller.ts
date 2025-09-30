@@ -1,12 +1,18 @@
 import { proclamationService } from "@/services";
 import { ProclamationController } from "@/types";
+import { logger } from "@/utils";
 
 export const proclamationController: ProclamationController = {
   getAll: async (req, res) => {
     try {
       const proclamations = await proclamationService.getAll();
+      logger.info("Récupération de toutes les proclamations (getAll)");
       res.json(proclamations);
     } catch (error) {
+      logger.error(
+        { err: error },
+        "Erreur lors de la récupération des proclamations (getAll)"
+      );
       res
         .status(500)
         .json({ message: "Erreur lors de la récupération des proclamations" });
@@ -20,8 +26,16 @@ export const proclamationController: ProclamationController = {
         res.status(404).json({ message: "Proclamation non trouvée" });
         return;
       }
+      logger.info(
+        { proclamationId },
+        "Récupération d'une proclamation (getById)"
+      );
       res.json(result);
     } catch (error) {
+      logger.error(
+        { err: error },
+        "Erreur lors de la récupération de la proclamation (getById)"
+      );
       res
         .status(500)
         .json({ message: "Erreur lors de la récupération de la proclamation" });
@@ -35,9 +49,17 @@ export const proclamationController: ProclamationController = {
         res.status(400).json({ message: "Aucune proclamation créée" });
         return;
       }
+      logger.info(
+        { proclamationId: result?.id },
+        "Création d'une proclamation (create)"
+      );
       res.json(result);
     } catch (error) {
       const message = (error as Error).message;
+      logger.error(
+        { err: error },
+        "Erreur lors de la création de la proclamation (create)"
+      );
       if (message === "ERROR_CREATING_PROCLAMATION_DUPLICATE_TITLE") {
         res
           .status(409)
@@ -61,9 +83,17 @@ export const proclamationController: ProclamationController = {
         res.status(404).json({ message: "Proclamation non trouvée" });
         return;
       }
+      logger.info(
+        { proclamationId },
+        "Mise à jour d'une proclamation (update)"
+      );
       res.json(result);
     } catch (error) {
       const message = (error as Error).message;
+      logger.error(
+        { err: error },
+        "Erreur lors de la mise à jour de la proclamation (update)"
+      );
       if (message === "ERROR_UPDATING_PROCLAMATION_DUPLICATE_TITLE") {
         res
           .status(409)
@@ -83,8 +113,16 @@ export const proclamationController: ProclamationController = {
         res.status(404).json({ message: "Proclamation non trouvée" });
         return;
       }
+      logger.info(
+        { proclamationId },
+        "Suppression d'une proclamation (remove)"
+      );
       res.sendStatus(204);
     } catch (error) {
+      logger.error(
+        { err: error },
+        "Erreur lors de la suppression de la proclamation (remove)"
+      );
       res
         .status(500)
         .json({ message: "Erreur lors de la suppression de la proclamation" });

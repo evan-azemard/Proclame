@@ -1,71 +1,77 @@
-import jwt from "jsonwebtoken";
-import { authService } from "@/services/auth.service";
-import argon2 from "argon2";
-import { roleService } from "@/services";
-
-import { env } from "@/config";
+import { authService } from "@/services";
 import { AuthController } from "@/types";
-const { JWT_SECRET, NODE_ENV } = env;
+import { logger } from "@/utils";
 
 export const authController: AuthController = {
   me: async (req, res) => {
-    const userId = req.user.id;
-    const user = await authService.getUserById(userId);
-
-    if (user === "USER_NOT_FOUND") {
-      res.status(404).json({ message: "Utilisateur non trouvé" });
-      return;
+    try {
+      const userId = req.user?.id;
+      const result = await authService.me(userId);
+      if (result === "USER_NOT_FOUND") {
+        logger.info({ user: userId }, "Utilisateur non trouvé (me)");
+        res.status(404).json({ message: "Utilisateur non trouvé" });
+        return;
+      }
+      if (result === "NO_ROLE") {
+        logger.info({ user: userId }, "Aucun rôle attribué (me)");
+        res.status(403).json({ message: "Aucun rôle attribué" });
+        return;
+      }
+      logger.info({ user: userId }, "Récupération des infos utilisateur (me)");
+      res.status(200).json({ user: result });
+    } catch (error) {
+      logger.error(
+        { err: error },
+        "Erreur lors de la récupération de l'utilisateur (me)"
+      );
+      res
+        .status(500)
+        .json({ message: "Erreur lors de la récupération de l'utilisateur" });
     }
-
-    const { id, email, roleId, username, createdAt, updatedAt, lastLogin } =
-      user;
-
-    const resultRole = await roleService.getById(roleId);
-    if (resultRole === "NO_ROLE") {
-      res.status(400).json({ message: "Aucun role trouvé" });
-      return;
-    }
-    const { label: role } = resultRole;
-
-    res.json({
-      user: { id, email, role, username, createdAt, updatedAt, lastLogin },
-    });
   },
 
   register: async (req, res) => {
     try {
-      const { password } = req.body;
-      const hash = await argon2.hash(password);
-
-      if (!hash) {
-        res
-          .status(400)
-          .json({ message: "Un problème est survenu lors du hash" });
+      const result = await authService.register(req.body);
+      if (result === "NO_ROLE") {
+        logger.info(
+          { user: req.body?.username },
+          "Aucun rôle trouvé (register)"
+        );
+        res.status(400).json({ message: "Aucun rôle trouvé" });
         return;
       }
-
-      const roleId = await roleService.getByName("USER");
-      if (roleId === "NO_ROLE") {
-        res.status(400).json({ message: "Aucun role trouvé" });
-        return;
-      }
-      const result = await authService.create({
-        ...req.body,
-        password: hash,
-        roleId: roleId.id,
-      });
       if (result === "NO_USER_CREATED") {
+        logger.info(
+          { user: req.body?.username },
+          "Aucun utilisateur créé (register)"
+        );
         res.status(400).json({ message: "Aucun utilisateur créé" });
         return;
       }
-      res.status(201).json(result);
+      if (result === "ERROR_HASHING_PASSWORD") {
+        logger.info(
+          { user: req.body?.username },
+          "Erreur hash mot de passe (register)"
+        );
+        res
+          .status(400)
+          .json({ message: "Erreur lors du hash du mot de passe" });
+        return;
+      }
+      logger.info({ user: req.body?.username }, "Utilisateur créé (register)");
+      res.status(201).json({ user: result });
     } catch (error) {
+      logger.error(
+        { err: error },
+        "Erreur lors de la création de l'utilisateur (register)"
+      );
       const err = error as Error;
-      if (err.message.includes("DUPLICATE_EMAIL")) {
+      if (err.message === "DUPLICATE_EMAIL") {
         res.status(409).json({ message: "Cet email est déjà utilisé" });
         return;
       }
-      if (err.message.includes("DUPLICATE_USERNAME")) {
+      if (err.message === "DUPLICATE_USERNAME") {
         res
           .status(409)
           .json({ message: "Ce nom d'utilisateur est déjà utilisé" });
@@ -80,51 +86,31 @@ export const authController: AuthController = {
   login: async (req, res) => {
     try {
       const { email, password } = req.body;
-      const result = await authService.getPassword(email);
-
+      const result = await authService.login(email, password, res);
       if (result === "NO_EMAIL") {
+        logger.info({ email }, "Email inexistant (login)");
         res.status(400).json({ message: "L'email n'existe pas" });
         return;
       }
-
-      const { id, password: hash } = result;
-
-      const verify = await argon2.verify(hash, password);
-
-      if (!verify) {
-        res.status(400).json({ message: "Le mot de passe est incorrect" });
+      if (result === "INVALID_PASSWORD") {
+        logger.info({ email }, "Mot de passe incorrect (login)");
+        res.status(401).json({ message: "Le mot de passe est incorrect" });
         return;
       }
-      const userResult = await authService.getUserById(id);
-      if (userResult === "USER_NOT_FOUND") {
+      if (result === "USER_NOT_FOUND") {
+        logger.info({ email }, "Utilisateur non trouvé (login)");
         res.status(404).json({ message: "Utilisateur non trouvé" });
         return;
       }
-      const { roleId, username, createdAt, updatedAt, lastLogin } = userResult;
-
-      const resultRole = await roleService.getById(roleId);
-
-      if (resultRole === "NO_ROLE") {
-        res.status(400).json({ message: "Aucun role trouvé" });
+      if (result === "NO_ROLE") {
+        logger.info({ email }, "Aucun rôle trouvé (login)");
+        res.status(400).json({ message: "Aucun rôle trouvé" });
         return;
       }
-
-      const { label: role } = resultRole;
-      const token = jwt.sign({ id, role }, JWT_SECRET, {
-        expiresIn: "1h",
-      });
-
-      res.cookie("token", token, {
-        httpOnly: true,
-        sameSite: "strict",
-        secure: NODE_ENV === "prod",
-        maxAge: 60 * 60 * 1000,
-      });
-
-      res.json({
-        user: { id, email, role, username, createdAt, updatedAt, lastLogin },
-      });
+      logger.info({ email }, "Connexion utilisateur réussie (login)");
+      res.status(200).json({ user: result });
     } catch (error) {
+      logger.error({ err: error }, "Erreur lors de la connexion (login)");
       res.status(500).json({ message: "Erreur lors de la connexion" });
     }
   },
