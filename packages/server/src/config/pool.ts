@@ -1,13 +1,11 @@
+// Crée et exporte un pool de connexions PostgreSQL afin de permettre la gestion efficace de connexions multiples et simultanées à la base de données
 import { Pool } from "pg";
 import { drizzle, NodePgDatabase } from "drizzle-orm/node-postgres";
-import { env } from "./env";
-
+import { env } from "@/config";
 import * as schema from "@/schemas";
 
-const { DATABASE_URL } = env;
-
 export const pool = new Pool({
-  connectionString: DATABASE_URL,
+  connectionString: env.DATABASE_URL,
 });
 
 export const db: NodePgDatabase<typeof schema> = drizzle(pool, { schema });

@@ -1,12 +1,12 @@
-import { EnvConfig } from "../types/env.d";
+// Permet la centralisation et la validation des variables d'environnement
+import { requireEnv } from "@/utils";
+import { EnvConfig } from "@/types";
 import "dotenv/config";
 
 export const env: EnvConfig = {
-  PORT: parseInt(process.env.PORT || "3000"),
-  NODE_ENV: process.env.NODE_ENV as "dev" | "prod" | "test",
-  ORIGIN: process.env.ORIGIN || "http://localhost:3000",
-  DATABASE_URL:
-    process.env.DATABASE_URL ||
-    "postgresql://user:password@localhost:5432/mydb",
-  JWT_SECRET: process.env.JWT_SECRET || "your_jwt_secret",
+  PORT: parseInt(requireEnv("PORT")),
+  NODE_ENV: requireEnv("NODE_ENV") as "dev" | "prod" | "test",
+  ORIGIN: requireEnv("ORIGIN"),
+  DATABASE_URL: requireEnv("DATABASE_URL"),
+  JWT_SECRET: requireEnv("JWT_SECRET"),
 };
