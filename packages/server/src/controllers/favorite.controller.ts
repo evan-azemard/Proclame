@@ -1,12 +1,18 @@
 import { favoriteService } from "@/services";
 import { FavoriteController } from "@/types";
+import { logger } from "@/utils";
 
 export const favoriteController: FavoriteController = {
   getAll: async (req, res) => {
     try {
       const favorites = await favoriteService.getAll();
+      logger.info("Récupération des favoris (getAll)");
       res.json(favorites);
     } catch (error) {
+      logger.error(
+        { err: error },
+        "Erreur lors de la récupération des favoris (getAll)"
+      );
       res
         .status(500)
         .json({ message: "Erreur lors de la récupération des favoris" });
@@ -20,9 +26,14 @@ export const favoriteController: FavoriteController = {
         res.status(400).json({ message: "Aucun favori créé" });
         return;
       }
+      logger.info({ favoriteId: result?.id }, "Création d'un favori (create)");
       res.json(result);
     } catch (error) {
       const message = (error as Error).message;
+      logger.error(
+        { err: error },
+        "Erreur lors de la création du favori (create)"
+      );
       if (message === "ERROR_CREATING_FAVORITE_DUPLICATE_USER_ID") {
         res.status(409).json({ message: "L'utilisateur a déjà ce favori." });
         return;
@@ -44,8 +55,13 @@ export const favoriteController: FavoriteController = {
         res.status(404).json({ message: "Favori non trouvé" });
         return;
       }
+      logger.info({ favoriteId }, "Suppression d'un favori (remove)");
       res.sendStatus(204);
     } catch (error) {
+      logger.error(
+        { err: error },
+        "Erreur lors de la suppression du favori (remove)"
+      );
       res
         .status(500)
         .json({ message: "Erreur lors de la suppression du favori" });
