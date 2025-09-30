@@ -8,11 +8,21 @@ import { env } from "@/config";
 const { JWT_SECRET, NODE_ENV } = env;
 
 export const authService: AuthService = {
-  getUserById: async (userId: string) => {
+  me: async (userId: string) => {
     try {
-      return (await userModel.getById(userId)) ?? "USER_NOT_FOUND";
+      const user = await userModel.getById(userId);
+      if (!user) return "USER_NOT_FOUND";
+
+      const { id, email, roleId, username, createdAt, updatedAt, lastLogin } =
+        user;
+
+      const resultRole = await roleService.getById(roleId);
+      if (resultRole === "NO_ROLE") return "NO_ROLE";
+
+      const { label: role } = resultRole;
+      return { id, email, role, username, createdAt, updatedAt, lastLogin };
     } catch (error) {
-      return "ERROR_GET_USER: " + String(error);
+      throw new Error("ERROR_ME: " + String(error));
     }
   },
 
@@ -20,13 +30,11 @@ export const authService: AuthService = {
     try {
       const { password } = userData;
       const hash = await argon2.hash(password);
-      if (!hash) {
-        return "ERROR_HASHING_PASSWORD";
-      }
+      if (!hash) return "ERROR_HASHING_PASSWORD";
+
       const roleId = await roleService.getByName("USER");
-      if (roleId === "NO_ROLE") {
-        return "NO_ROLE";
-      }
+      if (roleId === "NO_ROLE") return "NO_ROLE";
+
       const result = await userModel.create({
         ...userData,
         password: hash,
@@ -73,26 +81,7 @@ export const authService: AuthService = {
         user: { id, email, role, username, createdAt, updatedAt, lastLogin },
       };
     } catch (error: any) {
-      throwIfDuplicate(error, "CREATING", "USER", ["email", "username"]);
       return "ERROR_LOGIN: " + String(error);
-    }
-  },
-
-  me: async (userId: string) => {
-    try {
-      const user = await userModel.getById(userId);
-      if (!user) return "USER_NOT_FOUND";
-
-      const { id, email, roleId, username, createdAt, updatedAt, lastLogin } =
-        user;
-
-      const resultRole = await roleService.getById(roleId);
-      if (resultRole === "NO_ROLE") return "NO_ROLE";
-      
-      const { label: role } = resultRole;
-      return { id, email, role, username, createdAt, updatedAt, lastLogin };
-    } catch (error) {
-      throw new Error("ERROR_ME: " + String(error));
     }
   },
 };
