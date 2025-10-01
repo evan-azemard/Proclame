@@ -6,6 +6,11 @@ export const authController: AuthController = {
   me: async (req, res) => {
     try {
       const userId = req.user?.id;
+      if (!userId) {
+        logger.info("Accès /me sans authentification valide");
+        res.status(401).json({ message: "Non authentifié" });
+        return;
+      }
       const result = await authService.me(userId);
       if (result === "USER_NOT_FOUND") {
         logger.info({ user: userId }, "Utilisateur non trouvé (me)");
@@ -113,5 +118,11 @@ export const authController: AuthController = {
       logger.error({ err: error }, "Erreur lors de la connexion (login)");
       res.status(500).json({ message: "Erreur lors de la connexion" });
     }
+  },
+
+  logout: (_req, res) => {
+    res.clearCookie("accessToken");
+    res.status(200).json({ message: "Déconnexion réussie" });
+    return;
   },
 };

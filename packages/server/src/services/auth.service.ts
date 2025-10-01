@@ -71,7 +71,7 @@ export const authService: AuthService = {
       const token = jwt.sign({ id, role }, JWT_SECRET, {
         expiresIn: "1h",
       });
-      res.cookie("token", token, {
+      res.cookie("accessToken", token, {
         httpOnly: true,
         sameSite: "strict",
         secure: NODE_ENV === "prod",
