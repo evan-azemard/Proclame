@@ -4,7 +4,7 @@ import cookieParser from "cookie-parser";
 import { env } from "config/env";
 import helmet from "helmet";
 import compression from "compression";
-import rootRouter from "./routes/rootRouter";
+import { rootRouter } from "@/routes/";
 const app = express();
 app.use(helmet());
 app.use(compression());

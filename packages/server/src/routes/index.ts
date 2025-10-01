@@ -6,3 +6,4 @@ export { default as roleRoutes } from "./role.routes";
 export { default as soundRoutes } from "./sound.routes";
 export { default as statusRoutes } from "./status.routes";
 export { default as userRoutes } from "./user.routes";
+export { default as rootRouter } from "./rootRouter";
