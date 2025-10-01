@@ -18,13 +18,14 @@ export function throwIfDuplicate(
 
   const d = err.detail?.toLowerCase();
   for (const field of uniqueField) {
-    if (d?.includes(field))
+    if (d?.includes(field)) {
       logger.info(
         `Duplicate field "${field}" when ${type.toLowerCase()} ${name}`
       );
-    throw new Error(
-      `ERROR_${type.toUpperCase()}_${name.toUpperCase()}_DUPLICATE_${field.toUpperCase()}`
-    );
+      throw new Error(
+        `ERROR_${type.toUpperCase()}_${name.toUpperCase()}_DUPLICATE_${field.toUpperCase()}`
+      );
+    }
   }
   logger.info(`Duplicate ${name} when ${type.toLowerCase()}`);
   throw new Error(

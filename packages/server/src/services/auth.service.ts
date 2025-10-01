@@ -1,11 +1,34 @@
 import { userModel } from "@/models";
-import { AuthService } from "@/types/auth/auth.service.interface";
+import {
+  AuthService,
+  AuthenticatedUser,
+} from "@/types/auth/auth.service.interface";
 import { throwIfDuplicate } from "@/utils/throwIfDuplicate";
 import { roleService } from "@/services";
 import argon2 from "argon2";
 import jwt from "jsonwebtoken";
 import { env } from "@/config";
 const { JWT_SECRET, NODE_ENV } = env;
+
+const toAuthenticatedUser = (
+  user: {
+    id: string;
+    email: string;
+    username: string;
+    createdAt: Date | null;
+    updatedAt: Date;
+    lastLogin: Date | null;
+  },
+  role: string
+): AuthenticatedUser => ({
+  id: user.id,
+  email: user.email,
+  role,
+  username: user.username,
+  createdAt: user.createdAt,
+  updatedAt: user.updatedAt,
+  lastLogin: user.lastLogin,
+});
 
 export const authService: AuthService = {
   me: async (userId: string) => {
@@ -20,7 +43,10 @@ export const authService: AuthService = {
       if (resultRole === "NO_ROLE") return "NO_ROLE";
 
       const { label: role } = resultRole;
-      return { id, email, role, username, createdAt, updatedAt, lastLogin };
+      return toAuthenticatedUser(
+        { id, email, username, createdAt, updatedAt, lastLogin },
+        role
+      );
     } catch (error) {
       throw new Error("ERROR_ME: " + String(error));
     }
@@ -32,18 +58,20 @@ export const authService: AuthService = {
       const hash = await argon2.hash(password);
       if (!hash) return "ERROR_HASHING_PASSWORD";
 
-      const roleId = await roleService.getByName("USER");
-      if (roleId === "NO_ROLE") return "NO_ROLE";
+      const role = await roleService.getByName("USER");
+      if (role === "NO_ROLE") return "NO_ROLE";
 
-      const result = await userModel.create({
+      const createdUser = await userModel.create({
         ...userData,
         password: hash,
-        roleId: roleId.id,
+        roleId: role.id,
       });
-      return result ?? "NO_USER_CREATED";
-    } catch (error: any) {
+      if (!createdUser) return "NO_USER_CREATED";
+
+      return toAuthenticatedUser(createdUser, role.label);
+    } catch (error: unknown) {
       throwIfDuplicate(error, "CREATING", "USER", ["email", "username"]);
-      return "ERROR_CREATING_USER: " + String(error);
+      throw new Error("ERROR_CREATING_USER: " + String(error));
     }
   },
 
@@ -77,11 +105,12 @@ export const authService: AuthService = {
         secure: NODE_ENV === "prod",
         maxAge: 60 * 60 * 1000, // 1 heure
       });
-      return {
-        user: { id, email, role, username, createdAt, updatedAt, lastLogin },
-      };
-    } catch (error: any) {
-      return "ERROR_LOGIN: " + String(error);
+      return toAuthenticatedUser(
+        { id, email, username, createdAt, updatedAt, lastLogin },
+        role
+      );
+    } catch (error: unknown) {
+      throw new Error("ERROR_LOGIN: " + String(error));
     }
   },
 };

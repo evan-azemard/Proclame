@@ -64,6 +64,16 @@ export const authController: AuthController = {
           .json({ message: "Erreur lors du hash du mot de passe" });
         return;
       }
+      if (typeof result === "string") {
+        logger.error(
+          { user: req.body?.username, result },
+          "Réponse inattendue depuis authService.register"
+        );
+        res
+          .status(500)
+          .json({ message: "Erreur lors de la création de l'utilisateur" });
+        return;
+      }
       logger.info({ user: req.body?.username }, "Utilisateur créé (register)");
       res.status(201).json({ user: result });
     } catch (error) {
@@ -72,11 +82,11 @@ export const authController: AuthController = {
         "Erreur lors de la création de l'utilisateur (register)"
       );
       const err = error as Error;
-      if (err.message === "DUPLICATE_EMAIL") {
+      if (err.message.includes("DUPLICATE_EMAIL")) {
         res.status(409).json({ message: "Cet email est déjà utilisé" });
         return;
       }
-      if (err.message === "DUPLICATE_USERNAME") {
+      if (err.message.includes("DUPLICATE_USERNAME")) {
         res
           .status(409)
           .json({ message: "Ce nom d'utilisateur est déjà utilisé" });
@@ -110,6 +120,14 @@ export const authController: AuthController = {
       if (result === "NO_ROLE") {
         logger.info({ email }, "Aucun rôle trouvé (login)");
         res.status(400).json({ message: "Aucun rôle trouvé" });
+        return;
+      }
+      if (typeof result === "string") {
+        logger.error(
+          { email, result },
+          "Réponse inattendue depuis authService.login"
+        );
+        res.status(500).json({ message: "Erreur lors de la connexion" });
         return;
       }
       logger.info({ email }, "Connexion utilisateur réussie (login)");

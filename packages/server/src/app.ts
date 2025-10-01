@@ -16,10 +16,10 @@ app.use(
 );
 
 app.use(cookieParser());
-app.use("/api", rootRouter);
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.use("/api", rootRouter);
 
 app.get("/test", (_req, res) => {
   res.json({ status: "ok", env: env.NODE_ENV });
