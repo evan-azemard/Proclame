@@ -5,24 +5,17 @@ import { logger } from "@/utils";
 
 const { JWT_SECRET } = env;
 
-export const isAuthenticated = (
-  req: Request & { user: { id: string; role: string } },
-  res: Response,
-  next: NextFunction
-) => {
-  const token = req.cookies?.token;
+export const isAuthenticated = (req: Request, res: Response, next: NextFunction) => {
+  const accessToken = req.cookies?.accessToken;
 
-  if (!token) {
+  if (!accessToken) {
     logger.warn("Accès refusé - Non authentifié (isAuthenticated middleware)");
     res.status(401).json({ message: "Non authentifié" });
     return;
   }
 
   try {
-    const payload = jwt.verify(token, JWT_SECRET) as {
-      id: string;
-      role: string;
-    };
+    const payload = jwt.verify(accessToken, JWT_SECRET) as { id: string; role: string };
     req.user = { id: payload.id, role: payload.role };
     next();
   } catch (error) {
