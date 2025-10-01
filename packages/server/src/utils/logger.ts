@@ -1,17 +1,18 @@
 // Permet de configurer et d'exporter un logger Pino pour l'application
 import pino from "pino";
-import { env } from "@/config";
+
+const nodeEnv = process.env.NODE_ENV ?? "prod";
+const isDev = nodeEnv === "dev";
 
 export const logger = pino({
-  level: env.NODE_ENV === "dev" ? "debug" : "error",
+  level: isDev ? "debug" : "error",
   formatters: {
     level(label) {
       return { level: label };
     },
   },
   timestamp: pino.stdTimeFunctions.isoTime,
-  transport:
-    env.NODE_ENV === "dev"
-      ? { target: "pino-pretty", options: { colorize: true } }
-      : undefined,
+  transport: isDev
+    ? { target: "pino-pretty", options: { colorize: true } }
+    : undefined,
 });

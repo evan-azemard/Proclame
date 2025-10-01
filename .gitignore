@@ -29,6 +29,10 @@ build/
 *.tmp
 *.temp
 
+# TypeScript incremental builds
+*.tsbuildinfo
+**/*.tsbuildinfo
+
 # Vite (cache)
 .vite/
 **/.vite/

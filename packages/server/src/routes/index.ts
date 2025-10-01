@@ -1,0 +1,9 @@
+export { default as authRoutes } from "./auth.routes";
+export { default as categoryRoutes } from "./category.routes";
+export { default as favoriteRoutes } from "./favotire.routes";
+export { default as proclamationRoutes } from "./proclamation.routes";
+export { default as roleRoutes } from "./role.routes";
+export { default as soundRoutes } from "./sound.routes";
+export { default as statusRoutes } from "./status.routes";
+export { default as userRoutes } from "./user.routes";
+export { default as rootRouter } from "./rootRouter";
