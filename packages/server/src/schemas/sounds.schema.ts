@@ -1,5 +1,5 @@
 import { pgTable, timestamp, uuid, varchar } from "drizzle-orm/pg-core";
-import { statuses } from "@/schemas";
+import { statuses } from "./statuses.schema";
 
 export const sounds = pgTable("sounds", {
   id: uuid("id").primaryKey().defaultRandom(),
