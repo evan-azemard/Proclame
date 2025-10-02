@@ -5,6 +5,7 @@ import {
   validateParams,
   isAdmin,
   authLimiter,
+  csrfProtection,
 } from "@/middlewares";
 import { userUpdateSchema, idParamSchema } from "@/validations";
 
@@ -14,6 +15,7 @@ router.get("/:id", validateParams(idParamSchema), userController.getUserById);
 router.patch(
   "/:id",
   authLimiter,
+  csrfProtection,
   validateParams(idParamSchema),
   validateBody(userUpdateSchema),
   userController.updateUser
@@ -21,6 +23,7 @@ router.patch(
 router.delete(
   "/:id",
   isAdmin,
+  csrfProtection,
   validateParams(idParamSchema),
   userController.removeUser
 );

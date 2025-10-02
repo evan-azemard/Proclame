@@ -5,6 +5,7 @@ import {
   validateParams,
   isAuthenticated,
   isAdmin,
+  csrfProtection,
 } from "@/middlewares";
 import {
   soundCreateValidation,
@@ -17,12 +18,14 @@ router.get("/", isAuthenticated, soundController.getAll);
 router.post(
   "/",
   isAdmin,
+  csrfProtection,
   validateBody(soundCreateValidation),
   soundController.create
 );
 router.patch(
   "/:id",
   isAdmin,
+  csrfProtection,
   validateParams(idParamSchema),
   validateBody(soundUpdateValidation),
   soundController.update
@@ -30,6 +33,7 @@ router.patch(
 router.delete(
   "/:id",
   isAdmin,
+  csrfProtection,
   validateParams(idParamSchema),
   soundController.remove
 );

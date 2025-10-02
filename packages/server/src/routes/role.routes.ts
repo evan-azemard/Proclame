@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { roleController } from "@/controllers";
-import { validateBody, validateParams, isAdmin } from "@/middlewares";
+import { validateBody, validateParams, isAdmin, csrfProtection } from "@/middlewares";
 import {
   roleCreateValidation,
   roleUpdateValidation,
@@ -12,12 +12,14 @@ router.get("/", isAdmin, roleController.getAll);
 router.post(
   "/",
   isAdmin,
+  csrfProtection,
   validateBody(roleCreateValidation),
   roleController.create
 );
 router.patch(
   "/:roleId",
   isAdmin,
+  csrfProtection,
   validateParams(idParamSchema),
   validateBody(roleUpdateValidation),
   roleController.update
@@ -25,6 +27,7 @@ router.patch(
 router.delete(
   "/:roleId",
   isAdmin,
+  csrfProtection,
   validateParams(idParamSchema),
   roleController.remove
 );

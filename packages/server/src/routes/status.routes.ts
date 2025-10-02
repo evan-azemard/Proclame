@@ -4,6 +4,7 @@ import {
   validateBody,
   validateParams,
   isAdmin,
+  csrfProtection,
 } from "@/middlewares";
 import {
   statusCreateValidation,
@@ -16,12 +17,14 @@ router.get("/", statusController.getAllStatuses);
 router.post(
   "/",
   isAdmin,
+  csrfProtection,
   validateBody(statusCreateValidation),
   statusController.createStatus
 );
 router.patch(
   "/:id",
   isAdmin,
+  csrfProtection,
   validateParams(idParamSchema),
   validateBody(statusUpdateValidation),
   statusController.updateStatus
@@ -29,6 +32,7 @@ router.patch(
 router.delete(
   "/:id",
   isAdmin,
+  csrfProtection,
   validateParams(idParamSchema),
   statusController.removeStatus
 );
