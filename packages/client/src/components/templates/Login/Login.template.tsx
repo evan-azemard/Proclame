@@ -4,16 +4,19 @@ import { SectionForm } from "@organisms/index";
 import { useEffect } from "react";
 
 export default function Login() {
-    useEffect(() => {
-      window.scrollTo(0, 0);
-    }, []);
-  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <Container>
       <Wave />
       <SectionForm type="login" />
       <Wave />
-  <TitleWithParagraph title="Politique des cookies" titleId="login-cookies-title">
+      <TitleWithParagraph
+        title="Politique des cookies"
+        titleId="login-cookies-title"
+      >
         <p>
           Cette application utilise des cookies essentiels au bon fonctionnement
           de ses services.
