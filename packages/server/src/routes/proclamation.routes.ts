@@ -5,6 +5,7 @@ import {
   validateParams,
   isAuthenticated,
   isAdmin,
+  csrfProtection,
 } from "@/middlewares";
 import {
   proclamationCreateValidation,
@@ -23,12 +24,14 @@ router.get(
 router.post(
   "/",
   isAdmin,
+  csrfProtection,
   validateBody(proclamationCreateValidation),
   proclamationController.create
 );
 router.patch(
   "/:id",
   isAdmin,
+  csrfProtection,
   validateParams(idParamSchema),
   validateBody(proclamationUpdateValidation),
   proclamationController.update
@@ -36,6 +39,7 @@ router.patch(
 router.delete(
   "/:id",
   isAdmin,
+  csrfProtection,
   validateParams(idParamSchema),
   proclamationController.remove
 );

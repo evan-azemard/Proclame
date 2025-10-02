@@ -2,8 +2,9 @@
 import { Pool } from "pg";
 import { migrate } from "drizzle-orm/node-postgres/migrator";
 import { drizzle, NodePgDatabase } from "drizzle-orm/node-postgres/driver";
-import { env } from "@/config";
-import { logger } from "@/utils";
+import path from "node:path";
+import { env } from "../config/env";
+import { logger } from "../utils/logger";
 
 export async function main() {
   const pool = new Pool({ connectionString: env.DATABASE_URL });
@@ -11,7 +12,8 @@ export async function main() {
 
   logger.info("Starting migration...");
 
-  await migrate(db, { migrationsFolder: "src/migrations" });
+  const migrationsFolder = path.resolve(__dirname, "../migrations");
+  await migrate(db, { migrationsFolder });
   logger.info("Migration completed successfully");
 
   await pool.end();

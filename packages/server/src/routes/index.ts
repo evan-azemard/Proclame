@@ -1,6 +1,6 @@
 export { default as authRoutes } from "./auth.routes";
 export { default as categoryRoutes } from "./category.routes";
-export { default as favoriteRoutes } from "./favotire.routes";
+export { default as favoriteRoutes } from "./favorite.routes";
 export { default as proclamationRoutes } from "./proclamation.routes";
 export { default as roleRoutes } from "./role.routes";
 export { default as soundRoutes } from "./sound.routes";

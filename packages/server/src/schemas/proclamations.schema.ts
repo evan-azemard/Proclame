@@ -1,5 +1,7 @@
 import { pgTable, text, timestamp, uuid, varchar } from "drizzle-orm/pg-core";
-import { users, statuses, categories } from "@/schemas";
+import { categories } from "./categories.schema";
+import { statuses } from "./statuses.schema";
+import { users } from "./users.schema";
 
 export const proclamations = pgTable("proclamations", {
   id: uuid("id").primaryKey().defaultRandom(),
